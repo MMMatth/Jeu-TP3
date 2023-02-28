@@ -1,3 +1,9 @@
+/**
+ * \file player.h
+ * \brief fichier d'en-tête du module joueur
+ * 
+ */
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -6,7 +12,7 @@
  * 
  */
 struct joueur_t {
-    int pos[2];
+    int pos[2]; /**< position du joueur*/
 };
 
 /**

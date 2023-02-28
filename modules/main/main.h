@@ -1,9 +1,14 @@
-#include "monster.h"
-#include "player.h"
-
-
 #ifndef AFFICHAGE_H
 #define AFFICHAGE_H
+
+/**
+ * \file main.h
+ * \brief fichier d'entête du module main
+ * 
+ */
+
+#include "../monstre/monstre.h"
+#include "../joueur/joueur.h"
 
 
 /**
@@ -33,10 +38,10 @@ int ** creationPlateau();
  * [TMAP][TMAP].
  * 
  * \param j 
- * \param listeM 
+ * \param listeMst_t
  * \return char** 
  */
-char** generationListeAff(struct joueur_t* j, struct listeMst_t* listeM);
+char ** generationListeAff(struct joueur_t* j, struct listeMst_t* listeM);
 
 /**
  * \brief lance une partie. 

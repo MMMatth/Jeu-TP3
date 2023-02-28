@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "joueur.h": "c",
+        "monstre.h": "c"
+    }
+}
