@@ -12,7 +12,13 @@ struct joueur {
 };
 typedef struct joueur joueur_t;
 
-struct joueur_t creationJoueur();
+/**
+ * \brief procedure crée un joueur. Vous aurez besoin de malloc(sizeof(struct
+ *   joueur_t)). Vous pouvez ajouter les arguments dont vous avez besoin à cette fonction.
+ * 
+ * 
+ */
+void creationJoueur();
 
 char * toStringJr(struct joueur_t *j);
 
