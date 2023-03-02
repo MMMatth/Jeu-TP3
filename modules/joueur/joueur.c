@@ -17,7 +17,7 @@ int deplacement(struct joueur_t *j) {
         printf("%d %d\n", j->pos[0], j->pos[1]);
         }
     else{
-        printf("touche '%c' non definie", c);
+        printf("touche '%c' non definie\n", c);
     return 0;
 }}
 
