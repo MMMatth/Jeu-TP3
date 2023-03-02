@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "joueur.h": "c",
-        "monstre.h": "c"
+        "monstre.h": "c",
+        "stdio.h": "c",
+        "affichage.h": "c"
     }
 }

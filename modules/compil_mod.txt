@@ -1,0 +1,4 @@
+gcc -c ./modules/main/main.c -o ./modules/main/main.o
+gcc -c ./modules/joueur/joueur.c -o ./modules/joueur/joueur.o
+gcc -c ./modules/monstre/monstre.c -o ./modules/monstre/monstre.o
+gcc -c ./modules/affichage/affichage.c -o ./modules/affichage/affichage.o
