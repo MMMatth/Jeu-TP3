@@ -8,8 +8,8 @@ typedef struct joueur joueur_t;
 
 void creationJoueur();
 
-char * toStringJr(struct joueur_t *j);
+char * toStringJr(joueur_t *j);
 
-int deplacement(struct joueur *j);
+int deplacement(joueur_t *j);
 
 #endif /* PLAYER_H */

@@ -3,6 +3,7 @@
         "joueur.h": "c",
         "monstre.h": "c",
         "stdio.h": "c",
-        "affichage.h": "c"
+        "affichage.h": "c",
+        "string.h": "c"
     }
 }

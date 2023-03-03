@@ -4,11 +4,11 @@
 #include "../monstre/monstre.h"
 #include "../joueur/joueur.h"
 
-int attaque(struct joueur_t* j, struct monstre_t* m);
+int attaque(joueur_t* j, monstre_t* m);
 
 int ** creationPlateau();
 
-char ** generationListeAff(struct joueur_t* j, struct monstreListe_t* listeM);
+char ** generationListeAff(joueur_t* j, monstreListe_t* listeM);
 
 void jouer();
 
