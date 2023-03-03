@@ -4,6 +4,7 @@
         "monstre.h": "c",
         "stdio.h": "c",
         "affichage.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "stdlib.h": "c"
     }
 }
