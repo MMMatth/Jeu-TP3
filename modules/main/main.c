@@ -15,7 +15,7 @@ int ** creationPlateau(){
     return plateau;
 }
 
-char ** generationListeAff(struct joueur_t* j, struct monstreListe_t* listeM){
+char ** generationListeAff( joueur_t* j, monstreListe_t* listeM){
     // on fait un tableau de 2D de taille 10 rempli de 0
     char ** listeAff = malloc(taille * sizeof(char *));
     for (int i = 0; i < taille; i++) {
@@ -24,21 +24,17 @@ char ** generationListeAff(struct joueur_t* j, struct monstreListe_t* listeM){
     // on remplie le tableau de vide
     for (int i = 0; i < taille; i++) {
         for (int j = 0; j < taille; j++) {
-            listeAff[i][j] = ' ';
+            listeAff[i][j] = '/';
         }
     }
+
+    // on place le joueur
+    listeAff[j->pos[0]][j->pos[1]] = 'J';
+
+    // on place les monstres
+    for (int i = 0; i < listeM->nbMst; i++) {
+        listeAff[listeM->tab[i].pos[0]][listeM->tab[i].pos[1]] = 'M';
+    }
+
     return listeAff;
-}
-
-
-int main(){
-    joueur_t j;
-    
-    monstreListe_t listeM;
-
-
-    int ** plateau = generationListeAff();
-    afficher(plateau, taille);
-    return EXIT_SUCCESS;
-
 }
