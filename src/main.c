@@ -58,7 +58,6 @@ void jouer(){
 
     while(1){
         char ** listeAff = generationListeAff(joueur, listeM);    
-        afficher(listeAff, 10);
         deplacement(joueur, 10);
         printf("%s\n", toStringJr(joueur));
         printf("%d\n", joueur->pos[0] + joueur->pos[1]);

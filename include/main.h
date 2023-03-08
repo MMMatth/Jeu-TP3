@@ -3,6 +3,7 @@
 
 #include "monstre.h"
 #include "joueur.h"
+#include <SDL.h>
 
 int attaque(joueur_t* j, monstre_t* m);
 
