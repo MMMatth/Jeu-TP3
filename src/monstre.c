@@ -6,21 +6,18 @@
 
 
 monstreListe_t* creationListeM(){
-    // on cree une liste de monstre vide
-    monstreListe_t* listeM = malloc(sizeof(monstreListe_t));
+    monstreListe_t* listeM = malloc(sizeof(monstreListe_t)); // on alloue de la memoire pour la liste
     listeM->nbMst = 0; // on initialise le nombre de monstre a 0
     listeM->tab = malloc(100 * sizeof(monstre_t)); // on alloue de la memoire pour 100 monstres
     return listeM;
 }
 
 int ajoutMst( monstreListe_t* listeM, int j_pos0, int j_pos1){
-    // on cree un monstre temporaire
-    monstre_t * m = malloc(sizeof(monstre_t));
-    // on def la position du monstre
-    m->pos[0] = j_pos0;
+    monstre_t * m = malloc(sizeof(monstre_t)); // on alloue de la memoire pour le monstre
+    // on initialise les positions du monstre
+    m->pos[0] = j_pos0; 
     m->pos[1] = j_pos1;
-    // nombre de pv alleatoire enttier entre 1 et 100
-    m->pv = rand() % 100 + 1;
+    m->pv = rand() % 100 + 1; // nombre de pv alleatoire enttier entre 1 et 100
     // on ajoute le monstre a la liste
     listeM->tab[listeM->nbMst] = *m;
     listeM->nbMst++;
@@ -58,14 +55,11 @@ char * toStringLstMst(monstreListe_t* listeM){
     return str;
 }
 
-int estPresentMst(int x, int y, monstreListe_t* listeM){
-    // on parcours la liste de monstre
+int MstEstPresent(monstreListe_t* listeM, int j_pos0, int j_pos1){
     for (int i = 0; i < listeM->nbMst; i++){
-        // si le monstre est a la position x, y on retourne 1
-        if (listeM->tab[i].pos[0] == x && listeM->tab[i].pos[1] == y){
-            return 1;
+        if (listeM->tab[i].pos[0] == j_pos0 && listeM->tab[i].pos[1] == j_pos1){
+            return i; // on retourne l'indice du monstre
         }
     }
-    // sinon on retourne 0
-    return 0;
+    return -1;
 }

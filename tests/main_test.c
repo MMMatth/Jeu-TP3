@@ -7,7 +7,7 @@
 #include "../include/monstre.h"
 #include "../include/joueur.h"
 
-int main(int argc, char* argv[]){
-    jouer();
-    return 0;
+int main(int argc, char ** argv){
+    jouer(argc, argv);
+    return EXIT_SUCCESS;
 }

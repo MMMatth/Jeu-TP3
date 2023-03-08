@@ -1,3 +1,9 @@
+/**
+ * \file joueur.h
+ * \brief fichier d'entête pour le joueur
+ * 
+ */
+
 #ifndef JOUEUR_H
 #define JOUEUR_H
 

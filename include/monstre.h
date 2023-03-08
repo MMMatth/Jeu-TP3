@@ -56,14 +56,6 @@ char* toStringMst(monstre_t* M);
  */
 char* toStringLstMst(monstreListe_t* listeM);
 
-/**
- * \brief Vérifie si un monstre est présent à une position donnée.
- * 
- * \param x : la position en x.
- * \param y : la position en y. 
- * \param listeM : la liste de monstres.
- * \return int 
- */
-int estPresentMst(int x, int y, monstreListe_t* listeM);
+int MstEstPresent(monstreListe_t* listeM, int j_pos0, int j_pos1);
 
 #endif /* MONSTRE_H */

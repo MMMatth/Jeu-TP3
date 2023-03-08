@@ -1,9 +1,15 @@
-#ifndef CARTE_H
-#define CARTE_H
+/**
+ * \file affichage.h
+ * \brief fichier d'entête pour avec des fonction pour l'affichage ( SDL )
+ * 
+ */
+
+
+#ifndef AFFICHAGE_H
+#define AFFICHAGE_H
 
 #include <SDL.h>
 #include <stdbool.h>
-
 
 /**
  * \brief permet de quitter le programme en cas d'erreur
@@ -18,7 +24,6 @@ void SDL_ExitWithError(const char *message);
  */
 void SDL_InitWithExit(void);
 
-
 /**
  * \brief permet de crée des hitbox pour des bouton par exemple
  * 
@@ -30,7 +35,7 @@ void SDL_InitWithExit(void);
  * \return true : si ca touche
  * \return false : si ca touche pas
  */
-bool SDL_HITBOX(SDL_Event event, int top_left, int top_right, int bottom_left, int bottom_right);
+bool SDL_RectHitbox(SDL_Event event, int top_left, int top_right, int bottom_left, int bottom_right);
 
 /**
  * \brief permet de créer une fenêtre et un renderer avec gestion des erreurs
@@ -51,4 +56,16 @@ void SDL_WindowAndRendererWithExit(int width, int height, SDL_Window **window, S
  */
 SDL_Texture *SDL_CreateIMG(SDL_Renderer *renderer, const char *path);
 
-#endif /* CARTE_H */
+/**
+ * \brief permet d'afficher une image plus facilement
+ * 
+ * \param renderer : le renderer SDL
+ * \param texture : la texture de l'image
+ * \param x : position x
+ * \param y : position y
+ * \param w : largeur
+ * \param h : hauteur
+ */
+void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h);
+
+#endif

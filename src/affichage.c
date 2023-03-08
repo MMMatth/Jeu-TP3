@@ -18,15 +18,13 @@ void SDL_InitWithExit(void){
     }
 }
 
-void SDL_WindowAndRendererWithExit(int width, int height, SDL_Window **window, SDL_Renderer **renderer)
-{
+void SDL_WindowAndRendererWithExit(int width, int height, SDL_Window **window, SDL_Renderer **renderer){
     if (SDL_CreateWindowAndRenderer(width, height, 0, window, renderer) != 0){
         SDL_ExitWithError("Creation fenetre et renderer echouee");
     }
 }
 
-bool SDL_HITBOX(SDL_Event event, int top_left, int top_right, int bottom_left, int bottom_right)
-{   
+bool SDL_RectHitbox(SDL_Event event, int top_left, int top_right, int bottom_left, int bottom_right){   
     if (event.button.x >= top_left
         && event.button.x <= top_right
         && event.button.y >= bottom_left 
@@ -45,4 +43,9 @@ SDL_Texture *SDL_CreateIMG(SDL_Renderer *renderer, const char *path){
 
     SDL_FreeSurface(surface); // On libère la surface
     return texture;
+}
+
+void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h){
+    SDL_Rect rect = {x, y, w, h}; // Création d'un rectangle
+    SDL_RenderCopy(renderer, texture, NULL, &rect); // On affiche la texture
 }
