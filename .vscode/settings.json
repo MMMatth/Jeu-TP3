@@ -5,6 +5,7 @@
         "stdio.h": "c",
         "affichage.h": "c",
         "string.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "main.h": "c"
     }
 }
