@@ -26,6 +26,6 @@ char * toStringJr(joueur_t *j);
  * 
  * \param j pointeur sur le joueur
  */
-void deplacement(joueur_t *j, int taille);
+void deplacement(joueur_t *j, int taille, char touche);
 
 #endif /* JOUEUR_H */

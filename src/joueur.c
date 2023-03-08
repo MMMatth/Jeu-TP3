@@ -5,30 +5,24 @@
 
 #include "../include/joueur.h"
 
-void deplacement (joueur_t *j, int taille) {
-    char c;
-    c = getch();
-    if (c=='z' || c=='q' || c=='s' || c=='d' || c=='!'){
-        printf("%c\n", c);
-        //si touche p, on quitte le jeu
-        if (c=='!') {
+void deplacement (joueur_t *j, int taille, char touche) {
+    if (touche=='z' || touche=='q' || touche=='s' || touche=='d' || touche=='!'){
+        printf("%c\n", touche);
+        if (touche=='!') {
             exit(0);
         }
-        if (c=='z' && j->pos[0] > 0) {
-            j->pos[0] -= 1;
-        }
-        if (c=='q' && j->pos[1] > 0){
+        if (touche=='z' && j->pos[1] > 0) {
             j->pos[1] -= 1;
-        }    
-        if (c=='s' && j->pos[0] < taille-1) {
-            j->pos[0] += 1;
         }
-        if (c=='d' && j->pos[1] < taille-1  ) {
+        if (touche=='q' && j->pos[0] > 0){
+            j->pos[0] -= 1;
+        }    
+        if (touche=='s' && j->pos[1] < taille-1) {
             j->pos[1] += 1;
         }
+        if (touche=='d' && j->pos[0] < taille-1  ) {
+            j->pos[0] += 1;
         }
-    else{
-        printf("touche '%c' non definie\n", c);
     }
 }
 
