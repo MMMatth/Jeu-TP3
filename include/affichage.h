@@ -68,4 +68,7 @@ SDL_Texture *SDL_CreateIMG(SDL_Renderer *renderer, const char *path);
  */
 void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h);
 
+
+void CreationBarDeVie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv);
+
 #endif

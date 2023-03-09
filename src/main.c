@@ -55,21 +55,21 @@ void jouer(int argc, char *argv[])
     /* --- Inititalisation du joueur et des Monstres --- */
     joueur_t*  j = CreationJoueur();
     monstreListe_t* listeM = creationListeM();
-    ajoutMst(listeM, 1, 1);
-    ajoutMst(listeM, 2, 2);
-    ajoutMst(listeM, 3, 3);
+    ajoutMst(listeM, rand() % taille, rand() % taille);
+    ajoutMst(listeM, rand() % taille, rand() % taille);
+    ajoutMst(listeM, rand() % taille, rand() % taille);
 
     /* --- Initialisation de la SDL --- */
     SDL_InitWithExit(); // Initialisation de la SDL
     SDL_WindowAndRendererWithExit(WINDOW_WIDTH, WINDOW_HEIGHT, &window, &renderer); // Création de la fenêtre et du renderer
     SDL_SetWindowTitle(window, "DIABLO MMXXIII"); // Titre de la fenêtre
-    SDL_Surface *icon = SDL_LoadBMP("assets/joueur.bmp"); // Chargement de l'icône
+    SDL_Surface *icon = SDL_LoadBMP("assets/joueur_s.bmp"); // Chargement de l'icône
     SDL_SetWindowIcon(window, icon); // Définition de l'icône
 
     /*--- Chargement des images ---*/
     SDL_Texture *bg_menu_texture = SDL_CreateIMG(renderer, "assets/bg_menu.bmp"); // Chargement de l'image de fond du menu
     SDL_Texture *bg_jeu_texture = SDL_CreateIMG(renderer, "assets/bg_jeu.bmp"); // Chargement de l'image de fond du jeu
-    SDL_Texture *joueur_texture = SDL_CreateIMG(renderer, "assets/joueur.bmp"); // Chargement de l'image du joueur
+    SDL_Texture *joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp"); // Chargement de l'image du joueur
     SDL_Texture *monstre_texture = SDL_CreateIMG(renderer, "assets/monstre.bmp"); // Chargement de l'image du monstre
 
 while (program_launched) // Boucle de jeu
@@ -112,15 +112,20 @@ while (program_launched) // Boucle de jeu
                         switch (event.key.keysym.sym){
                         case SDLK_z:
                             deplacement(j, taille, 'z');
+                            joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_z.bmp");
                             break;
                         case SDLK_s:
                             deplacement(j, taille, 's');
+                            joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp");
+
                             break;
                         case SDLK_q:
                             deplacement(j, taille, 'q');
+                            joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_q.bmp");
                             break;
                         case SDLK_d:
                             deplacement(j, taille, 'd');
+                            joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_d.bmp");
                             break;
                         case SDLK_SPACE:
                             if (MstEstPresent(listeM, j->pos[0], j->pos[1]) != -1){
@@ -154,19 +159,28 @@ while (program_launched) // Boucle de jeu
 
             /* --- affichage --- */
             SDL_RenderCopy(renderer, bg_jeu_texture, NULL, NULL);
-
+            int tmp_mst_pos[] = {0, 0};
             for(int i = 0; i < listeM->nbMst ; i++){ 
+                tmp_mst_pos[0] = listeM->tab[i].pos[0];
+                tmp_mst_pos[1] = listeM->tab[i].pos[1]; 
                 if (MstEstPresent(listeM, j->pos[0], j->pos[1]) == i){
-                    SDL_RenderIMG(renderer, monstre_texture, 
-                        ((listeM->tab[i].pos[0] * 69) + 138) - 15 ,
-                        ((listeM->tab[i].pos[1] * 68) + 41) - 20 , 
-                        30, 40);
+                    tmp_mst_pos[0] = tmp_mst_pos[0] * 69 + 138 - 15;
+                    tmp_mst_pos[1] = tmp_mst_pos[1] * 68 + 41 - 20;
+                    CreationBarDeVie(renderer, tmp_mst_pos[0],tmp_mst_pos[1], 40, 10, listeM->tab[i].pv);
+
+                    // SDL_RenderIMG(renderer, monstre_texture, 
+                    //     ((listeM->tab[i].pos[0] * 69) + 138) - 15 ,
+                    //     ((listeM->tab[i].pos[1] * 68) + 41) - 20 , 
+                    //     30, 40);
                 }else {
-                    SDL_RenderIMG(renderer, monstre_texture, 
-                        ((listeM->tab[i].pos[0] * 69) + 158) - 15 ,
-                        ((listeM->tab[i].pos[1] * 68) + 61) - 20 , 
-                        30, 40);
+                    tmp_mst_pos[0] = tmp_mst_pos[0] * 69 + 158 - 15;
+                    tmp_mst_pos[1] = tmp_mst_pos[1] * 68 + 61 - 20;
+                    // SDL_RenderIMG(renderer, monstre_texture, 
+                    //     ((listeM->tab[i].pos[0] * 69) + 158) - 15 ,
+                    //     ((listeM->tab[i].pos[1] * 68) + 61) - 20 , 
+                    //     30, 40);
                 }
+                SDL_RenderIMG(renderer, monstre_texture, tmp_mst_pos[0], tmp_mst_pos[1], 30, 40);
 
             }
 

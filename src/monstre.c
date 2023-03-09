@@ -13,6 +13,8 @@ monstreListe_t* creationListeM(){
 }
 
 int ajoutMst( monstreListe_t* listeM, int j_pos0, int j_pos1){
+    if (MstEstPresent(listeM, j_pos0, j_pos1) != -1) return -1; // si le monstre est deja present on retourne -1
+
     monstre_t * m = malloc(sizeof(monstre_t)); // on alloue de la memoire pour le monstre
     // on initialise les positions du monstre
     m->pos[0] = j_pos0; 
