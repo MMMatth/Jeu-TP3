@@ -68,7 +68,16 @@ SDL_Texture *SDL_CreateIMG(SDL_Renderer *renderer, const char *path);
  */
 void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h);
 
-
+/**
+ * \brief permet de créer une barre de vie pour un personnage 
+ *  ! max 100 hp !
+ * \param renderer : le renderer SDL
+ * \param x : position x
+ * \param y : position y
+ * \param w : largeur
+ * \param h : hauteur
+ * \param pv : point de vie
+ */
 void CreationBarDeVie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv);
 
 #endif
