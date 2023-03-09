@@ -56,6 +56,14 @@ char* toStringMst(monstre_t* M);
  */
 char* toStringLstMst(monstreListe_t* listeM);
 
+/**
+ * \brief fonction qui vérifie si un monstre est présent à une position donnée.
+ * 
+ * \param listeM : la liste de monstres.
+ * \param j_pos0 : la position du joueur.
+ * \param j_pos1 : la position du joueur.
+ * \return int : l'indice de la liste si le monstre est présent, -1 sinon.
+ */
 int MstEstPresent(monstreListe_t* listeM, int j_pos0, int j_pos1);
 
 #endif /* MONSTRE_H */

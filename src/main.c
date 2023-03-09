@@ -43,8 +43,8 @@ char ** generationListeAff( joueur_t* j, monstreListe_t* listeM){
     return listeAff;
 }
 
-
-void jouer(int argc, char *argv[]){
+void jouer(int argc, char *argv[])
+{
     /* --- Initialisation des variables --- */
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
@@ -72,10 +72,7 @@ void jouer(int argc, char *argv[]){
     SDL_Texture *joueur_texture = SDL_CreateIMG(renderer, "assets/joueur.bmp"); // Chargement de l'image du joueur
     SDL_Texture *monstre_texture = SDL_CreateIMG(renderer, "assets/monstre.bmp"); // Chargement de l'image du monstre
 
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Définir la couleur de rendu en rouge
-
-
-    while (program_launched) // Boucle de jeu
+while (program_launched) // Boucle de jeu
     {
         if (!game_start){ // Si le jeu n'a pas commencé ( menu )
             while (SDL_PollEvent(&event)){
@@ -147,21 +144,31 @@ void jouer(int argc, char *argv[]){
                         break;
                 }
             }
-            /* --- On affiche de point rouge sur les cases --- */
-            SDL_RenderCopy(renderer, bg_jeu_texture, NULL, NULL);
-            for (int j = 61; j < 600; j += 68){
-                for (int i = 158; i < 700; i += 69){
-                    SDL_RenderDrawPoint(renderer, i, j);
-                }
-            }
-            // Changer la position du joueur
             
+            /* --- On affiche de point rouge sur les cases --- */
+            // for (int j = 61; j < 600; j += 68){
+            //     for (int i = 158; i < 700; i += 69){
+            //         SDL_RenderDrawPoint(renderer, i, j);
+            //     }
+            // }
+
             /* --- affichage --- */
+            SDL_RenderCopy(renderer, bg_jeu_texture, NULL, NULL);
+
             for(int i = 0; i < listeM->nbMst ; i++){ 
+                if (MstEstPresent(listeM, j->pos[0], j->pos[1]) == i){
                     SDL_RenderIMG(renderer, monstre_texture, 
-                    ((listeM->tab[i].pos[0] * 69) + 158) - 15 , 
-                    ((listeM->tab[i].pos[1] * 68) + 61) - 20 , 30, 40);
-                    }
+                        ((listeM->tab[i].pos[0] * 69) + 138) - 15 ,
+                        ((listeM->tab[i].pos[1] * 68) + 41) - 20 , 
+                        30, 40);
+                }else {
+                    SDL_RenderIMG(renderer, monstre_texture, 
+                        ((listeM->tab[i].pos[0] * 69) + 158) - 15 ,
+                        ((listeM->tab[i].pos[1] * 68) + 61) - 20 , 
+                        30, 40);
+                }
+
+            }
 
             SDL_RenderIMG(renderer, joueur_texture, ((j->pos[0] * 69) + 158 ) - 15 , ((j->pos[1] * 68) + 61) - 20 , 30, 40); // affichage du joueur
             SDL_RenderPresent(renderer); // affichage du rendu

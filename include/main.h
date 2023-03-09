@@ -7,7 +7,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include "../include/main.h"
 #include "../include/affichage.h"
 #include "../include/joueur.h"
 #include "../include/monstre.h"
