@@ -10,6 +10,8 @@
 
 #include <SDL.h>
 #include <stdbool.h>
+#include "../include/monstre.h"
+#include "../include/joueur.h"
 
 /**
  * \brief permet de quitter le programme en cas d'erreur
@@ -79,5 +81,18 @@ void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, i
  * \param pv : point de vie
  */
 void CreationBarDeVie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv);
+
+/**
+ * \brief permet d'afficher les monstres
+ * 
+ * \param renderer : le renderer SDL
+ * \param texture : la texture de l'image ( monstre)
+ * \param w : largeur
+ * \param h : hauteur
+ * \param listeM : la liste de monstre
+ * \param joueur : le joueur
+ */
+void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur);
+
 
 #endif

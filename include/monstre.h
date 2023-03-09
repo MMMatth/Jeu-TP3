@@ -57,13 +57,24 @@ char* toStringMst(monstre_t* M);
 char* toStringLstMst(monstreListe_t* listeM);
 
 /**
- * \brief fonction qui vérifie si un monstre est présent à une position donnée.
+ * \brief fonction qui renvoie l'indice du monstre dans une case
  * 
  * \param listeM : la liste de monstres.
  * \param j_pos0 : la position du joueur.
  * \param j_pos1 : la position du joueur.
- * \return int : l'indice de la liste si le monstre est présent, -1 sinon.
+ * \return indice du monstre dans la case, -1 si pas de monstre.
  */
 int IndiceMst(monstreListe_t* listeM, int j_pos0, int j_pos1);
+
+/**
+ * \brief fonction qui déplace les monstres de manière aléatoire.
+ * 
+ * \param m : la liste de monstres.
+ * \param taille : la taille de la grille.
+ * \param tick : le tick du jeu.
+ * \return 1 si réussite, -1 sinon.
+ */
+int RandomMoove(monstreListe_t *m, int taille, int tick);
+
 
 #endif /* MONSTRE_H */

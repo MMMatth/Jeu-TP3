@@ -4,6 +4,8 @@
 #include <SDL.h>
 
 #include "../include/affichage.h"
+#include "../include/joueur.h"
+#include "../include/monstre.h"
 
 
 void SDL_ExitWithError(const char *message){
@@ -49,6 +51,28 @@ void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, i
     SDL_Rect rect = {x, y, w, h}; // Création d'un rectangle
     SDL_RenderCopy(renderer, texture, NULL, &rect); // On affiche la texture
 }
+
+void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur){
+    for (int i = 0; i < listeM->nbMst; i++){ // on parcour tout les monstres
+        if (IndiceMst(listeM, joueur->pos[0], joueur->pos[1]) == i){ 
+            int mst_pos[] = {
+                listeM->tab[i]->pos[0] * 69 + 138 - 15, 
+                listeM->tab[i]->pos[1] * 68 + 41 - 20
+                }; 
+                CreationBarDeVie(renderer, mst_pos[0], mst_pos[1], 30, 5, listeM->tab[i]->pv);
+            SDL_RenderIMG(renderer, texture, mst_pos[0], mst_pos[1], w, h);
+        }else{
+            int mst_pos[] = {
+                listeM->tab[i]->pos[0] * 69 + 158 - 15, 
+                listeM->tab[i]->pos[1] * 68 + 61 - 20
+                }; 
+            SDL_RenderIMG(renderer, texture, mst_pos[0], mst_pos[1], w, h);
+        }
+    }
+
+
+}
+
 
 void CreationBarDeVie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv){
     SDL_Rect rect = {x - 5, y - 15, w, h}; // Création d'un rectangle

@@ -92,22 +92,21 @@ while (program_launched) // Boucle de jeu
                                 program_launched = SDL_FALSE;
                                 break;
                             }
-                            // joue un son
-
                         }
                         break;
-                    case SDL_QUIT: // Si l'utilisateur ferme la fenêtre
+                    case SDL_QUIT:
                         program_launched = SDL_FALSE;
                         break;
                     default:
                         break;
                 }
             }
-            /* --- affichage --- */
-            SDL_RenderCopy(renderer, bg_menu_texture, NULL, NULL); // fond du menu
+
+            SDL_RenderCopy(renderer, bg_menu_texture, NULL, NULL); 
             SDL_RenderPresent(renderer);
 
         }else{ // Si le jeu a commencé
+            tick += 1;
             while (SDL_PollEvent(&event)){
                 switch (event.type){
                     case SDL_MOUSEBUTTONDOWN:
@@ -164,35 +163,15 @@ while (program_launched) // Boucle de jeu
             //     }
             // }
 
-            /* --- affichage --- */
-            SDL_RenderCopy(renderer, bg_jeu_texture, NULL, NULL);
-            int tmp_mst_pos[] = {0, 0};
-            for(int i = 0; i < listeM->nbMst ; i++){ 
-                tmp_mst_pos[0] = listeM->tab[i]->pos[0];
-                tmp_mst_pos[1] = listeM->tab[i]->pos[1]; 
-                if (IndiceMst(listeM, j->pos[0], j->pos[1]) == i){
-                    tmp_mst_pos[0] = tmp_mst_pos[0] * 69 + 138 - 15;
-                    tmp_mst_pos[1] = tmp_mst_pos[1] * 68 + 41 - 20;
-                    CreationBarDeVie(renderer, tmp_mst_pos[0],tmp_mst_pos[1], 40, 10, listeM->tab[i]->pv);
+            RandomMoove(listeM, taille, tick);
 
-                    // SDL_RenderIMG(renderer, monstre_texture, 
-                    //     ((listeM->tab[i].pos[0] * 69) + 138) - 15 ,
-                    //     ((listeM->tab[i].pos[1] * 68) + 41) - 20 , 
-                    //     30, 40);
-                }else {
-                    tmp_mst_pos[0] = tmp_mst_pos[0] * 69 + 158 - 15;
-                    tmp_mst_pos[1] = tmp_mst_pos[1] * 68 + 61 - 20;
-                    // SDL_RenderIMG(renderer, monstre_texture, 
-                    //     ((listeM->tab[i].pos[0] * 69) + 158) - 15 ,
-                    //     ((listeM->tab[i].pos[1] * 68) + 61) - 20 , 
-                    //     30, 40);
-                }
-                SDL_RenderIMG(renderer, monstre_texture, tmp_mst_pos[0], tmp_mst_pos[1], 30, 40);
+            SDL_RenderCopy(renderer, bg_jeu_texture, NULL, NULL); 
 
-            }
+            SDL_RenderMonstre(renderer, monstre_texture, 30, 40, listeM, j);
 
-            SDL_RenderIMG(renderer, joueur_texture, ((j->pos[0] * 69) + 158 ) - 15 , ((j->pos[1] * 68) + 61) - 20 , 30, 40); // affichage du joueur
-            SDL_RenderPresent(renderer); // affichage du rendu
+            SDL_RenderIMG(renderer, joueur_texture, ((j->pos[0] * 69) + 158 ) - 15 , ((j->pos[1] * 68) + 61) - 20 , 30, 40);
+            
+            SDL_RenderPresent(renderer);
         }
     }
     /* --- Libération de la memoire --- */

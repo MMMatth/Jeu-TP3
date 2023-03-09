@@ -76,3 +76,43 @@ int IndiceMst(monstreListe_t* listeM, int j_pos0, int j_pos1){
     }
     return -1; // pas de monstre
 }
+
+int RandomMoove(monstreListe_t *listeM, int taille, int tick){
+    if (tick % 8000 == 0 ){
+        for (int i = 0; i < listeM->nbMst; i++){
+            int r = rand() % 4;
+            switch (r){
+            case 0: // gauche
+                if (listeM->tab[i]->pos[0] != 0 && IndiceMst(listeM, listeM->tab[i]->pos[0] - 1, listeM->tab[i]->pos[1]) == -1){
+                    listeM->tab[i]->pos[0]--; 
+                }else
+                    return RandomMoove(listeM, taille, tick);
+                break;
+
+            case 1: // droite
+                if (listeM->tab[i]->pos[0] != taille - 1 && IndiceMst(listeM, listeM->tab[i]->pos[0] + 1, listeM->tab[i]->pos[1]) == -1){
+                    listeM->tab[i]->pos[0]++;
+                }else
+                    return RandomMoove(listeM, taille, tick);
+                break;
+
+            case 2: // haut
+                if (listeM->tab[i]->pos[1] != 0 && IndiceMst(listeM, listeM->tab[i]->pos[0], listeM->tab[i]->pos[1] - 1) == -1){
+                    listeM->tab[i]->pos[1]--;
+                }else
+                    return RandomMoove(listeM, taille, tick);
+                break;
+
+            case 3: // bas
+                if (listeM->tab[i]->pos[1] != taille - 1 && IndiceMst(listeM, listeM->tab[i]->pos[0], listeM->tab[i]->pos[1] + 1) == -1){
+                    listeM->tab[i]->pos[1]++;
+                }else
+                    return RandomMoove(listeM, taille, tick);
+                break;
+                
+            default:
+                break;
+            }
+        }
+    }
+}
