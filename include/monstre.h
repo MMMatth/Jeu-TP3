@@ -9,7 +9,7 @@ struct monstre {
 typedef struct monstre monstre_t;
 
 struct monstreListe {
-    monstre_t* tab; /**< Le tableau de monstres. */
+    monstre_t ** tab; /**< Le tableau de monstres. */
     int nbMst; /**< La taille du tableau. */
 };
 typedef struct monstreListe monstreListe_t; ;
@@ -64,6 +64,6 @@ char* toStringLstMst(monstreListe_t* listeM);
  * \param j_pos1 : la position du joueur.
  * \return int : l'indice de la liste si le monstre est présent, -1 sinon.
  */
-int MstEstPresent(monstreListe_t* listeM, int j_pos0, int j_pos1);
+int IndiceMst(monstreListe_t* listeM, int j_pos0, int j_pos1);
 
 #endif /* MONSTRE_H */

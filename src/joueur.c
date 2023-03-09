@@ -6,9 +6,6 @@
 #include "../include/joueur.h"
 
 void deplacement (joueur_t *j, int taille, char touche) {
-    if (touche=='!') {
-        exit(0);
-    }
     if (touche=='z' && j->pos[1] > 0) {
         j->pos[1] -= 1;
     }

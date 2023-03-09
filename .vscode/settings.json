@@ -8,7 +8,12 @@
         "stdlib.h": "c",
         "main.h": "c",
         "stdbool.h": "c",
-        "sdl.h": "c"
+        "sdl.h": "c",
+        "sdl_rwops.h": "c",
+        "sdl_audio.h": "c",
+        "sdl_endian.h": "c",
+        "sdl_version.h": "c",
+        "sdl_stdinc.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
