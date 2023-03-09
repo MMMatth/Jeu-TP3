@@ -49,3 +49,12 @@ void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, i
     SDL_Rect rect = {x, y, w, h}; // Création d'un rectangle
     SDL_RenderCopy(renderer, texture, NULL, &rect); // On affiche la texture
 }
+
+void CreationBarDeVie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv){
+    SDL_Rect rect = {x - 5, y - 15, w, h}; // Création d'un rectangle
+    SDL_SetRenderDrawColor(renderer, 109, 7, 26, 255); // Couleur rouge
+    SDL_RenderFillRect(renderer, &rect); // On affiche le rectangle
+    SDL_SetRenderDrawColor(renderer, 9, 128xsdqz, 40, 255); // Couleur verte
+    rect.w = (pv * w) / 100; // On change la largeur du rectangle
+    SDL_RenderFillRect(renderer, &rect); // On affiche le rectangle
+}
