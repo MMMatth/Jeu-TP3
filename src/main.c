@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "../include/main.h"
 #include "../include/affichage.h"
@@ -37,7 +38,7 @@ char ** generationListeAff( joueur_t* j, monstreListe_t* listeM){
 
     // on place les monstres
     for (int i = 0; i < listeM->nbMst; i++) {
-        listeAff[listeM->tab[i].pos[0]][listeM->tab[i].pos[1]] = 'M';
+        listeAff[listeM->tab[i]->pos[0]][listeM->tab[i]->pos[1]] = 'M';
     }
 
     return listeAff;
@@ -51,10 +52,11 @@ void jouer(int argc, char *argv[])
     SDL_bool program_launched = SDL_TRUE;
     SDL_Event event;
     bool game_start = false;
-
+    int tick = 0;
     /* --- Inititalisation du joueur et des Monstres --- */
     joueur_t*  j = CreationJoueur();
     monstreListe_t* listeM = creationListeM();
+    srand(time(NULL));
     ajoutMst(listeM, rand() % taille, rand() % taille);
     ajoutMst(listeM, rand() % taille, rand() % taille);
     ajoutMst(listeM, rand() % taille, rand() % taille);
@@ -72,6 +74,9 @@ void jouer(int argc, char *argv[])
     SDL_Texture *joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp"); // Chargement de l'image du joueur
     SDL_Texture *monstre_texture = SDL_CreateIMG(renderer, "assets/monstre.bmp"); // Chargement de l'image du monstre
 
+    // Chargement des sons
+    
+
 while (program_launched) // Boucle de jeu
     {
         if (!game_start){ // Si le jeu n'a pas commencé ( menu )
@@ -87,6 +92,8 @@ while (program_launched) // Boucle de jeu
                                 program_launched = SDL_FALSE;
                                 break;
                             }
+                            // joue un son
+
                         }
                         break;
                     case SDL_QUIT: // Si l'utilisateur ferme la fenêtre
@@ -105,7 +112,7 @@ while (program_launched) // Boucle de jeu
                 switch (event.type){
                     case SDL_MOUSEBUTTONDOWN:
                         if (event.button.button == SDL_BUTTON_LEFT){
-                            printf("%d %d\n", event.button.x, event.button.y);
+                            printf("%s",toStringLstMst(listeM));
                         }
                         break;
                     case SDL_KEYDOWN:
@@ -128,11 +135,11 @@ while (program_launched) // Boucle de jeu
                             joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_d.bmp");
                             break;
                         case SDLK_SPACE:
-                            if (MstEstPresent(listeM, j->pos[0], j->pos[1]) != -1){
-                                int i_mst = MstEstPresent(listeM, j->pos[0], j->pos[1]);
-                                attaque(j, &listeM->tab[i_mst]);
-                                if (listeM->tab[i_mst].pv <= 0)
-                                    enleverMst(&listeM->tab[i_mst] , listeM);
+                            if (IndiceMst(listeM, j->pos[0], j->pos[1]) != -1){
+                                int i_mst = IndiceMst(listeM, j->pos[0], j->pos[1]);
+                                attaque(j, listeM->tab[i_mst]);
+                                if (listeM->tab[i_mst]->pv <= 0)
+                                    enleverMst(listeM->tab[i_mst] , listeM);
                             }
                             break;
                         case SDLK_ESCAPE:
@@ -161,12 +168,12 @@ while (program_launched) // Boucle de jeu
             SDL_RenderCopy(renderer, bg_jeu_texture, NULL, NULL);
             int tmp_mst_pos[] = {0, 0};
             for(int i = 0; i < listeM->nbMst ; i++){ 
-                tmp_mst_pos[0] = listeM->tab[i].pos[0];
-                tmp_mst_pos[1] = listeM->tab[i].pos[1]; 
-                if (MstEstPresent(listeM, j->pos[0], j->pos[1]) == i){
+                tmp_mst_pos[0] = listeM->tab[i]->pos[0];
+                tmp_mst_pos[1] = listeM->tab[i]->pos[1]; 
+                if (IndiceMst(listeM, j->pos[0], j->pos[1]) == i){
                     tmp_mst_pos[0] = tmp_mst_pos[0] * 69 + 138 - 15;
                     tmp_mst_pos[1] = tmp_mst_pos[1] * 68 + 41 - 20;
-                    CreationBarDeVie(renderer, tmp_mst_pos[0],tmp_mst_pos[1], 40, 10, listeM->tab[i].pv);
+                    CreationBarDeVie(renderer, tmp_mst_pos[0],tmp_mst_pos[1], 40, 10, listeM->tab[i]->pv);
 
                     // SDL_RenderIMG(renderer, monstre_texture, 
                     //     ((listeM->tab[i].pos[0] * 69) + 138) - 15 ,
