@@ -13,7 +13,8 @@
         "sdl_audio.h": "c",
         "sdl_endian.h": "c",
         "sdl_version.h": "c",
-        "sdl_stdinc.h": "c"
+        "sdl_stdinc.h": "c",
+        "inventaire.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

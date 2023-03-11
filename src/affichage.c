@@ -6,6 +6,7 @@
 #include "../include/affichage.h"
 #include "../include/joueur.h"
 #include "../include/monstre.h"
+#include "../include/inventaire.h"
 
 
 void SDL_ExitWithError(const char *message){

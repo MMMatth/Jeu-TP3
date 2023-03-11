@@ -12,6 +12,7 @@
 #include <stdbool.h>
 #include "../include/monstre.h"
 #include "../include/joueur.h"
+#include "../include/inventaire.h"
 
 /**
  * \brief permet de quitter le programme en cas d'erreur
@@ -94,5 +95,6 @@ void CreationBarDeVie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv
  */
 void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur);
 
+// void SDL_RenderINV(SDL_Renderer *renderer, SDL_Texture *c1,SDL_Texture *c2,SDL_Texture *c3, inv * inv);
 
 #endif
