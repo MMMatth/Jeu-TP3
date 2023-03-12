@@ -12,6 +12,8 @@ typedef struct{
     char nom[20]; /* Le nom de l'objet */
     int degats; /* Les degats de l'objet */
     int position; /* La case de l'objet */
+    int x;
+    int y;
     char image[100]; /* L'image de l'objet */
     SDL_Texture * texture;
 } obj;
@@ -36,5 +38,7 @@ void ToStringInv(inv * inv);
 void EchangeItem(inv* inv, int pos1, int pos2);
 
 void SDL_RenderINV(inv * inv, SDL_Renderer * renderer);
+
+void RefreshPos(obj * objet, int x, int y);
 
 #endif

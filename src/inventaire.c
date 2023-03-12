@@ -26,13 +26,15 @@ void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Ren
     strcat(inv->objets[position].nom, nom);
     inv->objets[position].degats = degats;
     inv->objets[position].position = position;
+    inv->objets[position].x = inv->cases[position].x;
+    inv->objets[position].y = inv->cases[position].y;
     strcat(inv->objets[position].image, image);
     inv->objets[position].texture = SDL_CreateIMG(renderer, image);
 }
 
 void SDL_RenderINV(inv * inv, SDL_Renderer * renderer){
     for (int i = 0; i < 3; i++){
-        SDL_Rect rect = {inv->cases[i].x, inv->cases[i].y, 50, 50};
+        SDL_Rect rect = {inv->objets[i].x, inv->objets[i].y, 50, 50};
         SDL_RenderCopy(renderer, inv->objets[i].texture, NULL, &rect);
     }
 }
@@ -43,6 +45,10 @@ void EchangeItem(inv* inv, int pos1, int pos2){
     inv->objets[pos2] = temp;
 }
 
+// void RefreshPos(obj * objet, int x, int y){
+//     objet->x = x;
+//     objet->y = y;
+// }
 
 void ToStringInv(inv * inv){
     printf("Objet 1 : %s %d %d %s\n", inv->objets[0].nom, inv->objets[0].degats, inv->objets[0].position, inv->objets[0].image);

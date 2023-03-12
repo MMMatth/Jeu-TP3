@@ -75,6 +75,8 @@ void jouer(int argc, char *argv[])
     SDL_Texture *joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp"); // Chargement de l'image du joueur
     SDL_Texture *monstre_texture = SDL_CreateIMG(renderer, "assets/monstre.bmp"); // Chargement de l'image du monstre
 
+    int val;
+
 
     /* --- Initialisation de l'inv --- */
     inv * inventaire = CreeINV();
@@ -115,8 +117,13 @@ while (program_launched) // Boucle de jeu
             while (SDL_PollEvent(&event)){
                 switch (event.type){
                     case SDL_MOUSEBUTTONDOWN:
-                        if (event.button.button == SDL_BUTTON_LEFT){
-                            printf("%d , %d\n", event.button.x, event.button.y);
+                        // tant que le clique gauche est enfoncé
+                        if (event.button.button == SDL_BUTTON_LEFT){  
+                            for (int i = 0; i < 3; i++){
+                                if (SDL_RectHitbox(event, inventaire->cases[i].x, inventaire->cases[i].x + 50, inventaire->cases[i].y, inventaire->cases[i].y + 50)){
+                                    val = i;
+                                }
+                            }
                         }
                         break;
                     case SDL_KEYDOWN:
@@ -149,6 +156,8 @@ while (program_launched) // Boucle de jeu
                         case SDLK_ESCAPE:
                             game_start = false;
                             break;
+                        case SDLK_1:
+                            EchangeItem(inventaire, 2, 0);
                         default:
                             break;
                         }                 
@@ -158,6 +167,28 @@ while (program_launched) // Boucle de jeu
                         break;
                     default:
                         break;
+
+ 
+                }
+                switch (val)
+                {
+                case 0:
+                    inventaire->objets[0].x = event.button.x;
+                    inventaire->objets[0].y = event.button.y;
+                    break;
+                case 1:
+                    inventaire->objets[1].x = event.button.x;
+                    inventaire->objets[1].y = event.button.y;
+                    break;
+                case 2:
+                    inventaire->objets[2].x = event.button.x;
+                    inventaire->objets[2].y = event.button.y;
+                    break;
+                case -1:
+
+                    break;
+                default:
+                    break;
                 }
             }
             
@@ -167,6 +198,8 @@ while (program_launched) // Boucle de jeu
             //         SDL_RenderDrawPoint(renderer, i, j);
             //     }
             // }
+
+
 
             RandomMoove(listeM, taille, tick);
 
