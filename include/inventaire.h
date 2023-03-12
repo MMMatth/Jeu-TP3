@@ -39,6 +39,7 @@ void EchangeItem(inv* inventaire, int pos1, int pos2);
 
 void SDL_RenderINV(inv * inv, SDL_Renderer * renderer);
 
-void RefreshPos(obj * objet, int x, int y);
+void FollowMouse(int indice, inv * inv, int x, int y);
+
 
 #endif

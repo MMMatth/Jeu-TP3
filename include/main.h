@@ -12,7 +12,7 @@
 #include "../include/monstre.h"
 
 
-int attaque(joueur_t* j, monstre_t* m);
+int attaque(joueur_t* j, monstre_t* m, int degats);
 
 /**
  * \brief permet de créer un plateau de jeu

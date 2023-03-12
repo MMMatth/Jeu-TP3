@@ -49,16 +49,18 @@ void EchangeItem(inv* inventaire, int pos1, int pos2) {
     inventaire->objets[pos2] = temp;
 
     // Récupère les coordonnées x et y de l'objet par rapport à la case
-    int x1 = inventaire->cases[pos1].x;
-    int y1 = inventaire->cases[pos1].y;
-    int x2 = inventaire->cases[pos2].x;
-    int y2 = inventaire->cases[pos2].y;
-    inventaire->objets[pos1].x = x1;
-    inventaire->objets[pos1].y = y1;
-    inventaire->objets[pos2].x = x2;
-    inventaire->objets[pos2].y = y2;
+    inventaire->objets[pos1].x = inventaire->cases[pos1].x;
+    inventaire->objets[pos1].y = inventaire->cases[pos1].y;
+    inventaire->objets[pos2].x = inventaire->cases[pos2].x;
+    inventaire->objets[pos2].y = inventaire->cases[pos2].y;
 
 }
+
+void FollowMouse(int indice, inv * inv, int x, int y){
+    inv->objets[indice].x = x;
+    inv->objets[indice].y = y;
+}
+
 
 // void RefreshPos(obj * objet, int x, int y){
 //     objet->x = x;

@@ -13,9 +13,9 @@
 
 #define taille 8
 
-int attaque(joueur_t* j, monstre_t* m){
+int attaque(joueur_t* j, monstre_t* m, int degats){
     if (j->pos[0] == m->pos[0] && j->pos[1] == m->pos[1]){
-        m->pv -= 10;
+        m->pv -= degats;
         return 1;
     }
     return 0;
@@ -75,13 +75,13 @@ void jouer(int argc, char *argv[])
     SDL_Texture *joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp"); // Chargement de l'image du joueur
     SDL_Texture *monstre_texture = SDL_CreateIMG(renderer, "assets/monstre.bmp"); // Chargement de l'image du monstre
 
-    int val;
+    int item_follow_mouse = -1;
 
 
     /* --- Initialisation de l'inv --- */
     inv * inventaire = CreeINV();
-    SetItem(inventaire, "epee", 10, 0, "assets/epee.bmp", renderer);
-    SetItem(inventaire, "pioche", 5, 1, "assets/pioche.bmp", renderer);
+    SetItem(inventaire, "epee", 50, 0, "assets/epee.bmp", renderer);
+    SetItem(inventaire, "pioche", 10, 1, "assets/pioche.bmp", renderer);
     SetItem(inventaire, "bouclier", 0, 2, "assets/shield.bmp", renderer);
 
 while (program_launched) // Boucle de jeu
@@ -116,6 +116,21 @@ while (program_launched) // Boucle de jeu
             tick += 1;
             while (SDL_PollEvent(&event)){
                 switch (event.type){
+                    case SDL_MOUSEBUTTONDOWN:
+                        if (event.button.button == SDL_BUTTON_LEFT){
+                            for (int i = 0; i < 3; i++){
+                                if (SDL_RectHitbox(event, inventaire->cases[i].x, inventaire->cases[i].x + 50, inventaire->cases[i].y, inventaire->cases[i].y + 50) && item_follow_mouse == -1){
+                                    printf("%s\n" , inventaire->objets[i].nom);
+                                    item_follow_mouse = i;
+                                }else if(SDL_RectHitbox(event, inventaire->cases[i].x, inventaire->cases[i].x + 50, inventaire->cases[i].y, inventaire->cases[i].y + 50)){
+                                    EchangeItem(inventaire, i, item_follow_mouse);
+                                    item_follow_mouse = -1;
+
+                                }
+                                }
+                        }
+                        break; 
+
                     case SDL_KEYDOWN:
                         switch (event.key.keysym.sym){
                         case SDLK_z:
@@ -138,7 +153,7 @@ while (program_launched) // Boucle de jeu
                         case SDLK_SPACE:
                             if (IndiceMst(listeM, j->pos[0], j->pos[1]) != -1){
                                 int i_mst = IndiceMst(listeM, j->pos[0], j->pos[1]);
-                                attaque(j, listeM->tab[i_mst]);
+                                attaque(j, listeM->tab[i_mst], inventaire->objets[0].degats);
                                 if (listeM->tab[i_mst]->pv <= 0)
                                     enleverMst(listeM->tab[i_mst] , listeM);
                             }
@@ -163,8 +178,11 @@ while (program_launched) // Boucle de jeu
                     default:
                         break;
 
- 
                 }
+            if (item_follow_mouse != -1){
+                FollowMouse(item_follow_mouse, inventaire, event.button.x, event.button.y);
+            }
+            
             }
             
             /* --- On affiche de point rouge sur les cases --- */
