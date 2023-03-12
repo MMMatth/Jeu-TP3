@@ -75,15 +75,12 @@ void jouer(int argc, char *argv[])
     SDL_Texture *joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp"); // Chargement de l'image du joueur
     SDL_Texture *monstre_texture = SDL_CreateIMG(renderer, "assets/monstre.bmp"); // Chargement de l'image du monstre
 
-    // SDL_Texture *epee_texture = SDL_CreateIMG(renderer, "assets/epee.bmp"); // Chargement de l'image de l'épée
-    // SDL_Texture *pioche_texture = SDL_CreateIMG(renderer, "assets/pioche.bmp"); // Chargement de l'image de la pioche
-    // SDL_Texture *bouclier_texture = SDL_CreateIMG(renderer, "assets/shield.bmp"); // Chargement de l'image du bouclier
 
     /* --- Initialisation de l'inv --- */
     inv * inventaire = CreeINV();
-    SetItem(inventaire, "epee", 10, 0, "assets/epee.bmp");
-    SetItem(inventaire, "pioche", 5, 1, "assets/pioche.bmp");
-    SetItem(inventaire, "bouclier", 0, 2, "assets/shield.bmp");
+    SetItem(inventaire, "epee", 10, 0, "assets/epee.bmp", renderer);
+    SetItem(inventaire, "pioche", 5, 1, "assets/pioche.bmp", renderer);
+    SetItem(inventaire, "bouclier", 0, 2, "assets/shield.bmp", renderer);
 
 while (program_launched) // Boucle de jeu
     {
@@ -178,7 +175,9 @@ while (program_launched) // Boucle de jeu
             SDL_RenderMonstre(renderer, monstre_texture, 30, 40, listeM, j);
 
             SDL_RenderIMG(renderer, joueur_texture, ((j->pos[0] * 69) + 158 ) - 15 , ((j->pos[1] * 68) + 61) - 20 , 30, 40);
-        
+            
+            SDL_RenderINV(inventaire, renderer);
+
             SDL_RenderPresent(renderer);
         }
     }

@@ -1,28 +1,40 @@
 #include "../include/inventaire.h"
+#include "../include/affichage.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <SDL.h>
 
 
 inv * CreeINV(){
-    inv * inv = malloc(sizeof(inv));
+    inv * inventaire = malloc(sizeof(inv));
     for (int i = 0; i < 3; i++){
-        inv->cases[i].nb = i;
-        inv->cases[i].x = 43;
-        inv->cases[i].y = 195 + i * 80;
+        inventaire->cases[i].nb = i;
+        inventaire->cases[i].x = 43;
+        inventaire->cases[i].y = 195 + i * 80;
 
-        // inv->objets[i].position = malloc(sizeof(int));
-        // inv->objet[i].nom = malloc(sizeof(char) * 20);
-        // inv->objet[i].image = malloc(sizeof(char) * 100);
-        // inv->objets[i].degats = malloc(sizeof(int));
+        inventaire->objets[i].nom[0] = '\0';
+        inventaire->objets[i].degats = 0;
+        inventaire->objets[i].position = i;
+        inventaire->objets[i].image[0] = '\0';
+        inventaire->objets[i].texture = NULL;
     }
+    return inventaire;
 }
 
-void SetItem(inv* inv, char* nom, int degats, int position, char* image){
+void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Renderer * renderer){
     strcat(inv->objets[position].nom, nom);
     inv->objets[position].degats = degats;
     inv->objets[position].position = position;
     strcat(inv->objets[position].image, image);
+    inv->objets[position].texture = SDL_CreateIMG(renderer, image);
+}
+
+void SDL_RenderINV(inv * inv, SDL_Renderer * renderer){
+    for (int i = 0; i < 3; i++){
+        SDL_Rect rect = {inv->cases[i].x, inv->cases[i].y, 50, 50};
+        SDL_RenderCopy(renderer, inv->objets[i].texture, NULL, &rect);
+    }
 }
 
 void EchangeItem(inv* inv, int pos1, int pos2){

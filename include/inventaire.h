@@ -13,6 +13,7 @@ typedef struct{
     int degats; /* Les degats de l'objet */
     int position; /* La case de l'objet */
     char image[100]; /* L'image de l'objet */
+    SDL_Texture * texture;
 } obj;
 
 typedef struct {
@@ -28,10 +29,12 @@ typedef struct {
 
 inv * CreeINV();
 
-void SetItem(inv* inv, char* nom, int degats, int position, char* image);
+void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Renderer * renderer);
 
 void ToStringInv(inv * inv);
 
 void EchangeItem(inv* inv, int pos1, int pos2);
+
+void SDL_RenderINV(inv * inv, SDL_Renderer * renderer);
 
 #endif
