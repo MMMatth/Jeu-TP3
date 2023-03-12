@@ -35,7 +35,7 @@ void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Ren
 
 void ToStringInv(inv * inv);
 
-void EchangeItem(inv* inv, int pos1, int pos2);
+void EchangeItem(inv* inventaire, int pos1, int pos2);
 
 void SDL_RenderINV(inv * inv, SDL_Renderer * renderer);
 

@@ -116,16 +116,6 @@ while (program_launched) // Boucle de jeu
             tick += 1;
             while (SDL_PollEvent(&event)){
                 switch (event.type){
-                    case SDL_MOUSEBUTTONDOWN:
-                        // tant que le clique gauche est enfoncé
-                        if (event.button.button == SDL_BUTTON_LEFT){  
-                            for (int i = 0; i < 3; i++){
-                                if (SDL_RectHitbox(event, inventaire->cases[i].x, inventaire->cases[i].x + 50, inventaire->cases[i].y, inventaire->cases[i].y + 50)){
-                                    val = i;
-                                }
-                            }
-                        }
-                        break;
                     case SDL_KEYDOWN:
                         switch (event.key.keysym.sym){
                         case SDLK_z:
@@ -156,8 +146,13 @@ while (program_launched) // Boucle de jeu
                         case SDLK_ESCAPE:
                             game_start = false;
                             break;
-                        case SDLK_1:
+                        case SDLK_e:
                             EchangeItem(inventaire, 2, 0);
+                            ToStringInv(inventaire);
+                            break;
+                        case SDLK_r:
+                            inventaire->objets[0].x += 30;
+                            break;
                         default:
                             break;
                         }                 
@@ -169,26 +164,6 @@ while (program_launched) // Boucle de jeu
                         break;
 
  
-                }
-                switch (val)
-                {
-                case 0:
-                    inventaire->objets[0].x = event.button.x;
-                    inventaire->objets[0].y = event.button.y;
-                    break;
-                case 1:
-                    inventaire->objets[1].x = event.button.x;
-                    inventaire->objets[1].y = event.button.y;
-                    break;
-                case 2:
-                    inventaire->objets[2].x = event.button.x;
-                    inventaire->objets[2].y = event.button.y;
-                    break;
-                case -1:
-
-                    break;
-                default:
-                    break;
                 }
             }
             
