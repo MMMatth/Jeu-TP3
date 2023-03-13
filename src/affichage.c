@@ -53,20 +53,24 @@ void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, i
     SDL_RenderCopy(renderer, texture, NULL, &rect); // On affiche la texture
 }
 
-void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur){
+void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur, inv * inventaire){
+    int i_mst;
     for (int i = 0; i < listeM->nbMst; i++){ // on parcour tout les monstres
-        if (IndiceMst(listeM, joueur->pos[0], joueur->pos[1]) == i){ 
+        i_mst = IndiceMst(listeM, joueur->pos[0], joueur->pos[1]);
+        if (i_mst == i){ 
             int mst_pos[] = {
                 listeM->tab[i]->pos[0] * 69 + 138 - 15, 
                 listeM->tab[i]->pos[1] * 68 + 41 - 20
                 }; 
-                CreationBarDeVie(renderer, mst_pos[0], mst_pos[1], 30, 5, listeM->tab[i]->pv);
+            CreationBarDeVie(renderer, mst_pos[0], mst_pos[1], 30, 5, listeM->tab[i]->pv);
             SDL_RenderIMG(renderer, texture, mst_pos[0], mst_pos[1], w, h);
         }else{
             int mst_pos[] = {
                 listeM->tab[i]->pos[0] * 69 + 158 - 15, 
                 listeM->tab[i]->pos[1] * 68 + 61 - 20
                 }; 
+            if ((listeM->tab[i]->pos[0] == joueur->pos[0] || listeM->tab[i]->pos[1] == joueur->pos[1]) && inventaire->objets[0].distance)
+                CreationBarDeVie(renderer, mst_pos[0], mst_pos[1], 30, 5, listeM->tab[i]->pv);
             SDL_RenderIMG(renderer, texture, mst_pos[0], mst_pos[1], w, h);
         }
     }
@@ -82,4 +86,11 @@ void CreationBarDeVie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv
     SDL_SetRenderDrawColor(renderer, 9, 128, 40, 255); // Couleur verte
     rect.w = (pv * w) / 100; // On change la largeur du rectangle
     SDL_RenderFillRect(renderer, &rect); // On affiche le rectangle
+}
+
+void SDL_RenderINV(inv * inv, SDL_Renderer * renderer){
+    for (int i = 0; i < 3; i++){
+        SDL_Rect rect = {inv->objets[i].x, inv->objets[i].y, 50, 50};
+        SDL_RenderCopy(renderer, inv->objets[i].texture, NULL, &rect);
+    }
 }

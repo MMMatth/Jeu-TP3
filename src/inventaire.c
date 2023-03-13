@@ -28,14 +28,6 @@ void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Ren
     inv->objets[position].texture = SDL_CreateIMG(renderer, image);
 }
 
-void SDL_RenderINV(inv * inv, SDL_Renderer * renderer){
-
-    for (int i = 0; i < 3; i++){
-        SDL_Rect rect = {inv->objets[i].x, inv->objets[i].y, 50, 50};
-        SDL_RenderCopy(renderer, inv->objets[i].texture, NULL, &rect);
-    }
-}
-
 void EchangeItem(inv* inventaire, int pos1, int pos2) {
     obj temp; // objet temporaire pour stocker l'objet à la position pos1
 

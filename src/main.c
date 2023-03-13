@@ -115,7 +115,7 @@ void jouer(int argc, char *argv[])
     inv * inventaire = CreeINV();
     SetItem(inventaire, "epee", 50, 0, "assets/epee.bmp", renderer, false);
     SetItem(inventaire, "pioche", 10, 1, "assets/pioche.bmp", renderer, false);
-    SetItem(inventaire, "bouclier", 20, 2, "assets/shield.bmp", renderer, true);
+    SetItem(inventaire, "arc", 20, 2, "assets/arc.bmp", renderer, true);
 
 while (program_launched) // Boucle de jeu
     {
@@ -141,7 +141,6 @@ while (program_launched) // Boucle de jeu
                         break;
                 }
             }
-
             SDL_RenderCopy(renderer, bg_menu_texture, NULL, NULL); 
             SDL_RenderPresent(renderer);
 
@@ -214,13 +213,11 @@ while (program_launched) // Boucle de jeu
                     FollowMouse(item_follow_mouse, inventaire, event.button.x, event.button.y);
             }
 
-
-
             RandomMoove(listeM, taille, SDL_GetTicks());
 
             SDL_RenderCopy(renderer, bg_jeu_texture, NULL, NULL); 
 
-            SDL_RenderMonstre(renderer, monstre_texture, 30, 40, listeM, j);
+            SDL_RenderMonstre(renderer, monstre_texture, 30, 40, listeM, j, inventaire);
 
             SDL_RenderIMG(renderer, joueur_texture, ((j->pos[0] * 69) + 158 ) - 15 , ((j->pos[1] * 68) + 61) - 20 , 30, 40);
             
