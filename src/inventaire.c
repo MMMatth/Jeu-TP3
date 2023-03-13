@@ -13,21 +13,17 @@ inv * CreeINV(){
         inventaire->cases[i].x = 43;
         inventaire->cases[i].y = 195 + i * 80;
 
-        inventaire->objets[i].nom[0] = '\0';
-        inventaire->objets[i].degats = 0;
-        inventaire->objets[i].position = i;
-        inventaire->objets[i].image[0] = '\0';
-        inventaire->objets[i].texture = NULL;
     }
     return inventaire;
 }
 
-void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Renderer * renderer){
+void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Renderer * renderer, bool distance){
     strcat(inv->objets[position].nom, nom);
     inv->objets[position].degats = degats;
     inv->objets[position].position = position;
     inv->objets[position].x = inv->cases[position].x;
     inv->objets[position].y = inv->cases[position].y;
+    inv->objets[position].distance = distance;
     strcat(inv->objets[position].image, image);
     inv->objets[position].texture = SDL_CreateIMG(renderer, image);
 }

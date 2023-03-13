@@ -12,8 +12,9 @@
 #include "../include/monstre.h"
 
 
-int attaque(joueur_t* j, monstre_t* m, int degats);
+int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats);
 
+int attaque_dist(joueur_t* j, monstreListe_t* ListeM, int degats, char dir);
 /**
  * \brief permet de créer un plateau de jeu
  * 

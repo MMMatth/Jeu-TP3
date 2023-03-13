@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <SDL.h>
 
 
@@ -14,6 +15,7 @@ typedef struct{
     int position; /* La case de l'objet */
     int x;
     int y;
+    bool distance;
     char image[100]; /* L'image de l'objet */
     SDL_Texture * texture;
 } obj;
@@ -31,7 +33,7 @@ typedef struct {
 
 inv * CreeINV();
 
-void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Renderer * renderer);
+void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Renderer * renderer, bool distance);
 
 void ToStringInv(inv * inv);
 

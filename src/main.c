@@ -13,12 +13,44 @@
 
 #define taille 8
 
-int attaque(joueur_t* j, monstre_t* m, int degats){
-    if (j->pos[0] == m->pos[0] && j->pos[1] == m->pos[1]){
-        m->pv -= degats;
+void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m){
+    monstre_t* m = ListeM->tab[pos_m];
+    m->pv -= degats;
+    if (m->pv <= 0)
+        enleverMst(m, ListeM);
+
+}
+int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats){
+    if (pos_m != -1){
+        attaque_aux(ListeM, degats, pos_m);
         return 1;
     }
     return 0;
+}
+int attaque_dist(joueur_t* j, monstreListe_t* ListeM, int degats, char dir){
+    int nbMst = ListeM->nbMst;
+    for (int i = 0; i < nbMst; i++) {
+        switch (dir){
+            case 'n':
+                if (j->pos[0] == ListeM->tab[i]->pos[0] && j->pos[1] > ListeM->tab[i]->pos[1])
+                    attaque_aux(ListeM, degats, i);
+                break;
+            case 's':
+                if (j->pos[0] == ListeM->tab[i]->pos[0] && j->pos[1] < ListeM->tab[i]->pos[1])
+                    attaque_aux(ListeM, degats, i);
+                break;
+            case 'o':
+                if (j->pos[0] > ListeM->tab[i]->pos[0] && j->pos[1] == ListeM->tab[i]->pos[1])
+                    attaque_aux(ListeM, degats, i);
+                break;
+            case 'e':
+                if (j->pos[0] < ListeM->tab[i]->pos[0] && j->pos[1] == ListeM->tab[i]->pos[1])
+                    attaque_aux(ListeM, degats, i);
+                break;
+            default:
+                break;
+        }
+    }return 1;
 }
 
 char ** generationListeAff( joueur_t* j, monstreListe_t* listeM){
@@ -76,13 +108,14 @@ void jouer(int argc, char *argv[])
     SDL_Texture *monstre_texture = SDL_CreateIMG(renderer, "assets/monstre.bmp"); // Chargement de l'image du monstre
 
     int item_follow_mouse = -1;
+    int i_mst;
 
 
     /* --- Initialisation de l'inv --- */
     inv * inventaire = CreeINV();
-    SetItem(inventaire, "epee", 50, 0, "assets/epee.bmp", renderer);
-    SetItem(inventaire, "pioche", 10, 1, "assets/pioche.bmp", renderer);
-    SetItem(inventaire, "bouclier", 0, 2, "assets/shield.bmp", renderer);
+    SetItem(inventaire, "epee", 50, 0, "assets/epee.bmp", renderer, false);
+    SetItem(inventaire, "pioche", 10, 1, "assets/pioche.bmp", renderer, false);
+    SetItem(inventaire, "bouclier", 20, 2, "assets/shield.bmp", renderer, true);
 
 while (program_launched) // Boucle de jeu
     {
@@ -113,9 +146,11 @@ while (program_launched) // Boucle de jeu
             SDL_RenderPresent(renderer);
 
         }else{ // Si le jeu a commencé
-            tick += 1;
             while (SDL_PollEvent(&event)){
                 switch (event.type){
+                    case SDL_QUIT:
+                        program_launched = SDL_FALSE;
+                        break;
                     case SDL_MOUSEBUTTONDOWN:
                         if (event.button.button == SDL_BUTTON_LEFT){
                             for (int i = 0; i < 3; i++){
@@ -125,76 +160,63 @@ while (program_launched) // Boucle de jeu
                                 }else if(SDL_RectHitbox(event, inventaire->cases[i].x, inventaire->cases[i].x + 50, inventaire->cases[i].y, inventaire->cases[i].y + 50)){
                                     EchangeItem(inventaire, i, item_follow_mouse);
                                     item_follow_mouse = -1;
-
                                 }
-                                }
+                            }
                         }
                         break; 
-
                     case SDL_KEYDOWN:
                         switch (event.key.keysym.sym){
-                        case SDLK_z:
-                            deplacement(j, taille, 'z');
-                            joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_z.bmp");
-                            break;
-                        case SDLK_s:
-                            deplacement(j, taille, 's');
-                            joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp");
-
-                            break;
-                        case SDLK_q:
-                            deplacement(j, taille, 'q');
-                            joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_q.bmp");
-                            break;
-                        case SDLK_d:
-                            deplacement(j, taille, 'd');
-                            joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_d.bmp");
-                            break;
-                        case SDLK_SPACE:
-                            if (IndiceMst(listeM, j->pos[0], j->pos[1]) != -1){
-                                int i_mst = IndiceMst(listeM, j->pos[0], j->pos[1]);
-                                attaque(j, listeM->tab[i_mst], inventaire->objets[0].degats);
-                                if (listeM->tab[i_mst]->pv <= 0)
-                                    enleverMst(listeM->tab[i_mst] , listeM);
-                            }
-                            break;
-                        case SDLK_ESCAPE:
-                            game_start = false;
-                            break;
-                        case SDLK_e:
-                            EchangeItem(inventaire, 2, 0);
-                            ToStringInv(inventaire);
-                            break;
-                        case SDLK_r:
-                            inventaire->objets[0].x += 30;
-                            break;
-                        default:
-                            break;
-                        }                 
+                            case SDLK_z:
+                                deplacement(j, taille, 'z');
+                                joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_z.bmp");
+                                break;
+                            case SDLK_s:
+                                deplacement(j, taille, 's');
+                                joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp");
+                                break;
+                            case SDLK_q:
+                                deplacement(j, taille, 'q');
+                                joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_q.bmp");
+                                break;
+                            case SDLK_d:
+                                deplacement(j, taille, 'd');
+                                joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_d.bmp");
+                                break;
+                            case SDLK_SPACE:
+                                i_mst = IndiceMst(listeM, j->pos[0], j->pos[1]);
+                                attaque_contact(j, listeM, i_mst, inventaire->objets[0].degats);
+                                break;
+                            case SDLK_LEFT:
+                                if (inventaire->objets[0].distance)
+                                    attaque_dist(j, listeM, inventaire->objets[0].degats, 'o' );
+                                break;
+                            case SDLK_RIGHT:
+                                if (inventaire->objets[0].distance)
+                                    attaque_dist(j, listeM, inventaire->objets[0].degats, 'e' );
+                                break;
+                            case SDLK_UP:
+                                if (inventaire->objets[0].distance)
+                                    attaque_dist(j, listeM, inventaire->objets[0].degats, 'n' );
+                                break;
+                            case SDLK_DOWN:
+                                if (inventaire->objets[0].distance)
+                                    attaque_dist(j, listeM, inventaire->objets[0].degats, 's' );
+                                break;
+                            case SDLK_ESCAPE:
+                                game_start = false;
+                                break;
+                            default:
+                                break;
+                        }
                         break;
-                    case SDL_QUIT:
-                        program_launched = SDL_FALSE;
-                        break;
-                    default:
-                        break;
-
                 }
-            if (item_follow_mouse != -1){
-                FollowMouse(item_follow_mouse, inventaire, event.button.x, event.button.y);
+                if (item_follow_mouse != -1)
+                    FollowMouse(item_follow_mouse, inventaire, event.button.x, event.button.y);
             }
-            
-            }
-            
-            /* --- On affiche de point rouge sur les cases --- */
-            // for (int j = 61; j < 600; j += 68){
-            //     for (int i = 158; i < 700; i += 69){
-            //         SDL_RenderDrawPoint(renderer, i, j);
-            //     }
-            // }
 
 
 
-            RandomMoove(listeM, taille, tick);
+            RandomMoove(listeM, taille, SDL_GetTicks());
 
             SDL_RenderCopy(renderer, bg_jeu_texture, NULL, NULL); 
 

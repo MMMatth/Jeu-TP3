@@ -14,7 +14,8 @@
         "sdl_endian.h": "c",
         "sdl_version.h": "c",
         "sdl_stdinc.h": "c",
-        "inventaire.h": "c"
+        "inventaire.h": "c",
+        "iterator": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
