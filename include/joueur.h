@@ -13,25 +13,28 @@ struct joueur {
 typedef struct joueur joueur_t;
 
 /**
- * \brief Création d'un joueur
+ * \brief fonction pour créer un joueur
  * 
- * \return joueur_t* pointeur sur le joueur créé
+ * \return joueur_t* : joueur créé
  */
 joueur_t* CreationJoueur();
 
 /**
- * \brief Affichage de la position du joueur
+ * \brief fonction pour appliquer un déplacement au joueur
  * 
- * \param j pointeur sur le joueur
- * \return char* chaine de caractère contenant la position du joueur
+ * \param j : joueur
+ * \param taille : taille de la map
+ * \param touche : touche recupérée par SDL
+ */
+void deplacement(joueur_t *j, int taille, char touche);
+
+/**
+ * \brief fonction pour recuper le joueur sous forme de chaine de caractère
+ * 
+ * \param j : joueur
+ * \return char* 
  */
 char * toStringJr(joueur_t *j);
 
-/**
- * \brief Déplacement du joueur
- * 
- * \param j pointeur sur le joueur
- */
-void deplacement(joueur_t *j, int taille, char touche);
 
 #endif /* JOUEUR_H */

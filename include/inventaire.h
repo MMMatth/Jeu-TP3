@@ -31,17 +31,51 @@ typedef struct {
     box cases[3];
 } inv;
 
+/**
+ * \brief fonction pour créer un inventaire
+ * 
+ * \return inv* : inventaire créé
+ */
 inv * CreeINV();
 
+/**
+ * \brief procedure pour initialiser un objet
+ * 
+ * \param inv : inventaire
+ * \param nom : nom de l'objet
+ * \param degats : degats de l'objet
+ * \param position : position de l'objet
+ * \param image : path de l'image de l'objet
+ * \param renderer : renderer de la fenetre
+ * \param distance : true si l'objet est à distance, false sinon
+ */
 void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Renderer * renderer, bool distance);
 
-void ToStringInv(inv * inv);
-
+/**
+ * \brief procedure pour échanger deux objets dans l'inventaire
+ * 
+ * \param inventaire : inventaire
+ * \param pos1 : position de l'objet 1
+ * \param pos2 : position de l'objet 2
+ */
 void EchangeItem(inv* inventaire, int pos1, int pos2);
 
-void SDL_RenderINV(inv * inv, SDL_Renderer * renderer);
+/**
+ * \brief procedure pour actualiser la position d'un objet dans l'inventaire
+ * 
+ * \param indice 
+ * \param inv 
+ * \param x 
+ * \param y 
+ */
+void RefreshPos(int indice, inv * inv, int x, int y);
 
-void FollowMouse(int indice, inv * inv, int x, int y);
-
+/**
+ * \brief fonction pour recuperer les informations de l'inventaire sous forme de chaine de caractères
+ * 
+ * \param inventaire : inventaire
+ * \return char*
+ */
+char * ToStringInv(inv * inventaire);
 
 #endif

@@ -12,107 +12,86 @@ monstreListe_t* creationListeM(){
     return listeM;
 }
 
-int ajoutMst( monstreListe_t* listeM, int j_pos0, int j_pos1){
-    if (IndiceMst(listeM, j_pos0, j_pos1) != -1) {
-        if (j_pos0 == 0) // si il est coller en haut
-            return ajoutMst(listeM, j_pos0 + 1, j_pos1);
-        else if (j_pos0 == 7) // si il est coller en bas
-            return ajoutMst(listeM, j_pos0 - 1, j_pos1);
-        else if (j_pos1 == 0) // si il est coller a gauche
-            return ajoutMst(listeM, j_pos0, j_pos1 + 1);
-        else if (j_pos1 == 7) // si il est coller a droite
-            return ajoutMst(listeM, j_pos0, j_pos1 - 1);
-        else // sinon on peut le decaler de partout
-            return ajoutMst(listeM, j_pos0 + 1, j_pos1);
-        printf("monstre apparue sur un autre mais décalé");
+void ajoutMst( monstreListe_t* listeM, int x, int y){
+    if (IndiceMst(listeM, x, y) != -1) {
+        if (x == 0) // si il est coller a gauche
+            return ajoutMst(listeM, x + 1, y);
+        else if (x == 7) // si il est coller a droite
+            return ajoutMst(listeM, x - 1, y);
+        else if (y == 0) // si il est coller en haut
+            return ajoutMst(listeM, x, y + 1);
+        else if (y == 7) // si il est coller en bas
+            return ajoutMst(listeM, x, y - 1);
+        else // sinon on peut le decaler de partout la choix de base est de le decaler vers la droite
+            return ajoutMst(listeM, x + 1, y);
     }
-
     monstre_t * m = malloc(sizeof(monstre_t)); // on alloue de la memoire pour le monstre
-    // on initialise les positions du monstre
-    m->pos[0] = j_pos0; 
-    m->pos[1] = j_pos1;
+    m->pos[0] = x; // on initialise la position du monstre
+    m->pos[1] = y;
     m->pv = rand() % 100 + 1; // nombre de pv alleatoire enttier entre 1 et 100
-    // on ajoute le monstre a la liste
-    listeM->tab[listeM->nbMst] = m;
+    listeM->tab[listeM->nbMst] = m; // on ajoute le monstre a la liste
     listeM->nbMst++;
-    return 0;
 }
 
 void enleverMst(monstre_t* m, monstreListe_t* listeMst){
+    int i = IndiceMst(listeMst, m->pos[0], m->pos[1]); // on recupere l'indice du monstre a enlever
+    free(listeMst->tab[i]); // on libere la memoire du monstre
+    listeMst->tab[i] = listeMst->tab[listeMst->nbMst - 1]; // on decale les monstres pour ne pas avoir de trou
+    listeMst->nbMst--; // on decremente le nombre de monstre
+}
 
-    int i = IndiceMst(listeMst, m->pos[0], m->pos[1]);
-    // on remplace le monstre par le dernier de la liste
-    free(listeMst->tab[i]);
-    listeMst->tab[i] = listeMst->tab[listeMst->nbMst - 1];
-    // free(listeMst->tab[listeMst->nbMst - 1]);
-    // on enleve le dernier de la liste
-    listeMst->nbMst--;
+
+int IndiceMst(monstreListe_t* listeM, int x, int y){
+    for (int i = 0; i < listeM->nbMst; i++){ // on parcours la liste de monstre
+        if (listeM->tab[i]->pos[0] == x && listeM->tab[i]->pos[1] == y) // si on trouve un monstre a la position
+            return i; // on retourne l'indice du monstre
+    }
+    return -1; // pas de monstre a la position
+}
+
+int RandomMoove(monstreListe_t *listeM, int taille, int tick){
+    if (tick % 3000 == 0 ){ // permet de faire bouger les monstres toutes les 8000 ticks
+        for (int i = 0; i < listeM->nbMst; i++){ // on pacours la liste de monstre
+            int r = rand() % 4; // on choisi une direction aleatoire
+            int x = listeM->tab[i]->pos[0]; // on recupere la position du monstre
+            int y = listeM->tab[i]->pos[1];
+            switch (r){
+                case 0: // gauche
+                    if (x != 0 && IndiceMst(listeM, x - 1, y) == -1) // si il n'y a pas de monstre a gauche et que le monstre n'est pas coller a gauche
+                        listeM->tab[i]->pos[0]--; 
+                    else return RandomMoove(listeM, taille, tick); // sinon on recommence
+                    break;
+                case 1: // droite
+                    if (x != taille - 1 && IndiceMst(listeM, x + 1, y) == -1)
+                        listeM->tab[i]->pos[0]++;
+                    else return RandomMoove(listeM, taille, tick);
+                    break;
+                case 2: // haut
+                    if (y != 0 && IndiceMst(listeM, x, y - 1) == -1)
+                        listeM->tab[i]->pos[1]--;
+                    else return RandomMoove(listeM, taille, tick);
+                    break;
+                case 3: // bas
+                    if (y != taille - 1 && IndiceMst(listeM, x, y + 1) == -1) 
+                        listeM->tab[i]->pos[1]++;
+                    else return RandomMoove(listeM, taille, tick);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }
 
 char* toStringMst(monstre_t* M){
-    // on cree une chaine de caractere assez grande pour contenir le monstre
     char* str = malloc(50 * sizeof(char));
-    // on ajoute le monstre a la chaine
     sprintf(str, "Monstre : pv = %d, pos = (%d, %d) \n", M->pv, M->pos[0], M->pos[1]);
     return str;
 }
 
 char * toStringLstMst(monstreListe_t* listeM){
-    // on cree une chaine de caractere assez grande pour contenir tous les monstres
     char* str = malloc(listeM->nbMst * 50 * sizeof(char)); 
-    // on ajoute tous les monstres a la chaine
-    for (int i = 0; i < listeM->nbMst; i++){
+    for (int i = 0; i < listeM->nbMst; i++)
         strcat(str, toStringMst(listeM->tab[i]));
-    }
     return str;
-}
-
-
-int IndiceMst(monstreListe_t* listeM, int j_pos0, int j_pos1){
-    for (int i = 0; i < listeM->nbMst; i++){
-        if (listeM->tab[i]->pos[0] == j_pos0 && listeM->tab[i]->pos[1] == j_pos1){
-            return i; // on retourne l'indice du monstre
-        }
-    }
-    return -1; // pas de monstre
-}
-
-int RandomMoove(monstreListe_t *listeM, int taille, int tick){
-    if (tick % 8000 == 0 ){
-        for (int i = 0; i < listeM->nbMst; i++){
-            int r = rand() % 4;
-            switch (r){
-            case 0: // gauche
-                if (listeM->tab[i]->pos[0] != 0 && IndiceMst(listeM, listeM->tab[i]->pos[0] - 1, listeM->tab[i]->pos[1]) == -1){
-                    listeM->tab[i]->pos[0]--; 
-                }else
-                    return RandomMoove(listeM, taille, tick);
-                break;
-
-            case 1: // droite
-                if (listeM->tab[i]->pos[0] != taille - 1 && IndiceMst(listeM, listeM->tab[i]->pos[0] + 1, listeM->tab[i]->pos[1]) == -1){
-                    listeM->tab[i]->pos[0]++;
-                }else
-                    return RandomMoove(listeM, taille, tick);
-                break;
-
-            case 2: // haut
-                if (listeM->tab[i]->pos[1] != 0 && IndiceMst(listeM, listeM->tab[i]->pos[0], listeM->tab[i]->pos[1] - 1) == -1){
-                    listeM->tab[i]->pos[1]--;
-                }else
-                    return RandomMoove(listeM, taille, tick);
-                break;
-
-            case 3: // bas
-                if (listeM->tab[i]->pos[1] != taille - 1 && IndiceMst(listeM, listeM->tab[i]->pos[0], listeM->tab[i]->pos[1] + 1) == -1){
-                    listeM->tab[i]->pos[1]++;
-                }else
-                    return RandomMoove(listeM, taille, tick);
-                break;
-                
-            default:
-                break;
-            }
-        }
-    }
 }
