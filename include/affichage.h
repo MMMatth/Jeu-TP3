@@ -71,6 +71,19 @@ SDL_Texture *SDL_CreateIMG(SDL_Renderer *renderer, const char *path);
 void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h);
 
 /**
+ * \brief fonction pour afficher une image avec un angle de rotation
+ * 
+ * \param renderer : pointeur sur le renderer SDL
+ * \param texture : pointeur sur la texture SDL
+ * \param x : coordonnée x
+ * \param y : coordonnée y
+ * \param w : largeur de l'image
+ * \param h : hauteur de l'image
+ * \param angle : angle de rotation
+ */
+void SDL_RenderIMGAngle(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, double angle);
+
+/**
  * \brief procedure pour crée une barre de vie
  * 
  * \param renderer : pointeur sur le renderer SDL
@@ -102,5 +115,19 @@ void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int 
  * \param renderer : pointeur sur le renderer SDL
  */
 void SDL_RenderINV(inv * inv, SDL_Renderer * renderer);
+
+/**
+ * \brief procedure pour afficher la fleche
+ * 
+ * \param direction : direction de la fleche
+ * \param renderer : pointeur sur le renderer SDL
+ * \param texture : pointeur sur la texture SDL
+ * \param x : coordonnée x du joueur
+ * \param y : coordonnée y du joueur
+ * \param w : largeur de l'image
+ * \param h : hauteur de l'image
+ * \param ticks : pointeur sur une variable qui augmente
+ */
+void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, float * ticks);
 
 #endif

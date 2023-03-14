@@ -53,6 +53,14 @@ void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, i
     SDL_RenderCopy(renderer, texture, NULL, &rect); // On affiche la texture
 }
 
+void SDL_RenderIMG_Angle(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, double angle) {
+    SDL_Rect rect = {x, y, w, h}; // Création d'un rectangle
+    SDL_Point center = {w / 2, h / 2}; // Centre de rotation (au milieu de l'image)
+
+    // On affiche la texture en appliquant l'angle de rotation et le centre de rotation
+    SDL_RenderCopyEx(renderer, texture, NULL, &rect, angle, &center, SDL_FLIP_NONE);
+}
+
 void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur, inv * inventaire){
     int i_mst;
     for (int i = 0; i < listeM->nbMst; i++){ // on parcour tout les monstres
@@ -74,8 +82,6 @@ void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int 
             SDL_RenderIMG(renderer, texture, mst_pos[0], mst_pos[1], w, h);
         }
     }
-
-
 }
 
 
@@ -94,3 +100,36 @@ void SDL_RenderINV(inv * inv, SDL_Renderer * renderer){
         SDL_RenderCopy(renderer, inv->objets[i].texture, NULL, &rect);
     }
 }
+
+
+void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, float * ticks){
+    float angle;
+    x = x * 69 + 158 - 15; // on applique la formule pour avoir la position en pixel
+    y = y * 68 + 61 - 20;
+    switch (*direction){
+    case 'n':
+        y -= *ticks; // on applique le déplacement en fonction de la direction
+        angle = 315.0; // on applique l'angle de rotation en fonction de la direction
+        break;
+    case 's':
+        y += *ticks;
+        angle = 135;
+        break;
+    case 'e':
+        x += *ticks;
+        angle = 45;
+        break;
+    case 'o':
+        x -= *ticks;
+        angle = 225;
+        break;
+    default:
+        break;
+    }
+    SDL_RenderIMG_Angle(renderer, texture, x , y, w, h, angle); // on affiche la flèche
+
+    if (x <= 120 || x >= 670 || y <= 30 || y >= 570){ 
+        *ticks = 0.0; // on remet le déplacement à 0 si la flèche sort du plateau
+        *direction = ' '; // on remet la direction à vide
+    }
+}   

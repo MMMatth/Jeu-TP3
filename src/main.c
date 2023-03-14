@@ -109,8 +109,11 @@ void jouer(int argc, char *argv[])
     SDL_Texture *bg_jeu_texture = SDL_CreateIMG(renderer, "assets/bg_jeu.bmp"); // Chargement de l'image de fond du jeu
     SDL_Texture *joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp"); // Chargement de l'image du joueur
     SDL_Texture *monstre_texture = SDL_CreateIMG(renderer, "assets/monstre.bmp"); // Chargement de l'image du monstre
+    SDL_Texture *fleche_texture = SDL_CreateIMG(renderer, "assets/fleche.bmp"); // Chargement de l'image de la flèche
     int item_follow_mouse = -1;
     int i_mst;
+    char arc_tirer;
+    float compteur_fleche = 0.0;
     /* --- Initialisation de l'inv --- */
     inv * inventaire = CreeINV();
     SetItem(inventaire, "epee", 50, 0, "assets/epee.bmp", renderer, false);
@@ -158,6 +161,7 @@ void jouer(int argc, char *argv[])
                                     item_follow_mouse = -1;
                                 }
                             }
+                            printf("x = %d, y = %d\n", event.button.x, event.button.y);
                         }
                         break; 
                     case SDL_KEYDOWN:
@@ -184,15 +188,19 @@ void jouer(int argc, char *argv[])
                                 break;
                             case SDLK_LEFT:
                                 attaque_dist(j, listeM, inventaire->objets[0], 'o' );
+                                arc_tirer = 'o';
                                 break;
                             case SDLK_RIGHT:
                                 attaque_dist(j, listeM, inventaire->objets[0], 'e' );
+                                arc_tirer = 'e';
                                 break;
                             case SDLK_UP:
                                 attaque_dist(j, listeM, inventaire->objets[0], 'n' );
+                                arc_tirer = 'n';
                                 break;
                             case SDLK_DOWN:
                                 attaque_dist(j, listeM, inventaire->objets[0], 's' );
+                                arc_tirer = 's';
                                 break;
                             case SDLK_ESCAPE:
                                 game_start = false;
@@ -207,7 +215,10 @@ void jouer(int argc, char *argv[])
                 }
                 if (item_follow_mouse != -1)
                     RefreshPos(item_follow_mouse, inventaire, event.button.x, event.button.y);
+
             }
+
+
 
             RandomMoove(listeM, taille, SDL_GetTicks());
 
@@ -215,11 +226,19 @@ void jouer(int argc, char *argv[])
 
             SDL_RenderMonstre(renderer, monstre_texture, 30, 40, listeM, j, inventaire);
 
+            if (arc_tirer == 'n' || arc_tirer == 's' || arc_tirer == 'o' || arc_tirer == 'e'){
+                compteur_fleche += 0.5;
+                SDL_AfficherFleche(&arc_tirer, renderer, fleche_texture, j->pos[0], j->pos[1], 40, 40, &compteur_fleche);
+            }
+
             SDL_RenderIMG(renderer, joueur_texture, ((j->pos[0] * 69) + 158 ) - 15 , ((j->pos[1] * 68) + 61) - 20 , 30, 40);
             
             SDL_RenderINV(inventaire, renderer);
 
+
             SDL_RenderPresent(renderer);
+
+            
         }
     }
     /* --- Libération de la memoire --- */
