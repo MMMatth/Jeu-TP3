@@ -61,4 +61,10 @@ char ** generationListeAff(joueur_t* j, monstreListe_t* listeM);
  */
 void jouer(int argc, char *argv[]);
 
+// void init(SDL_Window ** window, SDL_Renderer ** renderer, texture_t * textures, world_t * world);
+// void handle_event();
+// void update_data();
+// void refresh_graphics();
+// void clean();
+
 #endif

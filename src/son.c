@@ -29,6 +29,6 @@ void PlayMusic(Mix_Music *music){
 }
 
 void StopMusic(Mix_Music *music){
-    Mix_HaltMusic();
+    if Mix_HaltMusic();
     Mix_FreeMusic(music);
 }
