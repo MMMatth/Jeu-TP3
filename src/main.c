@@ -17,41 +17,44 @@
 
 #define taille 8
 
-void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m){
+void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m, Mix_Chunk ** son){
     monstre_t* m = ListeM->tab[pos_m];
     m->pv -= degats;
-    if (m->pv <= 0)
+    if (m->pv <= 0){
         enleverMst(m, ListeM);
+        PlaySound(son[1], 0, 0);
+    }
+
 
 }
-int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats){
+int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats, Mix_Chunk ** son){
     if (pos_m != -1){
-        attaque_aux(ListeM, degats, pos_m);
+        attaque_aux(ListeM, degats, pos_m, son);
         return 1;
     }
     return 0;
 }
-int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir, Mix_Music * son){
+int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir, Mix_Chunk ** son){
     int nbMst = ListeM->nbMst;
     if (objet_equipe.distance){
-        PlaySound(son);
+        PlaySound(son[0], 1, 0);
         for (int i = 0; i < nbMst; i++) {
             switch (dir){
                 case 'n':
                     if (j->pos[0] == ListeM->tab[i]->pos[0] && j->pos[1] > ListeM->tab[i]->pos[1])
-                        attaque_aux(ListeM, objet_equipe.degats, i);
+                        attaque_aux(ListeM, objet_equipe.degats, i, son);
                     break;
                 case 's':
                     if (j->pos[0] == ListeM->tab[i]->pos[0] && j->pos[1] < ListeM->tab[i]->pos[1])
-                        attaque_aux(ListeM, objet_equipe.degats, i);
+                        attaque_aux(ListeM, objet_equipe.degats, i, son);
                     break;
                 case 'o':
                     if (j->pos[0] > ListeM->tab[i]->pos[0] && j->pos[1] == ListeM->tab[i]->pos[1])
-                        attaque_aux(ListeM, objet_equipe.degats, i);
+                        attaque_aux(ListeM, objet_equipe.degats, i, son);
                     break;
                 case 'e':
                     if (j->pos[0] < ListeM->tab[i]->pos[0] && j->pos[1] == ListeM->tab[i]->pos[1])
-                        attaque_aux(ListeM, objet_equipe.degats, i);
+                        attaque_aux(ListeM, objet_equipe.degats, i, son);
                     break;
                 default:
                     break;
@@ -103,6 +106,12 @@ void jouer(int argc, char *argv[])
     ajoutMst(listeM, rand() % taille, rand() % taille);
     ajoutMst(listeM, rand() % taille, rand() % taille);
     ajoutMst(listeM, rand() % taille, rand() % taille);
+    ajoutMst(listeM, rand() % taille, rand() % taille);
+    ajoutMst(listeM, rand() % taille, rand() % taille);
+    ajoutMst(listeM, rand() % taille, rand() % taille);
+    ajoutMst(listeM, rand() % taille, rand() % taille);
+    ajoutMst(listeM, rand() % taille, rand() % taille);
+    ajoutMst(listeM, rand() % taille, rand() % taille);
 
     /* --- Initialisation du SON --- */
     Mix_Init(MIX_INIT_MP3); // Initialisation de la SDL_Mixer
@@ -123,12 +132,20 @@ void jouer(int argc, char *argv[])
     SDL_Texture *fleche_texture = SDL_CreateIMG(renderer, "assets/fleche.bmp"); // Chargement de l'image de la flèche
     
     /* --- Chargement des sons --- */
-    Mix_Music *bow = CreateMusic("assets/son/bowshot.mp3");
+    Mix_Music *musics[20];
+    musics[0] = CreateMusic("assets/son/menu_music.mp3");
+    musics[1] = CreateMusic("assets/son/game_music.mp3");
+
+    Mix_Chunk *son[20];
+    son[0] = CreateSound("assets/son/bowshot.wav");
+    son[1] = CreateSound("assets/son/death.wav");
+    // musics[3] = CreateMusic("assets/son/hit.mp3");
 
     int item_follow_mouse = -1;
     int i_mst;
     char arc_tirer;
     float compteur_fleche = 0.0;
+    int ticks = 0;
     /* --- Initialisation de l'inv --- */
     inv * inventaire = CreeINV();
     SetItem(inventaire, "epee", 50, 0, "assets/epee.bmp", renderer, false);
@@ -136,13 +153,20 @@ void jouer(int argc, char *argv[])
     SetItem(inventaire, "arc", 20, 2, "assets/arc.bmp", renderer, true);
 
     while (program_launched){
+        ticks += 1;
         if (!game_start){
+            if (ticks == 1)
+                PlayMusic(musics[0]);
+            if (SDL_GetTicks()== 0)
+                PlayMusic(musics[2]);
             while (SDL_PollEvent(&event)){
                 switch (event.type){
                     case SDL_MOUSEBUTTONDOWN: 
                         if (event.button.button == SDL_BUTTON_LEFT){
                             if (SDL_RectHitbox(event, 250, 550, 250, 340)){
                                 printf("Jouez au jeu\n");
+                                StopMusic(musics[0]);
+                                ticks = 0;
                                 game_start = true;
                             }else if (SDL_RectHitbox(event, 250, 550, 380, 470)){
                                 printf("Quitter le jeu\n");
@@ -161,6 +185,8 @@ void jouer(int argc, char *argv[])
             SDL_RenderCopy(renderer, bg_menu_texture, NULL, NULL); 
             SDL_RenderPresent(renderer);
         }else{ 
+            if (ticks == 1)
+                PlayMusic(musics[1]);
             while (SDL_PollEvent(&event)){
                 switch (event.type){
                     case SDL_QUIT:
@@ -199,22 +225,22 @@ void jouer(int argc, char *argv[])
                                 break;
                             case SDLK_SPACE:
                                 i_mst = IndiceMst(listeM, j->pos[0], j->pos[1]);
-                                attaque_contact(j, listeM, i_mst, inventaire->objets[0].degats);
+                                attaque_contact(j, listeM, i_mst, inventaire->objets[0].degats, son);
                                 break;
                             case SDLK_LEFT:
-                                attaque_dist(j, listeM, inventaire->objets[0], 'o' , bow);
+                                attaque_dist(j, listeM, inventaire->objets[0], 'o' , son);
                                 arc_tirer = 'o';
                                 break;
                             case SDLK_RIGHT:
-                                attaque_dist(j, listeM, inventaire->objets[0], 'e' , bow);
+                                attaque_dist(j, listeM, inventaire->objets[0], 'e' , son);
                                 arc_tirer = 'e';
                                 break;
                             case SDLK_UP:
-                                attaque_dist(j, listeM, inventaire->objets[0], 'n' , bow);
+                                attaque_dist(j, listeM, inventaire->objets[0], 'n' , son);
                                 arc_tirer = 'n';
                                 break;
                             case SDLK_DOWN:
-                                attaque_dist(j, listeM, inventaire->objets[0], 's' , bow);
+                                attaque_dist(j, listeM, inventaire->objets[0], 's' , son);
                                 arc_tirer = 's';
                                 break;
                             case SDLK_ESCAPE:

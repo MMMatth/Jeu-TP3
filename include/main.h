@@ -20,7 +20,7 @@
  * \param degats 
  * \param pos_m 
  */
-void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m);
+void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m, Mix_Chunk ** son);
 
 /**
  * \brief fonction pour lancer une attaque au contact
@@ -31,7 +31,7 @@ void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m);
  * \param degats : degats de l'arme
  * \return int 1 si attaque réussie, 0 sinon
  */
-int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats);
+int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats, Mix_Chunk ** son);
 
 /**
  * \brief fonction pour lancer une attaque à distance
@@ -42,7 +42,7 @@ int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats);
  * \param dir : direction de l'attaque
  * \return int 1 si attaque réussie, 0 sinon
  */
-int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir, Mix_Music * son);
+int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir, Mix_Chunk ** son);
 
 /**
  * \brief fonction pour recuper le jeu sous forme de tableau de char (pas utiliser depuis longtemps)

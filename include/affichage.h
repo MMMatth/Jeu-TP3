@@ -136,7 +136,13 @@ void InitAudioWithError();
 
 Mix_Music * CreateMusic(const char *path);
 
-void PlaySound(Mix_Music *music);
+Mix_Chunk * CreateSound(const char *path);
+
+void PlayMusic(Mix_Music *music);
+
+void PlaySound(Mix_Chunk *sound, int channel, int loops);
+
+void StopMusic(Mix_Music *music);
 
 
 #endif
