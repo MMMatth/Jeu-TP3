@@ -208,6 +208,9 @@ void jouer(int argc, char *argv[])
                             case SDLK_p:
                                 printf("%s",ToStringInv(inventaire));
                                 break;
+                            case SDLK_i:
+                                printf("%f", compteur_fleche);
+                                break;
                             default:
                                 break;
                         }
@@ -226,9 +229,12 @@ void jouer(int argc, char *argv[])
 
             SDL_RenderMonstre(renderer, monstre_texture, 30, 40, listeM, j, inventaire);
 
-            if (arc_tirer == 'n' || arc_tirer == 's' || arc_tirer == 'o' || arc_tirer == 'e'){
+            if ((arc_tirer == 'n' || arc_tirer == 's' || arc_tirer == 'o' || arc_tirer == 'e') && inventaire->objets[0].distance){
                 compteur_fleche += 0.5;
                 SDL_AfficherFleche(&arc_tirer, renderer, fleche_texture, j->pos[0], j->pos[1], 40, 40, &compteur_fleche);
+            }else if (!inventaire->objets[0].distance){
+                arc_tirer = ' ';
+                compteur_fleche = 0;
             }
 
             SDL_RenderIMG(renderer, joueur_texture, ((j->pos[0] * 69) + 158 ) - 15 , ((j->pos[1] * 68) + 61) - 20 , 30, 40);
