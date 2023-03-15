@@ -2,11 +2,15 @@
 #include <stdlib.h>
 #include <time.h>
 
+
 #include "../include/main.h"
 #include "../include/affichage.h"
 #include "../include/joueur.h"
 #include "../include/monstre.h"
 #include "../include/inventaire.h"
+
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
@@ -27,9 +31,10 @@ int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats){
     }
     return 0;
 }
-int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir){
+int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir, Mix_Music * son){
     int nbMst = ListeM->nbMst;
     if (objet_equipe.distance){
+        PlaySound(son);
         for (int i = 0; i < nbMst; i++) {
             switch (dir){
                 case 'n':
@@ -98,18 +103,28 @@ void jouer(int argc, char *argv[])
     ajoutMst(listeM, rand() % taille, rand() % taille);
     ajoutMst(listeM, rand() % taille, rand() % taille);
     ajoutMst(listeM, rand() % taille, rand() % taille);
+
+    /* --- Initialisation du SON --- */
+    Mix_Init(MIX_INIT_MP3); // Initialisation de la SDL_Mixer
+    InitAudioWithError(); // Initialisation de l'audio
+
     /* --- Initialisation de la SDL --- */
-    SDL_InitWithExit(); // Initialisation de la SDL
+    SDL_InitVideoWithExit(); // Initialisation de la SDL
     SDL_WindowAndRendererWithExit(WINDOW_WIDTH, WINDOW_HEIGHT, &window, &renderer); // Création de la fenêtre et du renderer
     SDL_SetWindowTitle(window, "DIABLO MMXXIII"); // Titre de la fenêtre
     SDL_Surface *icon = SDL_LoadBMP("assets/joueur_s.bmp"); // Chargement de l'icône
     SDL_SetWindowIcon(window, icon); // Définition de l'icône
+
     /*--- Chargement des images ---*/
     SDL_Texture *bg_menu_texture = SDL_CreateIMG(renderer, "assets/bg_menu.bmp"); // Chargement de l'image de fond du menu
     SDL_Texture *bg_jeu_texture = SDL_CreateIMG(renderer, "assets/bg_jeu.bmp"); // Chargement de l'image de fond du jeu
     SDL_Texture *joueur_texture = SDL_CreateIMG(renderer, "assets/joueur_s.bmp"); // Chargement de l'image du joueur
     SDL_Texture *monstre_texture = SDL_CreateIMG(renderer, "assets/monstre.bmp"); // Chargement de l'image du monstre
     SDL_Texture *fleche_texture = SDL_CreateIMG(renderer, "assets/fleche.bmp"); // Chargement de l'image de la flèche
+    
+    /* --- Chargement des sons --- */
+    Mix_Music *bow = CreateMusic("assets/son/bowshot.mp3");
+
     int item_follow_mouse = -1;
     int i_mst;
     char arc_tirer;
@@ -187,29 +202,23 @@ void jouer(int argc, char *argv[])
                                 attaque_contact(j, listeM, i_mst, inventaire->objets[0].degats);
                                 break;
                             case SDLK_LEFT:
-                                attaque_dist(j, listeM, inventaire->objets[0], 'o' );
+                                attaque_dist(j, listeM, inventaire->objets[0], 'o' , bow);
                                 arc_tirer = 'o';
                                 break;
                             case SDLK_RIGHT:
-                                attaque_dist(j, listeM, inventaire->objets[0], 'e' );
+                                attaque_dist(j, listeM, inventaire->objets[0], 'e' , bow);
                                 arc_tirer = 'e';
                                 break;
                             case SDLK_UP:
-                                attaque_dist(j, listeM, inventaire->objets[0], 'n' );
+                                attaque_dist(j, listeM, inventaire->objets[0], 'n' , bow);
                                 arc_tirer = 'n';
                                 break;
                             case SDLK_DOWN:
-                                attaque_dist(j, listeM, inventaire->objets[0], 's' );
+                                attaque_dist(j, listeM, inventaire->objets[0], 's' , bow);
                                 arc_tirer = 's';
                                 break;
                             case SDLK_ESCAPE:
                                 game_start = false;
-                                break;
-                            case SDLK_p:
-                                printf("%s",ToStringInv(inventaire));
-                                break;
-                            case SDLK_i:
-                                printf("%f", compteur_fleche);
                                 break;
                             default:
                                 break;

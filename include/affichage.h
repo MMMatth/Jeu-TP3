@@ -8,6 +8,8 @@
 #define AFFICHAGE_H
 
 #include <SDL.h>
+#include <SDL_mixer.h>
+
 #include <stdbool.h>
 #include "../include/monstre.h"
 #include "../include/joueur.h"
@@ -24,7 +26,7 @@ void SDL_ExitWithError(const char *message);
  * \brief fonction pour initialiser SDL
  * 
  */
-void SDL_InitWithExit(void);
+void SDL_InitVideoWithExit(void);
 
 /**
  * \brief fonction qui permet de crée des hitbox
@@ -129,5 +131,12 @@ void SDL_RenderINV(inv * inv, SDL_Renderer * renderer);
  * \param ticks : pointeur sur une variable qui augmente
  */
 void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, float * ticks);
+
+void InitAudioWithError();
+
+Mix_Music * CreateMusic(const char *path);
+
+void PlaySound(Mix_Music *music);
+
 
 #endif

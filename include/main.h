@@ -10,6 +10,8 @@
 #include "../include/affichage.h"
 #include "../include/joueur.h"
 #include "../include/monstre.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 /**
  * \brief fonction pour appliquer les dégats à un monstre et gerer sa mort
@@ -40,7 +42,7 @@ int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats);
  * \param dir : direction de l'attaque
  * \return int 1 si attaque réussie, 0 sinon
  */
-int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir);
+int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir, Mix_Music * son);
 
 /**
  * \brief fonction pour recuper le jeu sous forme de tableau de char (pas utiliser depuis longtemps)

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <SDL.h>
+#include <SDL_mixer.h>
 
 #include "../include/affichage.h"
 #include "../include/joueur.h"
@@ -15,7 +16,7 @@ void SDL_ExitWithError(const char *message){
     exit(EXIT_FAILURE);
 }
 
-void SDL_InitWithExit(void){
+void SDL_InitVideoWithExit(void){
     if (SDL_Init(SDL_INIT_VIDEO) != 0){
         SDL_ExitWithError("Initialisation SDL");
     }
@@ -133,3 +134,24 @@ void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *t
         *direction = ' '; // on remet la direction à vide
     }
 }   
+
+
+
+
+void InitAudioWithError(){
+    if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1){
+        SDL_ExitWithError("Initialisation audio echouee");
+    }
+}
+
+Mix_Music * CreateMusic(const char *path){
+    Mix_Music *music = Mix_LoadMUS(path);
+    if (music == NULL)
+        SDL_ExitWithError("Chargement musique echouee");
+    return music;
+}
+
+void PlaySound(Mix_Music *music){
+    if (Mix_PlayMusic(music, 0) == -1)
+        SDL_ExitWithError("Lecture musique echouee");
+}
