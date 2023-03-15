@@ -8,6 +8,7 @@
 #include "../include/joueur.h"
 #include "../include/monstre.h"
 #include "../include/inventaire.h"
+#include "../include/son.h"
 
 #include <SDL.h>
 #include <SDL_mixer.h>

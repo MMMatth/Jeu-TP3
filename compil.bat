@@ -4,6 +4,7 @@ gcc -c src/main.c -o lib/main.o -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -
 gcc -c src/joueur.c -o lib/joueur.o -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
 gcc -c src/monstre.c -o lib/monstre.o -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
 gcc -c src/inventaire.c -o lib/inventaire.o -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
+gcc -c src/son.c -o lib/son.o -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
 
 @REM Compilation des tests
 @REM gcc tests/affichage_test.c lib/*.o -o bin/affichage_test -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2
