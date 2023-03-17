@@ -10,6 +10,7 @@
 #include "../include/affichage.h"
 #include "../include/joueur.h"
 #include "../include/monstre.h"
+#include "../include/son.h"
 #include <SDL.h>
 #include <SDL_mixer.h>
 
@@ -20,7 +21,7 @@
  * \param degats 
  * \param pos_m 
  */
-void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m, Mix_Chunk ** son);
+void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m, sound_t * son);
 
 /**
  * \brief fonction pour lancer une attaque au contact
@@ -31,18 +32,13 @@ void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m, Mix_Chunk ** son
  * \param degats : degats de l'arme
  * \return int 1 si attaque réussie, 0 sinon
  */
-int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats, Mix_Chunk ** son);
+int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats, sound_t * son);
 
-/**
- * \brief fonction pour lancer une attaque à distance
- * 
- * \param j : joueur
- * \param ListeM : liste des monstres
- * \param objet_equipe : objet équipé
- * \param dir : direction de l'attaque
- * \return int 1 si attaque réussie, 0 sinon
- */
-int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir, Mix_Chunk ** son);
+
+int attaque_dist(joueur_t* j, monstreListe_t* ListeM, obj objet_equipe, char dir, sound_t * son);
+
+int attaque_dist_aux(joueur_t* j, monstreListe_t* ListeM, char dir, int degats, sound_t * son);
+
 
 /**
  * \brief fonction pour recuper le jeu sous forme de tableau de char (pas utiliser depuis longtemps)

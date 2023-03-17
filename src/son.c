@@ -4,6 +4,14 @@
 #include <stdlib.h>
 
 
+
+
+void InitAudioWithError(){
+    if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1){
+        SDL_ExitWithError("Initialisation audio echouee");
+    }
+}
+
 Mix_Chunk * CreateSound(const char *path){
     Mix_Chunk *sound = Mix_LoadWAV(path);
     if (sound == NULL)
@@ -29,6 +37,21 @@ void PlayMusic(Mix_Music *music){
 }
 
 void StopMusic(Mix_Music *music){
-    if Mix_HaltMusic();
+    Mix_HaltMusic();
     Mix_FreeMusic(music);
+}
+
+void CleanAudio(){
+    Mix_CloseAudio();
+}
+
+void InitSound(sound_t *sound){
+    sound->arc = CreateSound("assets/son/bowshot.wav");
+    sound->death = CreateSound("assets/son/death.wav");
+    sound->click = CreateSound("assets/son/click.wav");
+}
+
+void InitMusic(music_t *music){
+    music->menu = CreateMusic("assets/son/menu.mp3");
+    music->game = CreateMusic("assets/son/game.mp3");
 }

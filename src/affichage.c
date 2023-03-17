@@ -8,6 +8,16 @@
 #include "../include/joueur.h"
 #include "../include/monstre.h"
 #include "../include/inventaire.h"
+#include "../include/son.h"
+
+
+// void InitTexture(texture_t * texture, SDL_Renderer * renderer){
+    // texture->background_menu = SDL_CreateIMG(renderer, "assets/bg_menu.bmp");
+    // texture->background_game = SDL_CreateIMG(renderer, "assets/bg_jeu.bmp");
+    // texture->joueur = SDL_CreateIMG(renderer, "assets/joueur_s.bmp");
+    // texture->monstre = SDL_CreateIMG(renderer, "assets/monstre.bmp");
+    // texture->fleche = SDL_CreateIMG(renderer, "assets/fleche.bmp");
+// }
 
 
 void SDL_ExitWithError(const char *message){
@@ -138,8 +148,23 @@ void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *t
 
 
 
-void InitAudioWithError(){
-    if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1){
-        SDL_ExitWithError("Initialisation audio echouee");
-    }
+// void InitAudioWithError(){
+//     if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1){
+//         SDL_ExitWithError("Initialisation audio echouee");
+//     }
+// }
+
+void InitTexture(SDL_Renderer * renderer, texture_t *textures){
+    textures->background_menu = SDL_CreateIMG(renderer, "assets/bg_menu.bmp");
+    textures->background_game = SDL_CreateIMG(renderer, "assets/bg_jeu.bmp");
+    textures->joueur = SDL_CreateIMG(renderer, "assets/joueur_s.bmp");
+    textures->monstre = SDL_CreateIMG(renderer, "assets/monstre.bmp");
+    textures->fleche = SDL_CreateIMG(renderer, "assets/fleche.bmp");
+}
+
+void clean(SDL_Window * window, SDL_Renderer * renderer){ //, textures_t *textures , world_t * world);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    CleanAudio();
+    SDL_Quit();
 }

@@ -15,6 +15,20 @@
 #include "../include/joueur.h"
 #include "../include/inventaire.h"
 
+struct texture_s{
+    SDL_Texture * background_menu;
+    SDL_Texture * background_game;
+    SDL_Texture * joueur;
+    SDL_Texture * monstre;
+    SDL_Texture * fleche;
+    SDL_Texture * epee;
+    SDL_Texture * bouclier;
+    SDL_Texture * potion;
+};
+typedef struct texture_s texture_t;
+
+void InitTexture(SDL_Renderer * renderer, texture_t *textures);
+
 /**
  * \brief fonction pour quitter le programme avec une erreur
  * 
@@ -132,17 +146,8 @@ void SDL_RenderINV(inv * inv, SDL_Renderer * renderer);
  */
 void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, float * ticks);
 
-void InitAudioWithError();
+void clean(SDL_Window *window, SDL_Renderer * renderer); //, textures_t *textures , world_t * world);
 
-Mix_Music * CreateMusic(const char *path);
-
-Mix_Chunk * CreateSound(const char *path);
-
-void PlayMusic(Mix_Music *music);
-
-void PlaySound(Mix_Chunk *sound, int channel, int loops);
-
-void StopMusic(Mix_Music *music);
 
 
 #endif

@@ -3,6 +3,26 @@
 #include <SDL_mixer.h>
 #include "../include/affichage.h" // Pour la fonction "Erreur"
 
+
+struct sound_s{
+    Mix_Chunk  * arc;
+    Mix_Chunk  * death;
+    Mix_Chunk  * click;
+};
+typedef struct sound_s sound_t;
+
+struct music_s{
+    Mix_Music * menu;
+    Mix_Music * game;
+};
+typedef struct music_s music_t;
+
+
+
+
+void InitAudioWithError();
+
+
 /**
  * \brief fonction pour crée un son
  * 
@@ -41,5 +61,11 @@ void PlayMusic(Mix_Music *music);
  * \param music : pointeur sur la musique à arrêter
  */
 void StopMusic(Mix_Music *music);
+
+void CleanAudio();
+
+void InitSound(sound_t *sound);
+
+void InitMusic(music_t *music);
 
 #endif
