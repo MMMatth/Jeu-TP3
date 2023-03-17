@@ -78,4 +78,13 @@ void RefreshPos(int indice, inv * inv, int x, int y);
  */
 char * ToStringInv(inv * inventaire);
 
+
+/**
+ * \brief procedure pour afficher l'inventaire
+ * 
+ * \param inv : pointeur sur l'inventaire
+ * \param renderer : pointeur sur le renderer SDL
+ */
+void render_inv(inv * inv, SDL_Renderer * renderer);
+
 #endif

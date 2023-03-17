@@ -1,6 +1,13 @@
 #ifndef MONSTRE_H
 #define MONSTRE_H
 
+#include "../include/affichage.h"
+#include "../include/joueur.h"
+#include "../include/inventaire.h"
+
+#include <stdbool.h>
+
+
 
 struct monstre {
     int pv; /**< Les points de vie du monstre. */
@@ -73,5 +80,20 @@ char* toStringMst(monstre_t* M);
  * \return char* 
  */
 char* toStringLstMst(monstreListe_t* listeM);
+
+/**
+ * \brief procedure pour afficher les monstres 
+ * 
+ * \param renderer : pointeur sur le renderer SDL
+ * \param texture : pointeur sur la texture SDL
+ * \param w : largeur de l'image
+ * \param h : hauteur de l'image
+ * \param listeM : pointeur sur la liste de monstre
+ * \param joueur : pointeur sur le joueur
+ * \param inventaire : pointeur sur l'inventaire
+ */
+void render_monstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur, inv *inventaire);
+
+
 
 #endif /* MONSTRE_H */

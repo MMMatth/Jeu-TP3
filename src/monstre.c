@@ -8,23 +8,13 @@
 monstreListe_t* creationListeM(){
     monstreListe_t* listeM = malloc(sizeof(monstreListe_t)); // on alloue de la memoire pour la liste
     listeM->nbMst = 0; // on initialise le nombre de monstre a 0
-    listeM->tab = malloc(100 * sizeof(monstre_t)); // on alloue de la memoire pour 100 monstres
+    listeM->tab = malloc(1000 * sizeof(monstre_t)); // on alloue de la memoire pour 100 monstres
     return listeM;
 }
 
 void ajoutMst( monstreListe_t* listeM, int x, int y){
-    if (IndiceMst(listeM, x, y) != -1) {
-        if (x == 0) // si il est coller a gauche
-            return ajoutMst(listeM, x + 1, y);
-        else if (x == 7) // si il est coller a droite
-            return ajoutMst(listeM, x - 1, y);
-        else if (y == 0) // si il est coller en haut
-            return ajoutMst(listeM, x, y + 1);
-        else if (y == 7) // si il est coller en bas
-            return ajoutMst(listeM, x, y - 1);
-        else // sinon on peut le decaler de partout la choix de base est de le decaler vers la droite
-            return ajoutMst(listeM, x + 1, y);
-    }
+    if (IndiceMst(listeM, x, y) != -1) // si il y a deja un monstre a la position on relance la fonction pour en trouver une autre
+        return ajoutMst(listeM, rand() % 8, rand() % 8);
     monstre_t * m = malloc(sizeof(monstre_t)); // on alloue de la memoire pour le monstre
     m->pos[0] = x; // on initialise la position du monstre
     m->pos[1] = y;
@@ -50,7 +40,7 @@ int IndiceMst(monstreListe_t* listeM, int x, int y){
 }
 
 int RandomMoove(monstreListe_t *listeM, int taille, int tick){
-    if (tick % 3000 == 0 ){ // permet de faire bouger les monstres toutes les 8000 ticks
+    if (tick % 200 == 0 ){ 
         for (int i = 0; i < listeM->nbMst; i++){ // on pacours la liste de monstre
             int r = rand() % 4; // on choisi une direction aleatoire
             int x = listeM->tab[i]->pos[0]; // on recupere la position du monstre
@@ -94,4 +84,27 @@ char * toStringLstMst(monstreListe_t* listeM){
     for (int i = 0; i < listeM->nbMst; i++)
         strcat(str, toStringMst(listeM->tab[i]));
     return str;
+}
+
+void render_monstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur, inv * inventaire){
+    int i_mst;
+    for (int i = 0; i < listeM->nbMst; i++){ // on parcour tout les monstres
+        i_mst = IndiceMst(listeM, joueur->pos[0], joueur->pos[1]);
+        if (i_mst == i){ 
+            int mst_pos[] = {
+                listeM->tab[i]->pos[0] * 69 + 138 - 15, 
+                listeM->tab[i]->pos[1] * 68 + 41 - 20
+                }; 
+            bardevie(renderer, mst_pos[0], mst_pos[1], 30, 5, listeM->tab[i]->pv);
+            render_img(renderer, texture, mst_pos[0], mst_pos[1], w, h);
+        }else{
+            int mst_pos[] = {
+                listeM->tab[i]->pos[0] * 69 + 158 - 15, 
+                listeM->tab[i]->pos[1] * 68 + 61 - 20
+                }; 
+            if ((listeM->tab[i]->pos[0] == joueur->pos[0] || listeM->tab[i]->pos[1] == joueur->pos[1]) && inventaire->objets[0].distance)
+                bardevie(renderer, mst_pos[0], mst_pos[1], 30, 5, listeM->tab[i]->pv);
+            render_img(renderer, texture, mst_pos[0], mst_pos[1], w, h);
+        }
+    }
 }

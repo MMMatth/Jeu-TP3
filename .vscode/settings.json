@@ -16,7 +16,10 @@
         "sdl_stdinc.h": "c",
         "inventaire.h": "c",
         "iterator": "c",
-        "son.h": "c"
+        "son.h": "c",
+        "include.h": "c",
+        "hud.h": "c",
+        "sdl_ttf.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

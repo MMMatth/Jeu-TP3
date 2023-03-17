@@ -11,8 +11,14 @@
 #include "../include/joueur.h"
 #include "../include/monstre.h"
 #include "../include/son.h"
+#include "../include/inventaire.h"
+#include "../include/son.h"
+#include "../include/hud.h"
 #include <SDL.h>
 #include <SDL_mixer.h>
+#include <SDL_ttf.h>
+
+
 
 struct world_s{
     inv * inventaire;

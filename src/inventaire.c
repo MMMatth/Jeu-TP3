@@ -24,7 +24,7 @@ void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Ren
     inv->objets[position].y = inv->cases[position].y;
     inv->objets[position].distance = distance;
     strcat(inv->objets[position].image, image);
-    inv->objets[position].texture = SDL_CreateIMG(renderer, image);
+    inv->objets[position].texture = create_img(renderer, image);
 }
 
 void EchangeItem(inv* inventaire, int pos1, int pos2) {
@@ -67,4 +67,11 @@ char * ToStringInv(inv * inventaire){
         strcat(str, " ");
     }
     return str;
+}
+
+void render_inv(inv * inv, SDL_Renderer * renderer){
+    for (int i = 0; i < 3; i++){
+        SDL_Rect rect = {inv->objets[i].x, inv->objets[i].y, 50, 50};
+        SDL_RenderCopy(renderer, inv->objets[i].texture, NULL, &rect);
+    }
 }

@@ -40,7 +40,7 @@ void SDL_ExitWithError(const char *message);
  * \brief fonction pour initialiser SDL
  * 
  */
-void initSDLWithExit(SDL_Window** window, SDL_Renderer** renderer, int width, int height);
+void initSDL(SDL_Window** window, SDL_Renderer** renderer, int width, int height);
 
 /**
  * \brief fonction qui permet de crée des hitbox
@@ -53,7 +53,7 @@ void initSDLWithExit(SDL_Window** window, SDL_Renderer** renderer, int width, in
  * \return true : la souris est dans la hitbox
  * \return false : la souris n'est pas dans la hitbox
  */
-bool SDL_RectHitbox(SDL_Event event, int top_left, int top_right, int bottom_left, int bottom_right);
+bool hitbox(SDL_Event event, int top_left, int top_right, int bottom_left, int bottom_right);
 
 /**
  * \brief procedure pour crée une fenetre et un renderer
@@ -72,7 +72,7 @@ void SDL_WindowAndRendererWithExit(int width, int height, SDL_Window **window, S
  * \param path : chemin de l'image
  * \return SDL_Texture* 
  */
-SDL_Texture *SDL_CreateIMG(SDL_Renderer *renderer, const char *path);
+SDL_Texture *create_img(SDL_Renderer *renderer, const char *path);
 
 /**
  * \brief fonction pour afficher une image
@@ -84,7 +84,7 @@ SDL_Texture *SDL_CreateIMG(SDL_Renderer *renderer, const char *path);
  * \param w : largeur de l'image
  * \param h : hauteur de l'image
  */
-void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h);
+void render_img(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h);
 
 /**
  * \brief fonction pour afficher une image avec un angle de rotation
@@ -97,9 +97,10 @@ void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, i
  * \param h : hauteur de l'image
  * \param angle : angle de rotation
  */
-void SDL_RenderIMG_Angle(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, double angle);
+void render_imgangle(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, double angle);
 
-void SDL_RenderFleche(SDL_Renderer *renderer, texture_t * textures, joueur_t * joueur, float * ticks, char * direction, bool distance);
+
+void render_fleche(SDL_Renderer *renderer, texture_t * textures, joueur_t * joueur, float * ticks, char * direction, bool distance);
 
 /**
  * \brief procedure pour crée une barre de vie
@@ -111,42 +112,7 @@ void SDL_RenderFleche(SDL_Renderer *renderer, texture_t * textures, joueur_t * j
  * \param h : hauteur de la barre
  * \param pv : point de vie
  */
-void CreationBarDeVie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv);
-
-/**
- * \brief procedure pour afficher les monstres
- * 
- * \param renderer : pointeur sur le renderer SDL
- * \param texture : pointeur sur la texture SDL
- * \param w : largeur de l'image
- * \param h : hauteur de l'image
- * \param listeM : pointeur sur la liste de monstre
- * \param joueur : pointeur sur le joueur
- * \param inventaire : pointeur sur l'inventaire
- */
-void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur, inv *inventaire);
-
-/**
- * \brief procedure pour afficher l'inventaire
- * 
- * \param inv : pointeur sur l'inventaire
- * \param renderer : pointeur sur le renderer SDL
- */
-void SDL_RenderINV(inv * inv, SDL_Renderer * renderer);
-
-/**
- * \brief procedure pour afficher la fleche
- * 
- * \param direction : direction de la fleche
- * \param renderer : pointeur sur le renderer SDL
- * \param texture : pointeur sur la texture SDL
- * \param x : coordonnée x du joueur
- * \param y : coordonnée y du joueur
- * \param w : largeur de l'image
- * \param h : hauteur de l'image
- * \param ticks : pointeur sur une variable qui augmente
- */
-void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, float * ticks);
+void bardevie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv);
 
 void clean(SDL_Window *window, SDL_Renderer * renderer); //, textures_t *textures , world_t * world);
 

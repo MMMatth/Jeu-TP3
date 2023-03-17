@@ -2,16 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 #include "../include/main.h"
-#include "../include/affichage.h"
-#include "../include/joueur.h"
-#include "../include/monstre.h"
-#include "../include/inventaire.h"
-#include "../include/son.h"
-
-#include <SDL.h>
-#include <SDL_mixer.h>
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
@@ -98,11 +89,15 @@ void InitInventaire(inv *inventaire, SDL_Renderer *renderer){
     SetItem(inventaire, "arc", 20, 2, "assets/arc.bmp", renderer, true);
 }
 
+void InitMonstres(monstreListe_t *ListeM, int manche){
+    for (int i = 0; i < manche * 3 ; i++)
+        ajoutMst(ListeM, rand() % taille, rand() % taille);
+}
+
 void InitWorld(world_t * world, SDL_Renderer *renderer){
     world->joueur = CreationJoueur();
     world->ListeM = creationListeM();
-    for (int i = 0; i < 10; i++)
-        ajoutMst(world->ListeM, rand() % taille, rand() % taille);
+    InitMonstres(world->ListeM, 1);
     world->inventaire = CreationInventaire();
     InitInventaire(world->inventaire, renderer);
 }
@@ -116,7 +111,9 @@ void jouer(int argc, char *argv[])
     SDL_Event event;
     bool game_start = false;
     
-    initSDLWithExit(&window, &renderer, WINDOW_WIDTH, WINDOW_HEIGHT);
+    init_hud();
+
+    initSDL(&window, &renderer, WINDOW_WIDTH, WINDOW_HEIGHT);
 
     world_t * world = malloc(sizeof(world_t));
     InitWorld(world, renderer);
@@ -130,11 +127,19 @@ void jouer(int argc, char *argv[])
     sound_t * sons = (sound_t*) malloc(sizeof(sound_t));
     InitSound(sons);
 
+    // on crée un texte en SDL ttf
+    TTF_Init();
+    TTF_Font *font = TTF_OpenFont("assets/Roboto-Bold.ttf", 24);
+    SDL_Color color = {255, 255, 255, 255};
+
+
+
     int item_follow_mouse = -1;
-    int i_mst;
+    int i_mst, timer = 0;
     char arc_tirer =' ';
     float compteur_fleche = 0.0;
     int ticks = 0;
+    int manche = 1;
 
 
     while (program_launched){
@@ -145,13 +150,13 @@ void jouer(int argc, char *argv[])
                 switch (event.type){
                     case SDL_MOUSEBUTTONDOWN: 
                         if (event.button.button == SDL_BUTTON_LEFT){
-                            if (SDL_RectHitbox(event, 250, 550, 250, 340)){
+                            if (hitbox(event, 250, 550, 250, 340)){
                                 PlaySound(sons->click, 0, 0);
                                 printf("Jouez au jeu\n");
                                 StopMusic(musics->menu);
                                 ticks = 0;
                                 game_start = true;
-                            }else if (SDL_RectHitbox(event, 250, 550, 380, 470)){
+                            }else if (hitbox(event, 250, 550, 380, 470)){
                                 PlaySound(sons->click, 0, 0);
                                 SDL_Delay(200);
                                 printf("Quitter le jeu\n");
@@ -172,6 +177,7 @@ void jouer(int argc, char *argv[])
         }else{ 
             if (ticks == 1)
                 PlayMusic(musics->game);
+            
             while (SDL_PollEvent(&event)){
                 switch (event.type){
                     case SDL_QUIT:
@@ -180,9 +186,9 @@ void jouer(int argc, char *argv[])
                     case SDL_MOUSEBUTTONDOWN:
                         if (event.button.button == SDL_BUTTON_LEFT){
                             for (int i = 0; i < 3; i++){
-                                if (SDL_RectHitbox(event, world->inventaire->cases[i].x, world->inventaire->cases[i].x + 50, world->inventaire->cases[i].y, world->inventaire->cases[i].y + 50) && item_follow_mouse == -1){
+                                if (hitbox(event, world->inventaire->cases[i].x, world->inventaire->cases[i].x + 50, world->inventaire->cases[i].y, world->inventaire->cases[i].y + 50) && item_follow_mouse == -1){
                                     item_follow_mouse = i;
-                                }else if(SDL_RectHitbox(event, world->inventaire->cases[i].x, world->inventaire->cases[i].x + 50, world->inventaire->cases[i].y, world->inventaire->cases[i].y + 50)){
+                                }else if(hitbox(event, world->inventaire->cases[i].x, world->inventaire->cases[i].x + 50, world->inventaire->cases[i].y, world->inventaire->cases[i].y + 50)){
                                     EchangeItem(world->inventaire, i, item_follow_mouse);
                                     item_follow_mouse = -1;
                                 }
@@ -194,19 +200,19 @@ void jouer(int argc, char *argv[])
                         switch (event.key.keysym.sym){
                             case SDLK_z:
                                 deplacement(world->joueur, taille, 'z');
-                                textures->joueur = SDL_CreateIMG(renderer, "assets/joueur_z.bmp");
+                                textures->joueur = create_img(renderer, "assets/joueur_z.bmp");
                                 break;
                             case SDLK_s:
                                 deplacement(world->joueur, taille, 's');
-                                textures->joueur = SDL_CreateIMG(renderer, "assets/joueur_s.bmp");
+                                textures->joueur = create_img(renderer, "assets/joueur_s.bmp");
                                 break;
                             case SDLK_q:
                                 deplacement(world->joueur, taille, 'q');
-                                textures->joueur = SDL_CreateIMG(renderer, "assets/joueur_q.bmp");
+                                textures->joueur = create_img(renderer, "assets/joueur_q.bmp");
                                 break;
                             case SDLK_d:
                                 deplacement(world->joueur, taille, 'd');
-                                textures->joueur = SDL_CreateIMG(renderer, "assets/joueur_d.bmp");
+                                textures->joueur = create_img(renderer, "assets/joueur_d.bmp");
                                 break;
                             case SDLK_SPACE:
                                 i_mst = IndiceMst(world->ListeM, world->joueur->pos[0], world->joueur->pos[1]);
@@ -230,6 +236,8 @@ void jouer(int argc, char *argv[])
                                 break;
                             case SDLK_ESCAPE:
                                 game_start = false;
+                                StopMusic(musics->game);
+                            
                                 break;
                             default:
                                 break;
@@ -241,22 +249,42 @@ void jouer(int argc, char *argv[])
 
             }
 
-            RandomMoove(world->ListeM, taille, SDL_GetTicks());
+
+            update_hud(timer, manche);
+
+            RandomMoove(world->ListeM, taille, ticks);
 
             SDL_RenderCopy(renderer, textures->background_game, NULL, NULL); 
 
-            SDL_RenderMonstre(renderer, textures->monstre , 30, 40, world->ListeM, world->joueur, world->inventaire);
+            render_monstre(renderer, textures->monstre , 30, 40, world->ListeM, world->joueur, world->inventaire);
 
-            SDL_RenderFleche(renderer, textures, world->joueur, &compteur_fleche, &arc_tirer, world->inventaire->objets[0].distance);
+            render_fleche(renderer, textures, world->joueur, &compteur_fleche, &arc_tirer, world->inventaire->objets[0].distance);
 
-            SDL_RenderIMG(renderer, textures->joueur , coord_x(world->joueur) , coord_y(world->joueur) , 30, 40);
+            render_img(renderer, textures->joueur , coord_x(world->joueur) , coord_y(world->joueur) , 30, 40);
             
-            SDL_RenderINV(world->inventaire, renderer);
+            render_inv(world->inventaire, renderer);
+
+            render_hud(renderer);
 
             SDL_RenderPresent(renderer);
             
+            SDL_Delay(1000/60);
+
+            if (world->ListeM->nbMst == 0 && manche != 5){
+                manche += 1;
+                InitMonstres(world->ListeM, manche);
+            }else if (world->ListeM->nbMst == 0 && manche == 5){
+                save_score(timer);
+                printf("Vous avez gagné\n");
+                program_launched = SDL_FALSE;
+            }
+
+
+            if (ticks % 60 == 0)
+                timer += 1;
         }
     }
     
     clean(window, renderer);
+    close_hud();
 }
