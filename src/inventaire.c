@@ -6,13 +6,12 @@
 #include <SDL.h>
 
 
-inv * CreeINV(){
+inv * CreationInventaire(){
     inv * inventaire = malloc(sizeof(inv));
     for (int i = 0; i < 3; i++){
         inventaire->cases[i].nb = i;
         inventaire->cases[i].x = 43;
         inventaire->cases[i].y = 195 + i * 80;
-
     }
     return inventaire;
 }

@@ -19,6 +19,10 @@ typedef struct joueur joueur_t;
  */
 joueur_t* CreationJoueur();
 
+int coord_x(joueur_t *j);
+
+int coord_y(joueur_t *j);
+
 /**
  * \brief fonction pour appliquer un déplacement au joueur
  * 

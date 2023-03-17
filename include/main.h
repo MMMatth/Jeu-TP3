@@ -14,6 +14,16 @@
 #include <SDL.h>
 #include <SDL_mixer.h>
 
+struct world_s{
+    inv * inventaire;
+    joueur_t * joueur;
+    monstreListe_t * ListeM;
+};
+typedef struct world_s world_t;
+
+void InitWorld(world_t * world, SDL_Renderer *renderer);
+
+
 /**
  * \brief fonction pour appliquer les dégats à un monstre et gerer sa mort
  * 

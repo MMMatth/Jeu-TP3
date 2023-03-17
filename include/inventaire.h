@@ -36,7 +36,7 @@ typedef struct {
  * 
  * \return inv* : inventaire créé
  */
-inv * CreeINV();
+inv * CreationInventaire();
 
 /**
  * \brief procedure pour initialiser un objet

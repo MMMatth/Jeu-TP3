@@ -11,13 +11,15 @@
 #include "../include/son.h"
 
 
-// void InitTexture(texture_t * texture, SDL_Renderer * renderer){
-    // texture->background_menu = SDL_CreateIMG(renderer, "assets/bg_menu.bmp");
-    // texture->background_game = SDL_CreateIMG(renderer, "assets/bg_jeu.bmp");
-    // texture->joueur = SDL_CreateIMG(renderer, "assets/joueur_s.bmp");
-    // texture->monstre = SDL_CreateIMG(renderer, "assets/monstre.bmp");
-    // texture->fleche = SDL_CreateIMG(renderer, "assets/fleche.bmp");
-// }
+void InitTexture(SDL_Renderer * renderer, texture_t *textures){
+    textures->background_menu = SDL_CreateIMG(renderer, "assets/bg_menu.bmp");
+    textures->background_game = SDL_CreateIMG(renderer, "assets/bg_jeu.bmp");
+    textures->joueur = SDL_CreateIMG(renderer, "assets/joueur_s.bmp");
+    textures->monstre = SDL_CreateIMG(renderer, "assets/monstre.bmp");
+    textures->fleche = SDL_CreateIMG(renderer, "assets/fleche.bmp");
+}
+
+
 
 
 void SDL_ExitWithError(const char *message){
@@ -26,10 +28,32 @@ void SDL_ExitWithError(const char *message){
     exit(EXIT_FAILURE);
 }
 
-void SDL_InitVideoWithExit(void){
-    if (SDL_Init(SDL_INIT_VIDEO) != 0){
-        SDL_ExitWithError("Initialisation SDL");
-    }
+void initSDLWithExit(SDL_Window** window, SDL_Renderer** renderer, int width, int height) {
+    if (SDL_Init(SDL_INIT_VIDEO) != 0)
+        SDL_ExitWithError("Initialisation de la SDL");
+    *window = SDL_CreateWindow(
+        "DIABLO MMXXIII",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        width,
+        height,
+        SDL_WINDOW_SHOWN
+    );
+    if (*window == NULL)
+        SDL_ExitWithError("Impossible de créer la fenêtre");
+
+    *renderer = SDL_CreateRenderer(*window, -1, SDL_RENDERER_ACCELERATED);
+
+    if (*renderer == NULL)
+        SDL_ExitWithError("Impossible de créer le renderer");
+    
+    SDL_Surface *icon = SDL_LoadBMP("assets/joueur_s.bmp");
+
+    if (icon == NULL)
+        SDL_ExitWithError("Impossible de charger l'icone");
+    
+    SDL_SetWindowIcon(*window, icon);
+    SDL_FreeSurface(icon);
 }
 
 void SDL_WindowAndRendererWithExit(int width, int height, SDL_Window **window, SDL_Renderer **renderer){
@@ -95,7 +119,6 @@ void SDL_RenderMonstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int 
     }
 }
 
-
 void CreationBarDeVie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv){
     SDL_Rect rect = {x - 5, y - 15, w, h}; // Création d'un rectangle
     SDL_SetRenderDrawColor(renderer, 109, 7, 26, 255); // Couleur rouge
@@ -111,7 +134,6 @@ void SDL_RenderINV(inv * inv, SDL_Renderer * renderer){
         SDL_RenderCopy(renderer, inv->objets[i].texture, NULL, &rect);
     }
 }
-
 
 void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, float * ticks){
     float angle;
@@ -144,23 +166,6 @@ void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *t
         *direction = ' '; // on remet la direction à vide
     }
 }   
-
-
-
-
-// void InitAudioWithError(){
-//     if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1){
-//         SDL_ExitWithError("Initialisation audio echouee");
-//     }
-// }
-
-void InitTexture(SDL_Renderer * renderer, texture_t *textures){
-    textures->background_menu = SDL_CreateIMG(renderer, "assets/bg_menu.bmp");
-    textures->background_game = SDL_CreateIMG(renderer, "assets/bg_jeu.bmp");
-    textures->joueur = SDL_CreateIMG(renderer, "assets/joueur_s.bmp");
-    textures->monstre = SDL_CreateIMG(renderer, "assets/monstre.bmp");
-    textures->fleche = SDL_CreateIMG(renderer, "assets/fleche.bmp");
-}
 
 void clean(SDL_Window * window, SDL_Renderer * renderer){ //, textures_t *textures , world_t * world);
     SDL_DestroyRenderer(renderer);

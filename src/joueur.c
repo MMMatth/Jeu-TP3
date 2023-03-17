@@ -12,6 +12,14 @@ joueur_t* CreationJoueur(){
     return j;
 }
 
+int coord_x(joueur_t *j){
+    return ((j->pos[0] * 69) + 158 ) - 15 ;
+}
+
+int coord_y(joueur_t *j){
+    return ((j->pos[1] * 69) + 61 ) - 20 ;
+}
+
 void deplacement (joueur_t *j, int taille, char touche) {
     if (touche=='z' && j->pos[1] > 0)
         j->pos[1] -= 1;

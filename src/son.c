@@ -52,6 +52,8 @@ void InitSound(sound_t *sound){
 }
 
 void InitMusic(music_t *music){
+    Mix_Init(MIX_INIT_MP3);
+    InitAudioWithError(); 
     music->menu = CreateMusic("assets/son/menu.mp3");
     music->game = CreateMusic("assets/son/game.mp3");
 }

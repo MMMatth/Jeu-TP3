@@ -40,7 +40,7 @@ void SDL_ExitWithError(const char *message);
  * \brief fonction pour initialiser SDL
  * 
  */
-void SDL_InitVideoWithExit(void);
+void initSDLWithExit(SDL_Window** window, SDL_Renderer** renderer, int width, int height);
 
 /**
  * \brief fonction qui permet de crée des hitbox
