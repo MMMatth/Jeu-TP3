@@ -132,7 +132,7 @@ void jouer(int argc, char *argv[])
 
     int item_follow_mouse = -1;
     int i_mst;
-    char arc_tirer;
+    char arc_tirer =' ';
     float compteur_fleche = 0.0;
     int ticks = 0;
 
@@ -247,13 +247,7 @@ void jouer(int argc, char *argv[])
 
             SDL_RenderMonstre(renderer, textures->monstre , 30, 40, world->ListeM, world->joueur, world->inventaire);
 
-            if ((arc_tirer == 'n' || arc_tirer == 's' || arc_tirer == 'o' || arc_tirer == 'e') && world->inventaire->objets[0].distance){
-                compteur_fleche += 0.5;
-                SDL_AfficherFleche(&arc_tirer, renderer, textures->fleche, world->joueur->pos[0], world->joueur->pos[1], 40, 40, &compteur_fleche);
-            }else if (!world->inventaire->objets[0].distance){
-                arc_tirer = ' ';
-                compteur_fleche = 0;
-            }
+            SDL_RenderFleche(renderer, textures, world->joueur, &compteur_fleche, &arc_tirer, world->inventaire->objets[0].distance);
 
             SDL_RenderIMG(renderer, textures->joueur , coord_x(world->joueur) , coord_y(world->joueur) , 30, 40);
             

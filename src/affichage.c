@@ -9,6 +9,7 @@
 #include "../include/monstre.h"
 #include "../include/inventaire.h"
 #include "../include/son.h"
+#include "../include/main.h"
 
 
 void InitTexture(SDL_Renderer * renderer, texture_t *textures){
@@ -135,37 +136,39 @@ void SDL_RenderINV(inv * inv, SDL_Renderer * renderer){
     }
 }
 
-void SDL_AfficherFleche(char * direction, SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, float * ticks){
-    float angle;
-    x = x * 69 + 158 - 15; // on applique la formule pour avoir la position en pixel
-    y = y * 68 + 61 - 20;
-    switch (*direction){
-    case 'n':
+
+void SDL_RenderFleche(SDL_Renderer *renderer, texture_t * textures, joueur_t * joueur, float * ticks, char * direction, bool distance){
+    int x = joueur->pos[0] * 69 + 158 - 15; // on récupère la position du joueur
+    int y = joueur->pos[1] * 68 + 61 - 20;
+    int angle;
+    if (*direction == 'n'){ // si la direction est nord
         y -= *ticks; // on applique le déplacement en fonction de la direction
         angle = 315.0; // on applique l'angle de rotation en fonction de la direction
-        break;
-    case 's':
+    }else if (*direction == 's'){ // si la direction est sud
         y += *ticks;
         angle = 135;
-        break;
-    case 'e':
+    }else if (*direction == 'e'){ // si la direction est est
         x += *ticks;
         angle = 45;
-        break;
-    case 'o':
+    }else if (*direction == 'o'){ // si la direction est ouest
         x -= *ticks;
         angle = 225;
-        break;
-    default:
-        break;
     }
-    SDL_RenderIMG_Angle(renderer, texture, x , y, w, h, angle); // on affiche la flèche
+
+    if (*direction != ' ' && distance){ // si la direction n'est pas vide
+        SDL_RenderIMG_Angle(renderer, textures->fleche, x , y, 50, 50, angle); // on affiche la flèche
+        *ticks += 0.5; // on augmente le déplacement
+    }else if(!distance){
+        *direction = ' '; // on remet la direction à vide
+        *ticks = 0.0; // on remet le déplacement à 0
+    }
 
     if (x <= 120 || x >= 670 || y <= 30 || y >= 570){ 
         *ticks = 0.0; // on remet le déplacement à 0 si la flèche sort du plateau
         *direction = ' '; // on remet la direction à vide
     }
-}   
+}
+
 
 void clean(SDL_Window * window, SDL_Renderer * renderer){ //, textures_t *textures , world_t * world);
     SDL_DestroyRenderer(renderer);

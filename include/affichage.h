@@ -97,7 +97,9 @@ void SDL_RenderIMG(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, i
  * \param h : hauteur de l'image
  * \param angle : angle de rotation
  */
-void SDL_RenderIMGAngle(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, double angle);
+void SDL_RenderIMG_Angle(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, double angle);
+
+void SDL_RenderFleche(SDL_Renderer *renderer, texture_t * textures, joueur_t * joueur, float * ticks, char * direction, bool distance);
 
 /**
  * \brief procedure pour crée une barre de vie
