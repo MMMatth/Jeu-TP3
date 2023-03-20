@@ -5,19 +5,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <SDL.h>
 
 
 
 typedef struct{
-    char nom[20]; /* Le nom de l'objet */
+    char * nom; /* Le nom de l'objet */
     int degats; /* Les degats de l'objet */
     int position; /* La case de l'objet */
     int x;
     int y;
     bool distance;
-    char image[100]; /* L'image de l'objet */
-    SDL_Texture * texture;
 } obj;
 
 typedef struct {
@@ -46,10 +43,9 @@ inv * CreationInventaire();
  * \param degats : degats de l'objet
  * \param position : position de l'objet
  * \param image : path de l'image de l'objet
- * \param renderer : renderer de la fenetre
  * \param distance : true si l'objet est à distance, false sinon
  */
-void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Renderer * renderer, bool distance);
+void SetItem(inv* inv, char* nom, int degats, int position, bool distance);
 
 /**
  * \brief procedure pour échanger deux objets dans l'inventaire
@@ -77,14 +73,5 @@ void RefreshPos(int indice, inv * inv, int x, int y);
  * \return char*
  */
 char * ToStringInv(inv * inventaire);
-
-
-/**
- * \brief procedure pour afficher l'inventaire
- * 
- * \param inv : pointeur sur l'inventaire
- * \param renderer : pointeur sur le renderer SDL
- */
-void render_inv(inv * inv, SDL_Renderer * renderer);
 
 #endif

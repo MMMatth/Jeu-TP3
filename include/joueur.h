@@ -19,8 +19,20 @@ typedef struct joueur joueur_t;
  */
 joueur_t* CreationJoueur();
 
+/**
+ * \brief fonction qui permet de donner la position x du joueur
+ * 
+ * \param j : le joueur
+ * \return int 
+ */
 int coord_x(joueur_t *j);
 
+/**
+ * \brief fonction qui permet de donner la position y du joueur
+ * 
+ * \param j : le joueur
+ * \return int 
+ */
 int coord_y(joueur_t *j);
 
 /**

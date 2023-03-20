@@ -18,12 +18,12 @@
 struct texture_s{
     SDL_Texture * background_menu;
     SDL_Texture * background_game;
+    SDL_Texture * background_fin;
     SDL_Texture * joueur;
     SDL_Texture * monstre;
     SDL_Texture * fleche;
     SDL_Texture * epee;
-    SDL_Texture * bouclier;
-    SDL_Texture * potion;
+    SDL_Texture * arc;
 };
 typedef struct texture_s texture_t;
 
@@ -113,6 +113,17 @@ void render_fleche(SDL_Renderer *renderer, texture_t * textures, joueur_t * joue
  * \param pv : point de vie
  */
 void bardevie(SDL_Renderer *renderer, int x, int y, int w, int h, int pv);
+
+/**
+ * \brief procedure pour afficher l'inventaire
+ * 
+ * \param inv : pointeur sur l'inventaire
+ * \param renderer : pointeur sur le renderer SDL
+ */
+void render_inv(inv * inv, texture_t * textures, SDL_Renderer * renderer);
+
+
+
 
 void clean(SDL_Window *window, SDL_Renderer * renderer); //, textures_t *textures , world_t * world);
 

@@ -1,9 +1,9 @@
-#include "../include/inventaire.h"
-#include "../include/affichage.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <SDL.h>
+
+#include "../include/inventaire.h"
 
 
 inv * CreationInventaire(){
@@ -16,28 +16,28 @@ inv * CreationInventaire(){
     return inventaire;
 }
 
-void SetItem(inv* inv, char* nom, int degats, int position, char* image, SDL_Renderer * renderer, bool distance){
-    strcat(inv->objets[position].nom, nom);
+void SetItem(inv* inv, char* nom, int degats, int position, bool distance){
+    inv->objets[position].nom = malloc(sizeof(char) * strlen(nom));
+    strcpy(inv->objets[position].nom, nom);
     inv->objets[position].degats = degats;
     inv->objets[position].position = position;
     inv->objets[position].x = inv->cases[position].x;
     inv->objets[position].y = inv->cases[position].y;
     inv->objets[position].distance = distance;
-    strcat(inv->objets[position].image, image);
-    inv->objets[position].texture = create_img(renderer, image);
 }
 
 void EchangeItem(inv* inventaire, int pos1, int pos2) {
     obj temp; // objet temporaire pour stocker l'objet à la position pos1
+    if (inventaire->objets[pos2].nom != NULL){
+        temp = inventaire->objets[pos1];
+        inventaire->objets[pos1] = inventaire->objets[pos2];
+        inventaire->objets[pos2] = temp;
 
-    temp = inventaire->objets[pos1];
-    inventaire->objets[pos1] = inventaire->objets[pos2];
-    inventaire->objets[pos2] = temp;
-
-    inventaire->objets[pos1].x = inventaire->cases[pos1].x;
-    inventaire->objets[pos1].y = inventaire->cases[pos1].y;
-    inventaire->objets[pos2].x = inventaire->cases[pos2].x;
-    inventaire->objets[pos2].y = inventaire->cases[pos2].y;
+        inventaire->objets[pos1].x = inventaire->cases[pos1].x;
+        inventaire->objets[pos1].y = inventaire->cases[pos1].y;
+        inventaire->objets[pos2].x = inventaire->cases[pos2].x;
+        inventaire->objets[pos2].y = inventaire->cases[pos2].y;
+    }
 
 }
 
@@ -59,19 +59,10 @@ char * ToStringInv(inv * inventaire){
         sprintf(position, "%d", inventaire->objets[i].position);
         strcat(str, position);
         strcat(str, " ");
-        strcat(str, inventaire->objets[i].image);
-        strcat(str, " ");
         char distance[10];
         sprintf(distance, "%s\n", inventaire->objets[i].distance ? "true" : "false");
         strcat(str, distance);
         strcat(str, " ");
     }
     return str;
-}
-
-void render_inv(inv * inv, SDL_Renderer * renderer){
-    for (int i = 0; i < 3; i++){
-        SDL_Rect rect = {inv->objets[i].x, inv->objets[i].y, 50, 50};
-        SDL_RenderCopy(renderer, inv->objets[i].texture, NULL, &rect);
-    }
 }

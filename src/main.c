@@ -84,9 +84,8 @@ char ** generationListeAff( joueur_t* j, monstreListe_t* listeM){
 }
 
 void InitInventaire(inv *inventaire, SDL_Renderer *renderer){
-    SetItem(inventaire, "epee", 50, 0, "assets/epee.bmp", renderer, false);
-    SetItem(inventaire, "pioche", 10, 1, "assets/pioche.bmp", renderer, false);
-    SetItem(inventaire, "arc", 20, 2, "assets/arc.bmp", renderer, true);
+    SetItem(inventaire, "epee", 50, 0, false);
+    SetItem(inventaire, "arc", 20, 1, true);
 }
 
 void InitMonstres(monstreListe_t *ListeM, int manche){
@@ -109,7 +108,7 @@ void jouer(int argc, char *argv[])
     SDL_Renderer *renderer = NULL;
     SDL_bool program_launched = SDL_TRUE;
     SDL_Event event;
-    bool game_start = false;
+    int game_phase = 0;
     
     init_hud();
 
@@ -144,7 +143,7 @@ void jouer(int argc, char *argv[])
 
     while (program_launched){
         ticks += 1;
-        if (!game_start){
+        if (game_phase == 0){
             if (ticks == 1) PlayMusic(musics->menu);
             while (SDL_PollEvent(&event)){
                 switch (event.type){
@@ -155,7 +154,7 @@ void jouer(int argc, char *argv[])
                                 printf("Jouez au jeu\n");
                                 StopMusic(musics->menu);
                                 ticks = 0;
-                                game_start = true;
+                                game_phase = 1;
                             }else if (hitbox(event, 250, 550, 380, 470)){
                                 PlaySound(sons->click, 0, 0);
                                 SDL_Delay(200);
@@ -174,7 +173,7 @@ void jouer(int argc, char *argv[])
             }
             SDL_RenderCopy(renderer, textures->background_menu , NULL, NULL); 
             SDL_RenderPresent(renderer);
-        }else{ 
+        }else if(game_phase == 1){ 
             if (ticks == 1)
                 PlayMusic(musics->game);
             
@@ -235,7 +234,7 @@ void jouer(int argc, char *argv[])
                                 arc_tirer = 's';
                                 break;
                             case SDLK_ESCAPE:
-                                game_start = false;
+                                game_phase = false;
                                 StopMusic(musics->game);
                             
                                 break;
@@ -246,7 +245,6 @@ void jouer(int argc, char *argv[])
                 }
                 if (item_follow_mouse != -1)
                     RefreshPos(item_follow_mouse, world->inventaire, event.button.x, event.button.y);
-
             }
 
 
@@ -262,7 +260,7 @@ void jouer(int argc, char *argv[])
 
             render_img(renderer, textures->joueur , coord_x(world->joueur) , coord_y(world->joueur) , 30, 40);
             
-            render_inv(world->inventaire, renderer);
+            render_inv(world->inventaire, textures, renderer);
 
             render_hud(renderer);
 
@@ -276,12 +274,35 @@ void jouer(int argc, char *argv[])
             }else if (world->ListeM->nbMst == 0 && manche == 5){
                 save_score(timer);
                 printf("Vous avez gagné\n");
-                program_launched = SDL_FALSE;
+                game_phase = 2;
             }
 
 
             if (ticks % 60 == 0)
                 timer += 1;
+        }else{
+            while (SDL_PollEvent(&event)){
+                switch (event.type){
+                    case SDL_QUIT:
+                        program_launched = SDL_FALSE;
+                        break;
+                    case SDL_MOUSEBUTTONDOWN:
+                        if (event.button.button == SDL_BUTTON_LEFT){
+                            printf("x = %d, y = %d\n", event.button.x, event.button.y);
+                        }if (hitbox(event, 250, 550, 324, 400)){
+                            PlaySound(sons->click, 0, 0);
+                            SDL_Delay(200);
+                            StopMusic(musics->game);
+                            printf("Quitter le jeu\n");
+                            program_launched = SDL_FALSE;
+                            break;
+                        }
+                }
+            }
+            SDL_RenderCopy(renderer, textures->background_fin , NULL, NULL); 
+            SDL_RenderPresent(renderer);
+            
+            SDL_Delay(1000/60);
         }
     }
     

@@ -15,9 +15,12 @@
 void InitTexture(SDL_Renderer * renderer, texture_t *textures){
     textures->background_menu = create_img(renderer, "assets/bg_menu.bmp");
     textures->background_game = create_img(renderer, "assets/bg_jeu.bmp");
+    textures->background_fin = create_img(renderer, "assets/bg_fin.bmp");
     textures->joueur = create_img(renderer, "assets/joueur_s.bmp");
     textures->monstre = create_img(renderer, "assets/monstre.bmp");
     textures->fleche = create_img(renderer, "assets/fleche.bmp");
+    textures->epee = create_img(renderer, "assets/epee.bmp");
+    textures->arc = create_img(renderer, "assets/arc.bmp");
 }
 
 
@@ -141,6 +144,19 @@ void render_fleche(SDL_Renderer *renderer, texture_t * textures, joueur_t * joue
         *direction = ' '; // on remet la direction à vide
     }
 }
+
+void render_inv(inv * inv, texture_t * textures, SDL_Renderer * renderer){
+    for (int i = 0; i < 3; i++){
+        SDL_Rect rect = {inv->objets[i].x, inv->objets[i].y, 50, 50};
+        if (inv->objets[i].nom != NULL && inv->objets[i].nom[0] != '\0'){
+            if (strcmp(inv->objets[i].nom, "epee") == 0)
+                SDL_RenderCopy(renderer, textures->epee, NULL, &rect);
+            else if (strcmp(inv->objets[i].nom, "arc") == 0)
+                SDL_RenderCopy(renderer, textures->arc, NULL, &rect);
+        }
+    }
+}
+
 
 
 void clean(SDL_Window * window, SDL_Renderer * renderer){ //, textures_t *textures , world_t * world);
