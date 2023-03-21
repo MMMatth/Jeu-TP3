@@ -14,13 +14,19 @@ Le joueur peut changer d'arme grace à l'inventaire qui se trouve à gauche de l
 
 ## Images du jeu
 ### Menu
-<center><img src="assets/readme/menu.png" width="400px"></center>
+<p align = "center">
+    <img src="assets/readme/menu.png" width="400px">
+</p>
 
 ### Inventaire, arme et deplacement
-<center><img src="assets/readme/jeu.gif" width="400px"></center>
+<p align = "center">
+    <img src="assets/readme/jeu.gif" width="400px">
+</p>
 
 ### Fin du jeu et attaque
-<center><img src="assets/readme/fin.gif" width="400px"></center>
+<p align = "center">
+    <img src="assets/readme/fin.gif" width="400px">
+</p>
 
 ## Les ameliorations :
 ### Inventaire :
