@@ -54,7 +54,7 @@ Nous avons utilisé la librairie SDL_ttf pour afficher le texte.
 Nous avons implémentés une sauvegarde du temps du joueur. Le temps est sauvegardé dans un fichier texte. Le temps est affiché dans l'hud.
 
 ## Comment utiliser le jeu
-Pour utiliser le jeu, il faut tout d'abord cloner le répertoire GitHub sur votre machine. Pour cela, il faut copier l'URL du répertoire depuis GitHub et lancer la commande git clone dans un terminal en utilisant l'URL copiée.
+Pour utiliser le jeu, il faut tout d'abord cloner <a href="https://github.com/MMMatth/Jeu-TP3">le répertoire GitHub</a> sur votre machine. Pour cela, il faut copier l'URL du répertoire depuis GitHub et lancer la commande git clone dans un terminal en utilisant l'URL copiée.
 
 Ensuite, pour lancer le jeu, il faut compiler le programme en utilisant la commande ./compil dans le terminal. Cette commande va compiler tous les fichiers sources nécessaires au fonctionnement du jeu et créer un exécutable nommé "start dans le dossier bin".
 
