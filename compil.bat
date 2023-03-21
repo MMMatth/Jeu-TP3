@@ -8,8 +8,8 @@ gcc -c src/monstre.c -o lib/monstre.o  -I include/SDL -L lib/SDL -lmingw32 -lSDL
 gcc -c src/hud.c -o lib/hud.o  -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf
 
 @REM Compilation des tests
-@REM gcc tests/joueur_test.c lib/*.o -o bin/joueur_test -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2
-@REM gcc tests/monstre_test.c lib/*.o -o bin/monstre_test -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2
+gcc tests/joueur_test.c lib/joueur.o -o bin/joueur_test
+gcc tests/monstre_test.c lib/*.o -o bin/monstre_test -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf
 gcc tests/inventaire_test.c lib/*.o -o bin/inventaire_test -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf
 gcc tests/main_test.c lib/*.o -o bin/start -I include/SDL -L lib/SDL -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf
 

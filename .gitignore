@@ -1,4 +1,5 @@
-bin/affichage_test.exe
-bin/main_test.exe
+bin/joueur_test.exe
+bin/monstre_test.exe
+bin/inventaire_test.exe
 bin/start.exe
-bin/main_test.exe
+scores.txt
