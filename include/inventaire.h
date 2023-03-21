@@ -1,3 +1,9 @@
+/**
+ * \file inventaire.h
+ * \brief fichier pour l'inventaire
+ * 
+ */
+
 #ifndef INVENTAIRE_H
 #define INVENTAIRE_H
 
@@ -9,23 +15,23 @@
 
 
 typedef struct{
-    char * nom; /* Le nom de l'objet */
-    int degats; /* Les degats de l'objet */
-    int position; /* La case de l'objet */
-    int x; /* La position x de l'objet */
-    int y; /* La position y de l'objet */
-    bool distance; /* true si l'objet est à distance, false sinon */
+    char * nom; /**< Le nom de l'objet */
+    int degats; /**< Les degats de l'objet */
+    int position; /**< La case de l'objet */
+    int x; /**< La position x de l'objet */
+    int y; /**< La position y de l'objet */
+    bool distance; /**< true si l'objet est à distance, false sinon */
 } obj;
 
 typedef struct {
-    int nb; /* Le numéro de la case */
-    int x; /* La position x de la case */
-    int y; /* La position y de la case */
+    int nb; /**< Le numéro de la case */
+    int x; /**< La position x de la case */
+    int y; /**< La position y de la case */
 } box;
 
 typedef struct {
-    obj objets[3]; /* Les objets de l'inventaire */
-    box cases[3]; /* Les cases de l'inventaire */
+    obj objets[3]; /**< Les objets de l'inventaire */
+    box cases[3]; /**< Les cases de l'inventaire */
 } inv;
 
 /**

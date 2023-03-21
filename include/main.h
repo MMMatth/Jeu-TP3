@@ -21,9 +21,9 @@
 
 
 struct world_s{
-    inv * inventaire;
-    joueur_t * joueur;
-    monstreListe_t * ListeM;
+    inv * inventaire; /**< l'inventaire du joueur*/
+    joueur_t * joueur; /**< le joueur*/
+    monstreListe_t * ListeM; /**< la liste des monstres*/
 };
 typedef struct world_s world_t;
 

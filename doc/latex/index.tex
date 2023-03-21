@@ -1,0 +1,29 @@
+\label{index_md_C__Users_matlo_Documents_worflow_Jeu_TP3_readme}%
+\Hypertarget{index_md_C__Users_matlo_Documents_worflow_Jeu_TP3_readme}%
+Ce projet a été réalisé dans le cadre du cours de méthodologie de la conception et de la programmation partie I pour les étudiants de la Licence 1 M-\/\+I-\/\+SPI de l\textquotesingle{}Université de Lorraine. Il consiste à créer un jeu solo qui se joue sur un plateau carré.\hypertarget{index_autotoc_md1}{}\doxysection{Règles du jeu}\label{index_autotoc_md1}
+Le but du jeu est de finir le plus vite possible les 5 manches. Le joueur se déplace sur une carte carrée de taille 8x8 a l\textquotesingle{}aide des touches suivante \+:
+\begin{DoxyItemize}
+\item z \+: haut
+\item q \+: gauche
+\item s \+: bas
+\item d \+: droite
+\end{DoxyItemize}
+
+Le joueur peut attaquer les monstres qui sont sur la même case que lui si il a une arme à courte portée (ex \+: épee). Mais le joueur a aussi la possibilité d\textquotesingle{}utiliser un arc en tirant avec les touches directionnelles. Le joueur peut changer d\textquotesingle{}arme grace à l\textquotesingle{}inventaire qui se trouve à gauche de la carte en mettant l\textquotesingle{}arme qu\textquotesingle{}il souhaite utiliser dans la case le plus en haut.\hypertarget{index_autotoc_md2}{}\doxysection{Images du jeu}\label{index_autotoc_md2}
+\hypertarget{index_autotoc_md3}{}\doxysubsection{Menu}\label{index_autotoc_md3}
+ \hypertarget{index_autotoc_md4}{}\doxysubsection{Inventaire, arme et deplacement}\label{index_autotoc_md4}
+ \hypertarget{index_autotoc_md5}{}\doxysubsection{Fin du jeu et attaque}\label{index_autotoc_md5}
+ \hypertarget{index_autotoc_md6}{}\doxysection{Les ameliorations \+:}\label{index_autotoc_md6}
+\hypertarget{index_autotoc_md7}{}\doxysubsection{Inventaire \+:}\label{index_autotoc_md7}
+Nous avons implémentés un nouveau module inventaire qui permet au joueur de changer d\textquotesingle{}arme en mettant l\textquotesingle{}arme qu\textquotesingle{}il souhaite utiliser dans la case le plus en haut de l\textquotesingle{}inventaire. \hypertarget{index_autotoc_md8}{}\doxysubsection{Armes \+:}\label{index_autotoc_md8}
+Nous avons implémentés un arc qui permet au joueur de tirer sur les monstres à distance. Pour tirer, il faut utiliser les touches directionnelles.\hypertarget{index_autotoc_md9}{}\doxysubsection{Monstres \+:}\label{index_autotoc_md9}
+Les monstres se déplacent aléatoirement sur la carte. Si nous sommes sur la meme case qu\textquotesingle{}un monstre avec une arme à courte portée, une barre de vie est affiché, pareil si nous avons une arme a longue distance et qu\textquotesingle{}un monstre est à portée de tir.\hypertarget{index_autotoc_md10}{}\doxysubsection{Interface \+:}\label{index_autotoc_md10}
+Nous avons implémentés une interface graphique en SDL qui permet de jouer au jeu. Nous avons aussi implémentés un menu qui permet de choisir entre jouer au jeu ou quitter le jeu.\hypertarget{index_autotoc_md11}{}\doxysubsection{Sons \+:}\label{index_autotoc_md11}
+Nous avons implémentés des sons pour le jeu. Il y a un son pour chaque action du joueur (tirer avec l\textquotesingle{}arc, mort d\textquotesingle{}un monstre, musique de fond). Nous avons utilisé la librairie SDL\+\_\+mixer pour jouer les sons.\hypertarget{index_autotoc_md12}{}\doxysubsection{Hud \+:}\label{index_autotoc_md12}
+Nous avons implémentés un hud qui permet d\textquotesingle{}afficher un chrono et le nombre de manche restante. Nous avons utilisé la librairie SDL\+\_\+ttf pour afficher le texte.\hypertarget{index_autotoc_md13}{}\doxysubsection{Sauvegarde du temps \+:}\label{index_autotoc_md13}
+Nous avons implémentés une sauvegarde du temps du joueur. Le temps est sauvegardé dans un fichier texte. Le temps est affiché dans l\textquotesingle{}hud.\hypertarget{index_autotoc_md14}{}\doxysection{Comment utiliser le jeu}\label{index_autotoc_md14}
+Pour utiliser le jeu, il faut tout d\textquotesingle{}abord cloner le répertoire Git\+Hub sur votre machine. Pour cela, il faut copier l\textquotesingle{}URL du répertoire depuis Git\+Hub et lancer la commande git clone dans un terminal en utilisant l\textquotesingle{}URL copiée.
+
+Ensuite, pour lancer le jeu, il faut compiler le programme en utilisant la commande ./compil dans le terminal. Cette commande va compiler tous les fichiers sources nécessaires au fonctionnement du jeu et créer un exécutable nommé \char`\"{}start dans le dossier bin\char`\"{}.
+
+Pour lancer le jeu, il suffit d\textquotesingle{}exécuter le fichier \char`\"{}start\char`\"{} en utilisant la commande \char`\"{}./bin/start\char`\"{} dans le terminal. 

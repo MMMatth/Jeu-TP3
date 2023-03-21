@@ -1,3 +1,9 @@
+/**
+ * \file son.h
+ * \brief fichier d'entête pour les sons
+ * 
+ */
+
 #ifndef SON_H
 #define SON_H
 #include <SDL_mixer.h>
@@ -5,15 +11,15 @@
 
 
 struct sound_s{
-    Mix_Chunk  * arc;
-    Mix_Chunk  * death;
-    Mix_Chunk  * click;
+    Mix_Chunk  * arc; /**< son de l'arc*/
+    Mix_Chunk  * death; /**< son de la mort*/
+    Mix_Chunk  * click; /**< son du click*/
 };
 typedef struct sound_s sound_t;
 
 struct music_s{
-    Mix_Music * menu;
-    Mix_Music * game;
+    Mix_Music * menu; /**< musique du menu*/
+    Mix_Music * game; /**< musique du jeu*/
 };
 typedef struct music_s music_t;
 

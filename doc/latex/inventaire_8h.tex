@@ -1,0 +1,135 @@
+\hypertarget{inventaire_8h}{}\doxysection{Référence du fichier C\+:/\+Users/matlo/\+Documents/worflow/\+Jeu-\/\+TP3/include/inventaire.h}
+\label{inventaire_8h}\index{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/inventaire.h@{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/inventaire.h}}
+
+
+fichier pour l\textquotesingle{}inventaire  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structobj}{obj}}
+\item 
+struct \mbox{\hyperlink{structbox}{box}}
+\item 
+struct \mbox{\hyperlink{structinv}{inv}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structinv}{inv}} $\ast$ \mbox{\hyperlink{inventaire_8h_aa7fb14baccd256a69f02b84eda876fd9}{Creation\+Inventaire}} ()
+\begin{DoxyCompactList}\small\item\em fonction pour créer un inventaire \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inventaire_8h_a235d185a203e3d76b3dad5e2e634f041}{Set\+Item}} (\mbox{\hyperlink{structinv}{inv}} $\ast$\mbox{\hyperlink{structinv}{inv}}, char $\ast$nom, int degats, int position, bool distance)
+\begin{DoxyCompactList}\small\item\em procedure pour initialiser un objet \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inventaire_8h_aeeddcdd42fa7e2e8ae32fac15e7bdd02}{Echange\+Item}} (\mbox{\hyperlink{structinv}{inv}} $\ast$inventaire, int pos1, int pos2)
+\begin{DoxyCompactList}\small\item\em procedure pour échanger deux objets dans l\textquotesingle{}inventaire \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inventaire_8h_a3548fe763301437ec4c32a46049af332}{Refresh\+Pos}} (int indice, \mbox{\hyperlink{structinv}{inv}} $\ast$\mbox{\hyperlink{structinv}{inv}}, int x, int y)
+\begin{DoxyCompactList}\small\item\em procedure pour actualiser la position d\textquotesingle{}un objet dans l\textquotesingle{}inventaire \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{inventaire_8h_a08cb357ea36c7f3f82ca508444e195cd}{To\+String\+Inv}} (\mbox{\hyperlink{structinv}{inv}} $\ast$inventaire)
+\begin{DoxyCompactList}\small\item\em fonction pour recuperer les informations de l\textquotesingle{}inventaire sous forme de chaine de caractères \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier pour l\textquotesingle{}inventaire 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{inventaire_8h_aa7fb14baccd256a69f02b84eda876fd9}\label{inventaire_8h_aa7fb14baccd256a69f02b84eda876fd9}} 
+\index{inventaire.h@{inventaire.h}!CreationInventaire@{CreationInventaire}}
+\index{CreationInventaire@{CreationInventaire}!inventaire.h@{inventaire.h}}
+\doxysubsubsection{\texorpdfstring{CreationInventaire()}{CreationInventaire()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structinv}{inv}} $\ast$ Creation\+Inventaire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+fonction pour créer un inventaire 
+
+\begin{DoxyReturn}{Renvoie}
+inv$\ast$ \+: inventaire créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventaire_8h_aeeddcdd42fa7e2e8ae32fac15e7bdd02}\label{inventaire_8h_aeeddcdd42fa7e2e8ae32fac15e7bdd02}} 
+\index{inventaire.h@{inventaire.h}!EchangeItem@{EchangeItem}}
+\index{EchangeItem@{EchangeItem}!inventaire.h@{inventaire.h}}
+\doxysubsubsection{\texorpdfstring{EchangeItem()}{EchangeItem()}}
+{\footnotesize\ttfamily void Echange\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structinv}{inv}} $\ast$}]{inventaire,  }\item[{int}]{pos1,  }\item[{int}]{pos2 }\end{DoxyParamCaption})}
+
+
+
+procedure pour échanger deux objets dans l\textquotesingle{}inventaire 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inventaire} & \+: inventaire \\
+\hline
+{\em pos1} & \+: position de l\textquotesingle{}objet 1 \\
+\hline
+{\em pos2} & \+: position de l\textquotesingle{}objet 2 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{inventaire_8h_a3548fe763301437ec4c32a46049af332}\label{inventaire_8h_a3548fe763301437ec4c32a46049af332}} 
+\index{inventaire.h@{inventaire.h}!RefreshPos@{RefreshPos}}
+\index{RefreshPos@{RefreshPos}!inventaire.h@{inventaire.h}}
+\doxysubsubsection{\texorpdfstring{RefreshPos()}{RefreshPos()}}
+{\footnotesize\ttfamily void Refresh\+Pos (\begin{DoxyParamCaption}\item[{int}]{indice,  }\item[{\mbox{\hyperlink{structinv}{inv}} $\ast$}]{inv,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+procedure pour actualiser la position d\textquotesingle{}un objet dans l\textquotesingle{}inventaire 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em indice} & \\
+\hline
+{\em inv} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{inventaire_8h_a235d185a203e3d76b3dad5e2e634f041}\label{inventaire_8h_a235d185a203e3d76b3dad5e2e634f041}} 
+\index{inventaire.h@{inventaire.h}!SetItem@{SetItem}}
+\index{SetItem@{SetItem}!inventaire.h@{inventaire.h}}
+\doxysubsubsection{\texorpdfstring{SetItem()}{SetItem()}}
+{\footnotesize\ttfamily void Set\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structinv}{inv}} $\ast$}]{inv,  }\item[{char $\ast$}]{nom,  }\item[{int}]{degats,  }\item[{int}]{position,  }\item[{bool}]{distance }\end{DoxyParamCaption})}
+
+
+
+procedure pour initialiser un objet 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inv} & \+: inventaire \\
+\hline
+{\em nom} & \+: nom de l\textquotesingle{}objet \\
+\hline
+{\em degats} & \+: degats de l\textquotesingle{}objet \\
+\hline
+{\em position} & \+: position de l\textquotesingle{}objet \\
+\hline
+{\em distance} & \+: true si l\textquotesingle{}objet est à distance, false sinon \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{inventaire_8h_a08cb357ea36c7f3f82ca508444e195cd}\label{inventaire_8h_a08cb357ea36c7f3f82ca508444e195cd}} 
+\index{inventaire.h@{inventaire.h}!ToStringInv@{ToStringInv}}
+\index{ToStringInv@{ToStringInv}!inventaire.h@{inventaire.h}}
+\doxysubsubsection{\texorpdfstring{ToStringInv()}{ToStringInv()}}
+{\footnotesize\ttfamily char $\ast$ To\+String\+Inv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structinv}{inv}} $\ast$}]{inventaire }\end{DoxyParamCaption})}
+
+
+
+fonction pour recuperer les informations de l\textquotesingle{}inventaire sous forme de chaine de caractères 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inventaire} & \+: inventaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+char$\ast$ 
+\end{DoxyReturn}

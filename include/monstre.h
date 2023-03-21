@@ -1,3 +1,9 @@
+/**
+ * \file monstre.h
+ * \brief fichier d'entête pour les monstres
+ * 
+ */
+
 #ifndef MONSTRE_H
 #define MONSTRE_H
 

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DIABLO MMXXIII: Jeu en C</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="joueur_s.bmp"/></td>
+  <td id="projectalign">
+   <div id="projectname">DIABLO MMXXIII
+   </div>
+   <div id="projectbrief">Ce projet a été réalisé dans le cadre du cours de méthodologie de la conception et de la programmation partie I pour les étudiants de la Licence 1 M-I-SPI de l&#39;Université de Lorraine. Il consiste à créer un jeu solo qui se joue sur un plateau carré.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Jeu en C </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_C__Users_matlo_Documents_worflow_Jeu_TP3_readme"></a>Ce projet a été réalisé dans le cadre du cours de méthodologie de la conception et de la programmation partie I pour les étudiants de la Licence 1 M-I-SPI de l'Université de Lorraine. Il consiste à créer un jeu solo qui se joue sur un plateau carré.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Règles du jeu</h1>
+<p>Le but du jeu est de finir le plus vite possible les 5 manches. Le joueur se déplace sur une carte carrée de taille 8x8 a l'aide des touches suivante :</p><ul>
+<li>z : haut</li>
+<li>q : gauche</li>
+<li>s : bas</li>
+<li>d : droite</li>
+</ul>
+<p>Le joueur peut attaquer les monstres qui sont sur la même case que lui si il a une arme à courte portée (ex : épee). Mais le joueur a aussi la possibilité d'utiliser un arc en tirant avec les touches directionnelles. Le joueur peut changer d'arme grace à l'inventaire qui se trouve à gauche de la carte en mettant l'arme qu'il souhaite utiliser dans la case le plus en haut.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Images du jeu</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Menu</h2>
+<p><img src="assets/readme/menu.png" alt="" width="400px" class="inline"/> </p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Inventaire, arme et deplacement</h2>
+<p><img src="assets/readme/jeu.gif" alt="" width="400px" class="inline"/> </p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Fin du jeu et attaque</h2>
+<p><img src="assets/readme/fin.gif" alt="" width="400px" class="inline"/> </p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Les ameliorations :</h1>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Inventaire :</h2>
+<p>Nous avons implémentés un nouveau module inventaire qui permet au joueur de changer d'arme en mettant l'arme qu'il souhaite utiliser dans la case le plus en haut de l'inventaire. </p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Armes :</h2>
+<p>Nous avons implémentés un arc qui permet au joueur de tirer sur les monstres à distance. Pour tirer, il faut utiliser les touches directionnelles.</p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Monstres :</h2>
+<p>Les monstres se déplacent aléatoirement sur la carte. Si nous sommes sur la meme case qu'un monstre avec une arme à courte portée, une barre de vie est affiché, pareil si nous avons une arme a longue distance et qu'un monstre est à portée de tir.</p>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Interface :</h2>
+<p>Nous avons implémentés une interface graphique en SDL qui permet de jouer au jeu. Nous avons aussi implémentés un menu qui permet de choisir entre jouer au jeu ou quitter le jeu.</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Sons :</h2>
+<p>Nous avons implémentés des sons pour le jeu. Il y a un son pour chaque action du joueur (tirer avec l'arc, mort d'un monstre, musique de fond). Nous avons utilisé la librairie SDL_mixer pour jouer les sons.</p>
+<h2><a class="anchor" id="autotoc_md12"></a>
+Hud :</h2>
+<p>Nous avons implémentés un hud qui permet d'afficher un chrono et le nombre de manche restante. Nous avons utilisé la librairie SDL_ttf pour afficher le texte.</p>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Sauvegarde du temps :</h2>
+<p>Nous avons implémentés une sauvegarde du temps du joueur. Le temps est sauvegardé dans un fichier texte. Le temps est affiché dans l'hud.</p>
+<h1><a class="anchor" id="autotoc_md14"></a>
+Comment utiliser le jeu</h1>
+<p>Pour utiliser le jeu, il faut tout d'abord cloner le répertoire GitHub sur votre machine. Pour cela, il faut copier l'URL du répertoire depuis GitHub et lancer la commande git clone dans un terminal en utilisant l'URL copiée.</p>
+<p>Ensuite, pour lancer le jeu, il faut compiler le programme en utilisant la commande ./compil dans le terminal. Cette commande va compiler tous les fichiers sources nécessaires au fonctionnement du jeu et créer un exécutable nommé "start dans le dossier bin".</p>
+<p>Pour lancer le jeu, il suffit d'exécuter le fichier "start" en utilisant la commande "./bin/start" dans le terminal. </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
+</small></address>
+</body>
+</html>

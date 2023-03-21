@@ -16,14 +16,14 @@
 #include "../include/inventaire.h"
 
 struct texture_s{
-    SDL_Texture * background_menu;
-    SDL_Texture * background_game;
-    SDL_Texture * background_fin;
-    SDL_Texture * joueur;
-    SDL_Texture * monstre;
-    SDL_Texture * fleche;
-    SDL_Texture * epee;
-    SDL_Texture * arc;
+    SDL_Texture * background_menu; /**< texture du background du menu*/
+    SDL_Texture * background_game; /**< texture du background du jeu*/
+    SDL_Texture * background_fin; /**< texture du background de la fin*/
+    SDL_Texture * joueur; /**< texture du joueur*/
+    SDL_Texture * monstre; /**< texture du monstre*/
+    SDL_Texture * fleche; /**< texture de la fleche*/
+    SDL_Texture * epee; /**< texture de l'epee*/
+    SDL_Texture * arc; /**< texture de l'arc*/
 };
 typedef struct texture_s texture_t;
 

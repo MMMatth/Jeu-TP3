@@ -1,3 +1,9 @@
+/**
+ * \file hud.h
+ * \brief fichier pour le hud
+ * 
+ */
+
 #ifndef SCORE_H
 #define SCORE_H
 
