@@ -46,23 +46,22 @@ void RefreshPos(int indice, inv * inv, int x, int y){
     inv->objets[indice].y = y;
 }
 
-char * ToStringInv(inv * inventaire){
-    char * str = malloc(1000 * sizeof(char));
-    for (int i = 0; i < 3; i++){
-        strcat(str, inventaire->objets[i].nom);
-        strcat(str, " ");
-        char degats[10];
-        sprintf(degats, "%d", inventaire->objets[i].degats);
-        strcat(str, degats);
-        strcat(str, " ");
-        char position[10];
-        sprintf(position, "%d", inventaire->objets[i].position);
-        strcat(str, position);
-        strcat(str, " ");
-        char distance[10];
-        sprintf(distance, "%s\n", inventaire->objets[i].distance ? "true" : "false");
-        strcat(str, distance);
-        strcat(str, " ");
+char * ToStringInv(inv * inventaire)
+{
+    char * chaine = malloc(1024 * sizeof(char)); /* allocation de mémoire pour la chaîne de caractères */
+    strcpy(chaine, "Inventaire : "); /* initialisation de la chaîne de caractères */
+    
+    for(int i = 0; i < 3; i++) /* parcours des objets de l'inventaire */
+    {
+        if(inventaire->objets[i].nom != NULL) /* vérification que l'objet existe */
+        {
+            strcat(chaine, inventaire->objets[i].nom); /* ajout du nom de l'objet à la chaîne de caractères */
+            
+            if(i < 2 && inventaire->objets[i+1].nom != NULL) /* si l'objet suivant existe, on ajoute une virgule */
+            {
+                strcat(chaine, ", ");
+            }
+        }
     }
-    return str;
+    return chaine; /* renvoi de la chaîne de caractères */
 }

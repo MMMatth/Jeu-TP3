@@ -99,7 +99,16 @@ void render_img(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int 
  */
 void render_imgangle(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y, int w, int h, double angle);
 
-
+/**
+ * \brief fonction pour afficher les fleches
+ * 
+ * \param renderer : pointeur sur le renderer SDL
+ * \param textures : pointeur sur les textures
+ * \param joueur : pointeur sur le joueur
+ * \param ticks : pointeur sur les ticks
+ * \param direction : direction de la fleche
+ * \param distance : si l'arme est à distance
+ */
 void render_fleche(SDL_Renderer *renderer, texture_t * textures, joueur_t * joueur, float * ticks, char * direction, bool distance);
 
 /**
@@ -124,7 +133,12 @@ void render_inv(inv * inv, texture_t * textures, SDL_Renderer * renderer);
 
 
 
-
+/**
+ * \brief procedure pour clean les textures et la fenetre
+ * 
+ * \param window : pointeur sur la fenetre SDL
+ * \param renderer : pointeur sur le renderer SDL
+ */
 void clean(SDL_Window *window, SDL_Renderer * renderer); //, textures_t *textures , world_t * world);
 
 

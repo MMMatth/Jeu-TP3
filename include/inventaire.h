@@ -12,20 +12,20 @@ typedef struct{
     char * nom; /* Le nom de l'objet */
     int degats; /* Les degats de l'objet */
     int position; /* La case de l'objet */
-    int x;
-    int y;
-    bool distance;
+    int x; /* La position x de l'objet */
+    int y; /* La position y de l'objet */
+    bool distance; /* true si l'objet est à distance, false sinon */
 } obj;
 
 typedef struct {
-    int nb;
-    int x;
-    int y;
+    int nb; /* Le numéro de la case */
+    int x; /* La position x de la case */
+    int y; /* La position y de la case */
 } box;
 
 typedef struct {
-    obj objets[3];
-    box cases[3];
+    obj objets[3]; /* Les objets de l'inventaire */
+    box cases[3]; /* Les cases de l'inventaire */
 } inv;
 
 /**
@@ -42,7 +42,6 @@ inv * CreationInventaire();
  * \param nom : nom de l'objet
  * \param degats : degats de l'objet
  * \param position : position de l'objet
- * \param image : path de l'image de l'objet
  * \param distance : true si l'objet est à distance, false sinon
  */
 void SetItem(inv* inv, char* nom, int degats, int position, bool distance);

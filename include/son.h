@@ -18,8 +18,10 @@ struct music_s{
 typedef struct music_s music_t;
 
 
-
-
+/**
+ * \brief fonction pour initialiser l'audio
+ * 
+ */
 void InitAudioWithError();
 
 
@@ -62,10 +64,24 @@ void PlayMusic(Mix_Music *music);
  */
 void StopMusic(Mix_Music *music);
 
+/**
+ * \brief fonction pour libérer la mémoire allouée pour un son
+ * 
+ */
 void CleanAudio();
 
+/**
+ * \brief fonction pour initialiser les sons
+ * 
+ * \param sound : pointeur sur la structure sound_t
+ */
 void InitSound(sound_t *sound);
 
+/**
+ * \brief fonction pour initialiser les musiques
+ * 
+ * \param music : pointeur sur la structure music_t
+ */
 void InitMusic(music_t *music);
 
 #endif

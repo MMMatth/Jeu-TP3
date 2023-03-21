@@ -9,7 +9,7 @@
 
 #define taille 8
 
-void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m, sound_t * son){
+void attaque(monstreListe_t *ListeM, int degats, int pos_m, sound_t * son){
     monstre_t* m = ListeM->tab[pos_m];
     m->pv -= degats;
     if (m->pv <= 0){
@@ -20,7 +20,7 @@ void attaque_aux(monstreListe_t *ListeM, int degats, int pos_m, sound_t * son){
 
 int attaque_contact(joueur_t* j, monstreListe_t* ListeM, int pos_m, int degats, sound_t * son){
     if (pos_m != -1){
-        attaque_aux(ListeM, degats, pos_m, son);
+        attaque(ListeM, degats, pos_m, son);
         return 1;
     }
     return 0;
@@ -39,19 +39,19 @@ int attaque_dist_aux(joueur_t* j, monstreListe_t* ListeM, char dir, int degats, 
         switch (dir){
             case 'n':
                 if (j->pos[0] == ListeM->tab[i]->pos[0] && j->pos[1] > ListeM->tab[i]->pos[1])
-                    attaque_aux(ListeM, degats, i, son);
+                    attaque(ListeM, degats, i, son);
                 break;
             case 's':
                 if (j->pos[0] == ListeM->tab[i]->pos[0] && j->pos[1] < ListeM->tab[i]->pos[1])
-                    attaque_aux(ListeM, degats, i, son);
+                    attaque(ListeM, degats, i, son);
                 break;
             case 'o':
                 if (j->pos[0] > ListeM->tab[i]->pos[0] && j->pos[1] == ListeM->tab[i]->pos[1])
-                    attaque_aux(ListeM, degats, i, son);
+                    attaque(ListeM, degats, i, son);
                 break;
             case 'e':
                 if (j->pos[0] < ListeM->tab[i]->pos[0] && j->pos[1] == ListeM->tab[i]->pos[1])
-                    attaque_aux(ListeM, degats, i, son);
+                    attaque(ListeM, degats, i, son);
                 break;
             default:
                 break;
@@ -192,7 +192,6 @@ void jouer(int argc, char *argv[])
                                     item_follow_mouse = -1;
                                 }
                             }
-                            printf("x = %d, y = %d\n", event.button.x, event.button.y);
                         }
                         break; 
                     case SDL_KEYDOWN:
