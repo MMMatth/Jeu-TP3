@@ -13,14 +13,14 @@
 
 
 void InitTexture(SDL_Renderer * renderer, texture_t *textures){
-    textures->background_menu = create_img(renderer, "assets/bg_menu.bmp");
-    textures->background_game = create_img(renderer, "assets/bg_jeu.bmp");
-    textures->background_fin = create_img(renderer, "assets/bg_fin.bmp");
-    textures->joueur = create_img(renderer, "assets/joueur_s.bmp");
-    textures->monstre = create_img(renderer, "assets/monstre.bmp");
-    textures->fleche = create_img(renderer, "assets/fleche.bmp");
-    textures->epee = create_img(renderer, "assets/epee.bmp");
-    textures->arc = create_img(renderer, "assets/arc.bmp");
+    textures->background_menu = create_img(renderer, "assets/img/bg_menu.bmp");
+    textures->background_game = create_img(renderer, "assets/img/bg_jeu.bmp");
+    textures->background_fin = create_img(renderer, "assets/img/bg_fin.bmp");
+    textures->joueur = create_img(renderer, "assets/img/joueur_s.bmp");
+    textures->monstre = create_img(renderer, "assets/img/monstre.bmp");
+    textures->fleche = create_img(renderer, "assets/img/fleche.bmp");
+    textures->epee = create_img(renderer, "assets/img/epee.bmp");
+    textures->arc = create_img(renderer, "assets/img/arc.bmp");
 }
 
 
@@ -51,7 +51,7 @@ void initSDL(SDL_Window** window, SDL_Renderer** renderer, int width, int height
     if (*renderer == NULL)
         SDL_ExitWithError("Impossible de créer le renderer");
     
-    SDL_Surface *icon = SDL_LoadBMP("assets/joueur_s.bmp");
+    SDL_Surface *icon = SDL_LoadBMP("assets/img/joueur_s.bmp");
 
     if (icon == NULL)
         SDL_ExitWithError("Impossible de charger l'icone");

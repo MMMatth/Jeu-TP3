@@ -12,6 +12,16 @@ Le joueur se déplace sur une carte carrée de taille 8x8 a l'aide des touches s
 Le joueur peut attaquer les monstres qui sont sur la même case que lui si il a une arme à courte portée (ex : épee). Mais le joueur a aussi la possibilité d'utiliser un arc en tirant avec les touches directionnelles.
 Le joueur peut changer d'arme grace à l'inventaire qui se trouve à gauche de la carte en mettant l'arme qu'il souhaite utiliser dans la case le plus en haut.
 
+## Images du jeu
+### Menu
+<center><img src="assets/readme/menu.png" width="400px"></center>
+
+### Inventaire, arme et deplacement
+<center><img src="assets/readme/jeu.gif" width="400px"></center>
+
+### Fin du jeu et attaque
+<center><img src="assets/readme/fin.gif" width="400px"></center>
+
 ## Les ameliorations :
 ### Inventaire :
 Nous avons implémentés un nouveau module inventaire qui permet au joueur de changer d'arme en mettant l'arme qu'il souhaite utiliser dans la case le plus en haut de l'inventaire.
@@ -43,9 +53,3 @@ Pour utiliser le jeu, il faut tout d'abord cloner le répertoire GitHub sur votr
 Ensuite, pour lancer le jeu, il faut compiler le programme en utilisant la commande ./compil dans le terminal. Cette commande va compiler tous les fichiers sources nécessaires au fonctionnement du jeu et créer un exécutable nommé "start dans le dossier bin".
 
 Pour lancer le jeu, il suffit d'exécuter le fichier "start" en utilisant la commande "./bin/start" dans le terminal.
-
-## License
-Ce projet est sous licence MIT. Vous pouvez l'utiliser et le modifier comme bon vous semble, mais vous ne pouvez pas le vendre sans autorisation préalable des auteurs.
-
-## Auteurs
-Ce projet a été réalisé par Gaudel Matthieu et Colin Gabin, étudiants en première année de licence MI-SPI à l'Université de Lorraine.

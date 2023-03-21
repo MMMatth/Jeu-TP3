@@ -128,7 +128,7 @@ void jouer(int argc, char *argv[])
 
     // on crée un texte en SDL ttf
     TTF_Init();
-    TTF_Font *font = TTF_OpenFont("assets/Roboto-Bold.ttf", 24);
+    TTF_Font *font = TTF_OpenFont("assets/font/Roboto-Bold.ttf", 24);
     SDL_Color color = {255, 255, 255, 255};
 
 
@@ -198,19 +198,19 @@ void jouer(int argc, char *argv[])
                         switch (event.key.keysym.sym){
                             case SDLK_z:
                                 deplacement(world->joueur, taille, 'z');
-                                textures->joueur = create_img(renderer, "assets/joueur_z.bmp");
+                                textures->joueur = create_img(renderer, "assets/img/joueur_z.bmp");
                                 break;
                             case SDLK_s:
                                 deplacement(world->joueur, taille, 's');
-                                textures->joueur = create_img(renderer, "assets/joueur_s.bmp");
+                                textures->joueur = create_img(renderer, "assets/img/joueur_s.bmp");
                                 break;
                             case SDLK_q:
                                 deplacement(world->joueur, taille, 'q');
-                                textures->joueur = create_img(renderer, "assets/joueur_q.bmp");
+                                textures->joueur = create_img(renderer, "assets/img/joueur_q.bmp");
                                 break;
                             case SDLK_d:
                                 deplacement(world->joueur, taille, 'd');
-                                textures->joueur = create_img(renderer, "assets/joueur_d.bmp");
+                                textures->joueur = create_img(renderer, "assets/img/joueur_d.bmp");
                                 break;
                             case SDLK_SPACE:
                                 i_mst = IndiceMst(world->ListeM, world->joueur->pos[0], world->joueur->pos[1]);
