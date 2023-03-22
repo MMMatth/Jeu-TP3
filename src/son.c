@@ -43,6 +43,7 @@ void StopMusic(Mix_Music *music){
 
 void CleanAudio(){
     Mix_CloseAudio();
+    Mix_Quit();
 }
 
 void InitSound(sound_t *sound){

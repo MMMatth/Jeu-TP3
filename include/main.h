@@ -91,6 +91,41 @@ int attaque_dist_aux(joueur_t* j, monstreListe_t* ListeM, char dir, int degats, 
 char ** generationListeAff(joueur_t* j, monstreListe_t* listeM);
 
 /**
+ * \brief fonction pour initialiser l'inventaire
+ * 
+ * \param inventaire : l'inventaire à initialiser
+ * \param renderer : le renderer SDL
+ */
+void InitInventaire(inv *inventaire, SDL_Renderer *renderer);
+
+/**
+ * \brief fonction pour initialiser la liste des monstres
+ * 
+ * \param ListeM : liste des monstres
+ * \param manche : manche du jeu
+ */
+void InitMonstres(monstreListe_t *ListeM, int manche);
+
+
+/**
+ * \brief fonction pour initialiser le monde
+ * 
+ * \param world : le monde à initialiser
+ * \param renderer : le renderer SDL
+ */
+void InitWorld(world_t * world, SDL_Renderer *renderer);
+
+
+/**
+ * \brief fonction pour nettoyer le monde (free les pointeurs)
+ * 
+ * \param world : le monde à nettoyer
+ */
+void CleanWorld(world_t * world);
+
+
+
+/**
  * \brief procédure pour lancer le jeu
  * 
  * \param argc : argument du main

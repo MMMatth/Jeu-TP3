@@ -40,6 +40,12 @@ int \mbox{\hyperlink{main_8h_a201cec68d6ef7d896a2b3f4aa45ec52c}{attaque\+\_\+dis
 \begin{DoxyCompactList}\small\item\em fonction pour lancer une attaque à distance (auxiliaire) \end{DoxyCompactList}\item 
 char $\ast$$\ast$ \mbox{\hyperlink{main_8h_af691612628e065c612c6c6d86ad8d172}{generation\+Liste\+Aff}} (\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$j, \mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$listeM)
 \begin{DoxyCompactList}\small\item\em fonction pour recuper le jeu sous forme de tableau de char (pas utiliser depuis longtemps) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_a2cf928c084225194f1fbdd8a44923f88}{Init\+Inventaire}} (\mbox{\hyperlink{structinv}{inv}} $\ast$inventaire, SDL\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em fonction pour initialiser l\textquotesingle{}inventaire \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_ad71fb0b6c7a9085a78a8e008c197a4d9}{Init\+Monstres}} (\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$ListeM, int manche)
+\begin{DoxyCompactList}\small\item\em fonction pour initialiser la liste des monstres \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_a62f6c73d57c941242c93a5d44c54bb3a}{Clean\+World}} (\mbox{\hyperlink{structworld__s}{world\+\_\+t}} $\ast$world)
+\begin{DoxyCompactList}\small\item\em fonction pour nettoyer le monde (free les pointeurs) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8h_a60501dad66a45bd65e411a9985de9ca9}{jouer}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em procédure pour lancer le jeu \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -145,6 +151,21 @@ fonction pour lancer une attaque à distance (auxiliaire)
 \begin{DoxyReturn}{Renvoie}
 int 
 \end{DoxyReturn}
+\mbox{\Hypertarget{main_8h_a62f6c73d57c941242c93a5d44c54bb3a}\label{main_8h_a62f6c73d57c941242c93a5d44c54bb3a}} 
+\index{main.h@{main.h}!CleanWorld@{CleanWorld}}
+\index{CleanWorld@{CleanWorld}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CleanWorld()}{CleanWorld()}}
+{\footnotesize\ttfamily void Clean\+World (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structworld__s}{world\+\_\+t}} $\ast$}]{world }\end{DoxyParamCaption})}
+
+
+
+fonction pour nettoyer le monde (free les pointeurs) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em world} & \+: le monde à nettoyer \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{main_8h_af691612628e065c612c6c6d86ad8d172}\label{main_8h_af691612628e065c612c6c6d86ad8d172}} 
 \index{main.h@{main.h}!generationListeAff@{generationListeAff}}
 \index{generationListeAff@{generationListeAff}!main.h@{main.h}}
@@ -165,6 +186,40 @@ fonction pour recuper le jeu sous forme de tableau de char (pas utiliser depuis 
 \begin{DoxyReturn}{Renvoie}
 char$\ast$$\ast$ 
 \end{DoxyReturn}
+\mbox{\Hypertarget{main_8h_a2cf928c084225194f1fbdd8a44923f88}\label{main_8h_a2cf928c084225194f1fbdd8a44923f88}} 
+\index{main.h@{main.h}!InitInventaire@{InitInventaire}}
+\index{InitInventaire@{InitInventaire}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{InitInventaire()}{InitInventaire()}}
+{\footnotesize\ttfamily void Init\+Inventaire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structinv}{inv}} $\ast$}]{inventaire,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+fonction pour initialiser l\textquotesingle{}inventaire 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inventaire} & \+: l\textquotesingle{}inventaire à initialiser \\
+\hline
+{\em renderer} & \+: le renderer SDL \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8h_ad71fb0b6c7a9085a78a8e008c197a4d9}\label{main_8h_ad71fb0b6c7a9085a78a8e008c197a4d9}} 
+\index{main.h@{main.h}!InitMonstres@{InitMonstres}}
+\index{InitMonstres@{InitMonstres}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{InitMonstres()}{InitMonstres()}}
+{\footnotesize\ttfamily void Init\+Monstres (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$}]{ListeM,  }\item[{int}]{manche }\end{DoxyParamCaption})}
+
+
+
+fonction pour initialiser la liste des monstres 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ListeM} & \+: liste des monstres \\
+\hline
+{\em manche} & \+: manche du jeu \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{main_8h_acf1d3fbb72efbaa8d8e126a749d10d95}\label{main_8h_acf1d3fbb72efbaa8d8e126a749d10d95}} 
 \index{main.h@{main.h}!InitWorld@{InitWorld}}
 \index{InitWorld@{InitWorld}!main.h@{main.h}}
@@ -174,6 +229,15 @@ char$\ast$$\ast$
 
 
 fonction pour initialiser le monde 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em world} & \+: le monde à initialiser \\
+\hline
+{\em renderer} & \+: le renderer SDL\\
+\hline
+\end{DoxyParams}
+
 
 
 \begin{DoxyParams}{Paramètres}

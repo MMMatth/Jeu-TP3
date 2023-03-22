@@ -101,6 +101,12 @@ void InitWorld(world_t * world, SDL_Renderer *renderer){
     InitInventaire(world->inventaire, renderer);
 }
 
+void CleanWorld(world_t * world){
+    free(world->joueur);
+    free(world->ListeM);
+    free(world->inventaire);
+}
+
 void jouer(int argc, char *argv[])
 {
     /* --- Initialisation des variables --- */
@@ -304,7 +310,7 @@ void jouer(int argc, char *argv[])
             SDL_Delay(1000/60);
         }
     }
-    
+    CleanWorld(world);
     clean(window, renderer);
     close_hud();
 }
