@@ -128,6 +128,15 @@ Fonctions</h2></td></tr>
 <tr class="memitem:af691612628e065c612c6c6d86ad8d172"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#af691612628e065c612c6c6d86ad8d172">generationListeAff</a> (<a class="el" href="structjoueur.html">joueur_t</a> *j, <a class="el" href="structmonstre_liste.html">monstreListe_t</a> *listeM)</td></tr>
 <tr class="memdesc:af691612628e065c612c6c6d86ad8d172"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction pour recuper le jeu sous forme de tableau de char (pas utiliser depuis longtemps)  <br /></td></tr>
 <tr class="separator:af691612628e065c612c6c6d86ad8d172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf928c084225194f1fbdd8a44923f88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a2cf928c084225194f1fbdd8a44923f88">InitInventaire</a> (<a class="el" href="structinv.html">inv</a> *inventaire, SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a2cf928c084225194f1fbdd8a44923f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction pour initialiser l'inventaire  <br /></td></tr>
+<tr class="separator:a2cf928c084225194f1fbdd8a44923f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad71fb0b6c7a9085a78a8e008c197a4d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#ad71fb0b6c7a9085a78a8e008c197a4d9">InitMonstres</a> (<a class="el" href="structmonstre_liste.html">monstreListe_t</a> *ListeM, int manche)</td></tr>
+<tr class="memdesc:ad71fb0b6c7a9085a78a8e008c197a4d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction pour initialiser la liste des monstres  <br /></td></tr>
+<tr class="separator:ad71fb0b6c7a9085a78a8e008c197a4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62f6c73d57c941242c93a5d44c54bb3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a62f6c73d57c941242c93a5d44c54bb3a">CleanWorld</a> (<a class="el" href="structworld__s.html">world_t</a> *world)</td></tr>
+<tr class="memdesc:a62f6c73d57c941242c93a5d44c54bb3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction pour nettoyer le monde (free les pointeurs)  <br /></td></tr>
+<tr class="separator:a62f6c73d57c941242c93a5d44c54bb3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60501dad66a45bd65e411a9985de9ca9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a60501dad66a45bd65e411a9985de9ca9">jouer</a> (int argc, char *argv[])</td></tr>
 <tr class="memdesc:a60501dad66a45bd65e411a9985de9ca9"><td class="mdescLeft">&#160;</td><td class="mdescRight">procédure pour lancer le jeu  <br /></td></tr>
 <tr class="separator:a60501dad66a45bd65e411a9985de9ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -361,6 +370,32 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
+<a id="a62f6c73d57c941242c93a5d44c54bb3a" name="a62f6c73d57c941242c93a5d44c54bb3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62f6c73d57c941242c93a5d44c54bb3a">&#9670;&#160;</a></span>CleanWorld()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CleanWorld </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structworld__s.html">world_t</a> *&#160;</td>
+          <td class="paramname"><em>world</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction pour nettoyer le monde (free les pointeurs) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">world</td><td>: le monde à nettoyer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af691612628e065c612c6c6d86ad8d172" name="af691612628e065c612c6c6d86ad8d172"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af691612628e065c612c6c6d86ad8d172">&#9670;&#160;</a></span>generationListeAff()</h2>
 
@@ -399,6 +434,80 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2cf928c084225194f1fbdd8a44923f88" name="a2cf928c084225194f1fbdd8a44923f88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cf928c084225194f1fbdd8a44923f88">&#9670;&#160;</a></span>InitInventaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InitInventaire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structinv.html">inv</a> *&#160;</td>
+          <td class="paramname"><em>inventaire</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction pour initialiser l'inventaire </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inventaire</td><td>: l'inventaire à initialiser </td></tr>
+    <tr><td class="paramname">renderer</td><td>: le renderer SDL </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad71fb0b6c7a9085a78a8e008c197a4d9" name="ad71fb0b6c7a9085a78a8e008c197a4d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad71fb0b6c7a9085a78a8e008c197a4d9">&#9670;&#160;</a></span>InitMonstres()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InitMonstres </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmonstre_liste.html">monstreListe_t</a> *&#160;</td>
+          <td class="paramname"><em>ListeM</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>manche</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction pour initialiser la liste des monstres </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ListeM</td><td>: liste des monstres </td></tr>
+    <tr><td class="paramname">manche</td><td>: manche du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="acf1d3fbb72efbaa8d8e126a749d10d95" name="acf1d3fbb72efbaa8d8e126a749d10d95"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acf1d3fbb72efbaa8d8e126a749d10d95">&#9670;&#160;</a></span>InitWorld()</h2>
 
@@ -426,6 +535,13 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>fonction pour initialiser le monde </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">world</td><td>: le monde à initialiser </td></tr>
+    <tr><td class="paramname">renderer</td><td>: le renderer SDL</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">world</td><td>: le monde à initialiser </td></tr>
