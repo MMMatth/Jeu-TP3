@@ -27,15 +27,15 @@ void InitTexture(SDL_Renderer * renderer, texture_t *textures){
 
 
 void SDL_ExitWithError(const char *message){
-    SDL_Log("ERREUR : %s > %s\n", message, SDL_GetError());
-    SDL_Quit();
-    exit(EXIT_FAILURE);
+    SDL_Log("ERREUR : %s > %s\n", message, SDL_GetError()); // Écriture de l'erreur dans le fichier de logs
+    SDL_Quit(); // On quitte la SDL
+    exit(EXIT_FAILURE);  // On quitte le programme
 }
 
 void initSDL(SDL_Window** window, SDL_Renderer** renderer, int width, int height) {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0)
-        SDL_ExitWithError("Initialisation de la SDL");
-    *window = SDL_CreateWindow(
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) // Initialisation de la SDL
+        SDL_ExitWithError("Initialisation de la SDL"); // Si l'initialisation a échoué, on quitte le programme
+    *window = SDL_CreateWindow( // Création de la fenêtre
         "DIABLO MMXXIII",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
@@ -43,37 +43,40 @@ void initSDL(SDL_Window** window, SDL_Renderer** renderer, int width, int height
         height,
         SDL_WINDOW_SHOWN
     );
-    if (*window == NULL)
+    if (*window == NULL) // Si la fenêtre n'a pas pu être créée, on quitte le programme
         SDL_ExitWithError("Impossible de créer la fenêtre");
 
+    // Création du renderer
     *renderer = SDL_CreateRenderer(*window, -1, SDL_RENDERER_ACCELERATED);
 
-    if (*renderer == NULL)
+    if (*renderer == NULL) // Si le renderer n'a pas pu être créé, on quitte le programme
         SDL_ExitWithError("Impossible de créer le renderer");
     
+    // Chargement de l'icone
     SDL_Surface *icon = SDL_LoadBMP("assets/img/joueur_s.bmp");
 
-    if (icon == NULL)
+    if (icon == NULL) // Si l'icone n'a pas pu être chargée, on quitte le programme
         SDL_ExitWithError("Impossible de charger l'icone");
     
+    // On applique l'icone à la fenêtre
     SDL_SetWindowIcon(*window, icon);
     SDL_FreeSurface(icon);
 }
 
 void SDL_WindowAndRendererWithExit(int width, int height, SDL_Window **window, SDL_Renderer **renderer){
-    if (SDL_CreateWindowAndRenderer(width, height, 0, window, renderer) != 0){
-        SDL_ExitWithError("Creation fenetre et renderer echouee");
+    if (SDL_CreateWindowAndRenderer(width, height, 0, window, renderer) != 0){ // Création de la fenêtre et du renderer
+        SDL_ExitWithError("Creation fenetre et renderer echouee"); // On gère l'erreur
     }
 }
 
 bool hitbox(SDL_Event event, int top_left, int top_right, int bottom_left, int bottom_right){   
-    if (event.button.x >= top_left
-        && event.button.x <= top_right
+    if (event.button.x >= top_left // Si la souris est dans la hitbox
+        && event.button.x <= top_right 
         && event.button.y >= bottom_left 
         && event.button.y <= bottom_right)
-        return true;
+        return true; // On retourne true
     else
-        return false;
+        return false; // On retourne false
 }
 
 SDL_Texture *create_img(SDL_Renderer *renderer, const char *path){
@@ -147,10 +150,10 @@ void render_fleche(SDL_Renderer *renderer, texture_t * textures, joueur_t * joue
 
 void render_inv(inv * inv, texture_t * textures, SDL_Renderer * renderer){
     for (int i = 0; i < 3; i++){
-        SDL_Rect rect = {inv->objets[i].x, inv->objets[i].y, 50, 50};
-        if (inv->objets[i].nom != NULL && inv->objets[i].nom[0] != '\0'){
-            if (strcmp(inv->objets[i].nom, "epee") == 0)
-                SDL_RenderCopy(renderer, textures->epee, NULL, &rect);
+        SDL_Rect rect = {inv->objets[i].x, inv->objets[i].y, 50, 50}; // Création d'un rectangle
+        if (inv->objets[i].nom != NULL && inv->objets[i].nom[0] != '\0'){ // Si l'objet n'est pas vide
+            if (strcmp(inv->objets[i].nom, "epee") == 0) // On affiche l'objet en fonction de son nom
+                SDL_RenderCopy(renderer, textures->epee, NULL, &rect); // On affiche l'objet
             else if (strcmp(inv->objets[i].nom, "arc") == 0)
                 SDL_RenderCopy(renderer, textures->arc, NULL, &rect);
         }
@@ -160,8 +163,8 @@ void render_inv(inv * inv, texture_t * textures, SDL_Renderer * renderer){
 
 
 void clean(SDL_Window * window, SDL_Renderer * renderer){ //, textures_t *textures , world_t * world);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    CleanAudio();
-    SDL_Quit();
+    SDL_DestroyRenderer(renderer);  // On libère le renderer
+    SDL_DestroyWindow(window); // On libère la fenêtre
+    CleanAudio(); // On libère l'audio
+    SDL_Quit(); // On quitte la SDL
 }
