@@ -1,6 +1,9 @@
 ## Jeu en C
 Ce projet a été réalisé dans le cadre du cours de méthodologie de la conception et de la programmation partie I pour les étudiants de la Licence 1 M-I-SPI de l'Université de Lorraine. Il consiste à créer un jeu solo qui se joue sur un plateau carré.
 
+Documentation du projet en ligne : <a href="https://mmmatth.github.io/Jeu-TP3/">https://mmmatth.github.io/Jeu-TP3/</a>
+
+
 
 ## Règles du jeu
 Le but du jeu est de finir le plus vite possible les 5 manches.
