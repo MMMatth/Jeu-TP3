@@ -1,0 +1,125 @@
+\hypertarget{joueur_8h}{}\doxysection{Référence du fichier C\+:/\+Users/matlo/\+Documents/worflow/\+Jeu-\/\+TP3/include/joueur.h}
+\label{joueur_8h}\index{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/joueur.h@{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/joueur.h}}
+
+
+fichier d\textquotesingle{}entête pour le joueur  
+
+
+\doxysubsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structjoueur}{joueur}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{joueur_8h_a19e1fe8cca015084cc5d40daf64813c0}\label{joueur_8h_a19e1fe8cca015084cc5d40daf64813c0}} 
+typedef struct \mbox{\hyperlink{structjoueur}{joueur}} {\bfseries joueur\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$ \mbox{\hyperlink{joueur_8h_ab597b248b36c0f26c0414cd23bbbd186}{Creation\+Joueur}} ()
+\begin{DoxyCompactList}\small\item\em fonction pour créer un joueur \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{joueur_8h_a004bee9152e459147a2e05403a43a460}{coord\+\_\+x}} (\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$j)
+\begin{DoxyCompactList}\small\item\em fonction qui permet de donner la position x du joueur \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{joueur_8h_aac30426fb792cad2c864411779eb8855}{coord\+\_\+y}} (\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$j)
+\begin{DoxyCompactList}\small\item\em fonction qui permet de donner la position y du joueur \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8h_a8748c5bd369dfed6d045699f7060e210}{deplacement}} (\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$j, int taille, char touche)
+\begin{DoxyCompactList}\small\item\em fonction pour appliquer un déplacement au joueur \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{joueur_8h_a023da2b401dc0b71c1173b2bdbd44766}{to\+String\+Jr}} (\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$j)
+\begin{DoxyCompactList}\small\item\em fonction pour recuper le joueur sous forme de chaine de caractère \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier d\textquotesingle{}entête pour le joueur 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{joueur_8h_a004bee9152e459147a2e05403a43a460}\label{joueur_8h_a004bee9152e459147a2e05403a43a460}} 
+\index{joueur.h@{joueur.h}!coord\_x@{coord\_x}}
+\index{coord\_x@{coord\_x}!joueur.h@{joueur.h}}
+\doxysubsubsection{\texorpdfstring{coord\_x()}{coord\_x()}}
+{\footnotesize\ttfamily int coord\+\_\+x (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$}]{j }\end{DoxyParamCaption})}
+
+
+
+fonction qui permet de donner la position x du joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & \+: le joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8h_aac30426fb792cad2c864411779eb8855}\label{joueur_8h_aac30426fb792cad2c864411779eb8855}} 
+\index{joueur.h@{joueur.h}!coord\_y@{coord\_y}}
+\index{coord\_y@{coord\_y}!joueur.h@{joueur.h}}
+\doxysubsubsection{\texorpdfstring{coord\_y()}{coord\_y()}}
+{\footnotesize\ttfamily int coord\+\_\+y (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$}]{j }\end{DoxyParamCaption})}
+
+
+
+fonction qui permet de donner la position y du joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & \+: le joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8h_ab597b248b36c0f26c0414cd23bbbd186}\label{joueur_8h_ab597b248b36c0f26c0414cd23bbbd186}} 
+\index{joueur.h@{joueur.h}!CreationJoueur@{CreationJoueur}}
+\index{CreationJoueur@{CreationJoueur}!joueur.h@{joueur.h}}
+\doxysubsubsection{\texorpdfstring{CreationJoueur()}{CreationJoueur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$ Creation\+Joueur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+fonction pour créer un joueur 
+
+\begin{DoxyReturn}{Renvoie}
+joueur\+\_\+t$\ast$ \+: joueur créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8h_a8748c5bd369dfed6d045699f7060e210}\label{joueur_8h_a8748c5bd369dfed6d045699f7060e210}} 
+\index{joueur.h@{joueur.h}!deplacement@{deplacement}}
+\index{deplacement@{deplacement}!joueur.h@{joueur.h}}
+\doxysubsubsection{\texorpdfstring{deplacement()}{deplacement()}}
+{\footnotesize\ttfamily void deplacement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$}]{j,  }\item[{int}]{taille,  }\item[{char}]{touche }\end{DoxyParamCaption})}
+
+
+
+fonction pour appliquer un déplacement au joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & \+: joueur \\
+\hline
+{\em taille} & \+: taille de la map \\
+\hline
+{\em touche} & \+: touche recupérée par SDL \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8h_a023da2b401dc0b71c1173b2bdbd44766}\label{joueur_8h_a023da2b401dc0b71c1173b2bdbd44766}} 
+\index{joueur.h@{joueur.h}!toStringJr@{toStringJr}}
+\index{toStringJr@{toStringJr}!joueur.h@{joueur.h}}
+\doxysubsubsection{\texorpdfstring{toStringJr()}{toStringJr()}}
+{\footnotesize\ttfamily char $\ast$ to\+String\+Jr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$}]{j }\end{DoxyParamCaption})}
+
+
+
+fonction pour recuper le joueur sous forme de chaine de caractère 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & \+: joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+char$\ast$ 
+\end{DoxyReturn}

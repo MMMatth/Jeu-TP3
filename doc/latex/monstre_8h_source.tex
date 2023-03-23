@@ -1,0 +1,49 @@
+\hypertarget{monstre_8h_source}{}\doxysection{monstre.\+h}
+\label{monstre_8h_source}\index{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/monstre.h@{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/monstre.h}}
+\mbox{\hyperlink{monstre_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ MONSTRE\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MONSTRE\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../include/affichage.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}../include/joueur.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../include/inventaire.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmonstre}{monstre}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmonstre_af1b58e608320ff939118a2a719ba3e6b}{pv}};\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmonstre_a48115af1066a06f5f7b9f9290682d30a}{pos}}[2];\ }
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmonstre}{monstre}}\ \mbox{\hyperlink{structmonstre}{monstre\_t}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmonstre_liste}{monstreListe}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{structmonstre}{monstre\_t}}\ **\ \mbox{\hyperlink{structmonstre_liste_a69f97061ebdf6c481491d8ac5ded7e09}{tab}};\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmonstre_liste_a42db834d279906a811f98980e45df8bf}{nbMst}};\ }
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmonstre_liste}{monstreListe}}\ \mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}};\ ;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}*\ \mbox{\hyperlink{monstre_8h_a8d278a6b462aba28ab9393a24831b237}{creationListeM}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{monstre_8h_ac31b4c3c29f11b963c5c0e5f3849fcae}{ajoutMst}}(\mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}*\ listeM,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{monstre_8h_a99366350e763ba4ac7739dff40601c51}{enleverMst}}(\mbox{\hyperlink{structmonstre}{monstre\_t}}*\ m,\ \mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}*\ listeMst);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{monstre_8h_a385dcd544ee532752a873ab93fcd43ac}{IndiceMst}}(\mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}*\ listeM,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{monstre_8h_a107f2b05ebaf413c70e1fe5372e14d85}{RandomMoove}}(\mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}\ *m,\ \textcolor{keywordtype}{int}\ taille,\ \textcolor{keywordtype}{int}\ tick);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{monstre_8h_ac983ed2a10d134fb8db90344e2d97112}{toStringMst}}(\mbox{\hyperlink{structmonstre}{monstre\_t}}*\ M);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{monstre_8h_a5046669a837b8b5f3374753932577cdf}{toStringLstMst}}(\mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}*\ listeM);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{monstre_8h_a5759a925119f50b62f9267f29d1c6de0}{render\_monstre}}(SDL\_Renderer\ *renderer,\ SDL\_Texture\ *texture,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}\ *listeM,\ \mbox{\hyperlink{structjoueur}{joueur\_t}}\ *\mbox{\hyperlink{structjoueur}{joueur}},\ \mbox{\hyperlink{structinv}{inv}}\ *inventaire);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ MONSTRE\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,265 @@
+\hypertarget{main_8h}{}\doxysection{Référence du fichier C\+:/\+Users/matlo/\+Documents/worflow/\+Jeu-\/\+TP3/include/main.h}
+\label{main_8h}\index{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/main.h@{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/main.h}}
+
+
+fichier d\textquotesingle{}entête pour le main  
+
+
+{\ttfamily \#include \char`\"{}../include/affichage.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/joueur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/monstre.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/son.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/inventaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/hud.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL\+\_\+mixer.\+h$>$}\newline
+{\ttfamily \#include $<$SDL\+\_\+ttf.\+h$>$}\newline
+\doxysubsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structworld__s}{world\+\_\+s}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8h_ad55869c5e54f717062ec699d20fa8886}\label{main_8h_ad55869c5e54f717062ec699d20fa8886}} 
+typedef struct \mbox{\hyperlink{structworld__s}{world\+\_\+s}} {\bfseries world\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8h_acf1d3fbb72efbaa8d8e126a749d10d95}{Init\+World}} (\mbox{\hyperlink{structworld__s}{world\+\_\+t}} $\ast$world, SDL\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em fonction pour initialiser le monde \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_ad2e31ed8cd3170b0fb51481410c15dd9}{attaque}} (\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$ListeM, int degats, int pos\+\_\+m, \mbox{\hyperlink{structsound__s}{sound\+\_\+t}} $\ast$son)
+\begin{DoxyCompactList}\small\item\em fonction pour appliquer les dégats à un monstre et gerer sa mort \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8h_a45d422a71903b518337bd00fe4bd4f6c}{attaque\+\_\+contact}} (\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$j, \mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$ListeM, int pos\+\_\+m, int degats, \mbox{\hyperlink{structsound__s}{sound\+\_\+t}} $\ast$son)
+\begin{DoxyCompactList}\small\item\em fonction pour lancer une attaque au contact \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8h_a86ca29ada3a0fc80d46d127b36274d0a}{attaque\+\_\+dist}} (\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$j, \mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$ListeM, \mbox{\hyperlink{structobj}{obj}} objet\+\_\+equipe, char dir, \mbox{\hyperlink{structsound__s}{sound\+\_\+t}} $\ast$son)
+\begin{DoxyCompactList}\small\item\em fonction pour lancer une attaque à distance \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8h_a201cec68d6ef7d896a2b3f4aa45ec52c}{attaque\+\_\+dist\+\_\+aux}} (\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$j, \mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$ListeM, char dir, int degats, \mbox{\hyperlink{structsound__s}{sound\+\_\+t}} $\ast$son)
+\begin{DoxyCompactList}\small\item\em fonction pour lancer une attaque à distance (auxiliaire) \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \mbox{\hyperlink{main_8h_af691612628e065c612c6c6d86ad8d172}{generation\+Liste\+Aff}} (\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$j, \mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$listeM)
+\begin{DoxyCompactList}\small\item\em fonction pour recuper le jeu sous forme de tableau de char (pas utiliser depuis longtemps) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_a2cf928c084225194f1fbdd8a44923f88}{Init\+Inventaire}} (\mbox{\hyperlink{structinv}{inv}} $\ast$inventaire, SDL\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em fonction pour initialiser l\textquotesingle{}inventaire \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_ad71fb0b6c7a9085a78a8e008c197a4d9}{Init\+Monstres}} (\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$ListeM, int manche)
+\begin{DoxyCompactList}\small\item\em fonction pour initialiser la liste des monstres \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_a62f6c73d57c941242c93a5d44c54bb3a}{Clean\+World}} (\mbox{\hyperlink{structworld__s}{world\+\_\+t}} $\ast$world)
+\begin{DoxyCompactList}\small\item\em fonction pour nettoyer le monde (free les pointeurs) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_a60501dad66a45bd65e411a9985de9ca9}{jouer}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em procédure pour lancer le jeu \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier d\textquotesingle{}entête pour le main 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{main_8h_ad2e31ed8cd3170b0fb51481410c15dd9}\label{main_8h_ad2e31ed8cd3170b0fb51481410c15dd9}} 
+\index{main.h@{main.h}!attaque@{attaque}}
+\index{attaque@{attaque}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{attaque()}{attaque()}}
+{\footnotesize\ttfamily void attaque (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$}]{ListeM,  }\item[{int}]{degats,  }\item[{int}]{pos\+\_\+m,  }\item[{\mbox{\hyperlink{structsound__s}{sound\+\_\+t}} $\ast$}]{son }\end{DoxyParamCaption})}
+
+
+
+fonction pour appliquer les dégats à un monstre et gerer sa mort 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ListeM} & \+: liste des monstres \\
+\hline
+{\em degats} & \+: degats de l\textquotesingle{}arme \\
+\hline
+{\em pos\+\_\+m} & \+: position du monstre dans la liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8h_a45d422a71903b518337bd00fe4bd4f6c}\label{main_8h_a45d422a71903b518337bd00fe4bd4f6c}} 
+\index{main.h@{main.h}!attaque\_contact@{attaque\_contact}}
+\index{attaque\_contact@{attaque\_contact}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{attaque\_contact()}{attaque\_contact()}}
+{\footnotesize\ttfamily int attaque\+\_\+contact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$}]{j,  }\item[{\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$}]{ListeM,  }\item[{int}]{pos\+\_\+m,  }\item[{int}]{degats,  }\item[{\mbox{\hyperlink{structsound__s}{sound\+\_\+t}} $\ast$}]{son }\end{DoxyParamCaption})}
+
+
+
+fonction pour lancer une attaque au contact 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & \+: joueur \\
+\hline
+{\em ListeM} & \+: liste des monstres \\
+\hline
+{\em pos\+\_\+m} & \+: position du monstre dans la liste \\
+\hline
+{\em degats} & \+: degats de l\textquotesingle{}arme \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 1 si attaque réussie, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8h_a86ca29ada3a0fc80d46d127b36274d0a}\label{main_8h_a86ca29ada3a0fc80d46d127b36274d0a}} 
+\index{main.h@{main.h}!attaque\_dist@{attaque\_dist}}
+\index{attaque\_dist@{attaque\_dist}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{attaque\_dist()}{attaque\_dist()}}
+{\footnotesize\ttfamily int attaque\+\_\+dist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$}]{j,  }\item[{\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$}]{ListeM,  }\item[{\mbox{\hyperlink{structobj}{obj}}}]{objet\+\_\+equipe,  }\item[{char}]{dir,  }\item[{\mbox{\hyperlink{structsound__s}{sound\+\_\+t}} $\ast$}]{son }\end{DoxyParamCaption})}
+
+
+
+fonction pour lancer une attaque à distance 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & \+: joueur \\
+\hline
+{\em ListeM} & \+: liste des monstres \\
+\hline
+{\em objet\+\_\+equipe} & \+: objet équipé \\
+\hline
+{\em dir} & \+: direction de l\textquotesingle{}attaque \\
+\hline
+{\em son} & \+: son \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8h_a201cec68d6ef7d896a2b3f4aa45ec52c}\label{main_8h_a201cec68d6ef7d896a2b3f4aa45ec52c}} 
+\index{main.h@{main.h}!attaque\_dist\_aux@{attaque\_dist\_aux}}
+\index{attaque\_dist\_aux@{attaque\_dist\_aux}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{attaque\_dist\_aux()}{attaque\_dist\_aux()}}
+{\footnotesize\ttfamily int attaque\+\_\+dist\+\_\+aux (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$}]{j,  }\item[{\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$}]{ListeM,  }\item[{char}]{dir,  }\item[{int}]{degats,  }\item[{\mbox{\hyperlink{structsound__s}{sound\+\_\+t}} $\ast$}]{son }\end{DoxyParamCaption})}
+
+
+
+fonction pour lancer une attaque à distance (auxiliaire) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & \+: joueur \\
+\hline
+{\em ListeM} & \+: liste des monstres \\
+\hline
+{\em dir} & \+: direction de l\textquotesingle{}attaque \\
+\hline
+{\em degats} & \+: degats de l\textquotesingle{}arme \\
+\hline
+{\em son} & \+: son \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8h_a62f6c73d57c941242c93a5d44c54bb3a}\label{main_8h_a62f6c73d57c941242c93a5d44c54bb3a}} 
+\index{main.h@{main.h}!CleanWorld@{CleanWorld}}
+\index{CleanWorld@{CleanWorld}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CleanWorld()}{CleanWorld()}}
+{\footnotesize\ttfamily void Clean\+World (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structworld__s}{world\+\_\+t}} $\ast$}]{world }\end{DoxyParamCaption})}
+
+
+
+fonction pour nettoyer le monde (free les pointeurs) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em world} & \+: le monde à nettoyer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8h_af691612628e065c612c6c6d86ad8d172}\label{main_8h_af691612628e065c612c6c6d86ad8d172}} 
+\index{main.h@{main.h}!generationListeAff@{generationListeAff}}
+\index{generationListeAff@{generationListeAff}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{generationListeAff()}{generationListeAff()}}
+{\footnotesize\ttfamily char $\ast$$\ast$ generation\+Liste\+Aff (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur}{joueur\+\_\+t}} $\ast$}]{j,  }\item[{\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$}]{listeM }\end{DoxyParamCaption})}
+
+
+
+fonction pour recuper le jeu sous forme de tableau de char (pas utiliser depuis longtemps) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & \+: joueur \\
+\hline
+{\em listeM} & \+: liste des monstres \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+char$\ast$$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8h_a2cf928c084225194f1fbdd8a44923f88}\label{main_8h_a2cf928c084225194f1fbdd8a44923f88}} 
+\index{main.h@{main.h}!InitInventaire@{InitInventaire}}
+\index{InitInventaire@{InitInventaire}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{InitInventaire()}{InitInventaire()}}
+{\footnotesize\ttfamily void Init\+Inventaire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structinv}{inv}} $\ast$}]{inventaire,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+fonction pour initialiser l\textquotesingle{}inventaire 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inventaire} & \+: l\textquotesingle{}inventaire à initialiser \\
+\hline
+{\em renderer} & \+: le renderer SDL \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8h_ad71fb0b6c7a9085a78a8e008c197a4d9}\label{main_8h_ad71fb0b6c7a9085a78a8e008c197a4d9}} 
+\index{main.h@{main.h}!InitMonstres@{InitMonstres}}
+\index{InitMonstres@{InitMonstres}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{InitMonstres()}{InitMonstres()}}
+{\footnotesize\ttfamily void Init\+Monstres (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonstre_liste}{monstre\+Liste\+\_\+t}} $\ast$}]{ListeM,  }\item[{int}]{manche }\end{DoxyParamCaption})}
+
+
+
+fonction pour initialiser la liste des monstres 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ListeM} & \+: liste des monstres \\
+\hline
+{\em manche} & \+: manche du jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8h_acf1d3fbb72efbaa8d8e126a749d10d95}\label{main_8h_acf1d3fbb72efbaa8d8e126a749d10d95}} 
+\index{main.h@{main.h}!InitWorld@{InitWorld}}
+\index{InitWorld@{InitWorld}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{InitWorld()}{InitWorld()}}
+{\footnotesize\ttfamily void Init\+World (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structworld__s}{world\+\_\+t}} $\ast$}]{world,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+fonction pour initialiser le monde 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em world} & \+: le monde à initialiser \\
+\hline
+{\em renderer} & \+: le renderer SDL\\
+\hline
+\end{DoxyParams}
+
+
+
+\begin{DoxyParams}{Paramètres}
+{\em world} & \+: le monde à initialiser \\
+\hline
+{\em renderer} & \+: le renderer SDL \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8h_a60501dad66a45bd65e411a9985de9ca9}\label{main_8h_a60501dad66a45bd65e411a9985de9ca9}} 
+\index{main.h@{main.h}!jouer@{jouer}}
+\index{jouer@{jouer}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{jouer()}{jouer()}}
+{\footnotesize\ttfamily void jouer (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+procédure pour lancer le jeu 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em argc} & \+: argument du main \\
+\hline
+{\em argv} & \+: argument du main \\
+\hline
+\end{DoxyParams}

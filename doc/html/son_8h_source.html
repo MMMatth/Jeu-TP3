@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DIABLO MMXXIII:  Fichier source de C:/Users/matlo/Documents/worflow/Jeu-TP3/include/son.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="joueur_s.bmp"/></td>
+  <td id="projectalign">
+   <div id="projectname">DIABLO MMXXIII
+   </div>
+   <div id="projectbrief">Ce projet a été réalisé dans le cadre du cours de méthodologie de la conception et de la programmation partie I pour les étudiants de la Licence 1 M-I-SPI de l&#39;Université de Lorraine. Il consiste à créer un jeu solo qui se joue sur un plateau carré.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">son.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="son_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef SON_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define SON_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;SDL_mixer.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../include/affichage.h&quot;</span> <span class="comment">// Pour la fonction &quot;Erreur&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structsound__s.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsound__s.html">sound_s</a>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structsound__s.html#a6120d7280808873295357b933a95e5cb">   14</a></span>    Mix_Chunk  * <a class="code hl_variable" href="structsound__s.html#a6120d7280808873295357b933a95e5cb">arc</a>; </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structsound__s.html#a8049a036424bc8e2012de614ea368fdd">   15</a></span>    Mix_Chunk  * <a class="code hl_variable" href="structsound__s.html#a8049a036424bc8e2012de614ea368fdd">death</a>; </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structsound__s.html#a15b3213f20a453c753efb99f468778b7">   16</a></span>    Mix_Chunk  * <a class="code hl_variable" href="structsound__s.html#a15b3213f20a453c753efb99f468778b7">click</a>; </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structsound__s.html">sound_s</a> <a class="code hl_struct" href="structsound__s.html">sound_t</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structmusic__s.html">   20</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structmusic__s.html">music_s</a>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structmusic__s.html#afb7210ea5447cfa53b4baca1754f69e6">   21</a></span>    Mix_Music * <a class="code hl_variable" href="structmusic__s.html#afb7210ea5447cfa53b4baca1754f69e6">menu</a>; </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structmusic__s.html#a179540b990cc82ebfa07c193f9e44e5b">   22</a></span>    Mix_Music * <a class="code hl_variable" href="structmusic__s.html#a179540b990cc82ebfa07c193f9e44e5b">game</a>; </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structmusic__s.html">music_s</a> <a class="code hl_struct" href="structmusic__s.html">music_t</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">void</span> <a class="code hl_function" href="son_8h.html#af6fc9d36d33fe574b0ddd3d9c185de60">InitAudioWithError</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>Mix_Chunk * <a class="code hl_function" href="son_8h.html#afd33e0d508c50547bb72d18eb2e11dad">CreateSound</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> <a class="code hl_function" href="son_8h.html#a419b8efeda235a561bb639b2a811c678">PlaySound</a>(Mix_Chunk *sound, <span class="keywordtype">int</span> channel, <span class="keywordtype">int</span> loops);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>Mix_Music * <a class="code hl_function" href="son_8h.html#a95004285e03bb7b2f70de6ec3dfb643d">CreateMusic</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">void</span> <a class="code hl_function" href="son_8h.html#a0d6230542640a662faa5757430039a43">PlayMusic</a>(Mix_Music *music);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">void</span> <a class="code hl_function" href="son_8h.html#a2386cb730eedb63a05530c53bfdcc1a2">StopMusic</a>(Mix_Music *music);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordtype">void</span> <a class="code hl_function" href="son_8h.html#aac98c5252c690abda70986670d02c4ff">CleanAudio</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keywordtype">void</span> <a class="code hl_function" href="son_8h.html#aba1ba13445eeba8a350a402a72aa1f19">InitSound</a>(<a class="code hl_struct" href="structsound__s.html">sound_t</a> *sound);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keywordtype">void</span> <a class="code hl_function" href="son_8h.html#a6022c6e25010148ad235439f9b576caa">InitMusic</a>(<a class="code hl_struct" href="structmusic__s.html">music_t</a> *music);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="ason_8h_html_a0d6230542640a662faa5757430039a43"><div class="ttname"><a href="son_8h.html#a0d6230542640a662faa5757430039a43">PlayMusic</a></div><div class="ttdeci">void PlayMusic(Mix_Music *music)</div><div class="ttdoc">fonction pour jouer une musique</div><div class="ttdef"><b>Definition:</b> son.c:34</div></div>
+<div class="ttc" id="ason_8h_html_a2386cb730eedb63a05530c53bfdcc1a2"><div class="ttname"><a href="son_8h.html#a2386cb730eedb63a05530c53bfdcc1a2">StopMusic</a></div><div class="ttdeci">void StopMusic(Mix_Music *music)</div><div class="ttdoc">fonction pour arrêter une musique</div><div class="ttdef"><b>Definition:</b> son.c:39</div></div>
+<div class="ttc" id="ason_8h_html_a419b8efeda235a561bb639b2a811c678"><div class="ttname"><a href="son_8h.html#a419b8efeda235a561bb639b2a811c678">PlaySound</a></div><div class="ttdeci">void PlaySound(Mix_Chunk *sound, int channel, int loops)</div><div class="ttdoc">fonction pour jouer un son</div><div class="ttdef"><b>Definition:</b> son.c:22</div></div>
+<div class="ttc" id="ason_8h_html_a6022c6e25010148ad235439f9b576caa"><div class="ttname"><a href="son_8h.html#a6022c6e25010148ad235439f9b576caa">InitMusic</a></div><div class="ttdeci">void InitMusic(music_t *music)</div><div class="ttdoc">fonction pour initialiser les musiques</div><div class="ttdef"><b>Definition:</b> son.c:55</div></div>
+<div class="ttc" id="ason_8h_html_a95004285e03bb7b2f70de6ec3dfb643d"><div class="ttname"><a href="son_8h.html#a95004285e03bb7b2f70de6ec3dfb643d">CreateMusic</a></div><div class="ttdeci">Mix_Music * CreateMusic(const char *path)</div><div class="ttdoc">fonction pour crée une musique ! on ne peut pas jouer plusieurs musiques en même temps !</div><div class="ttdef"><b>Definition:</b> son.c:27</div></div>
+<div class="ttc" id="ason_8h_html_aac98c5252c690abda70986670d02c4ff"><div class="ttname"><a href="son_8h.html#aac98c5252c690abda70986670d02c4ff">CleanAudio</a></div><div class="ttdeci">void CleanAudio()</div><div class="ttdoc">fonction pour libérer la mémoire allouée pour un son</div><div class="ttdef"><b>Definition:</b> son.c:44</div></div>
+<div class="ttc" id="ason_8h_html_aba1ba13445eeba8a350a402a72aa1f19"><div class="ttname"><a href="son_8h.html#aba1ba13445eeba8a350a402a72aa1f19">InitSound</a></div><div class="ttdeci">void InitSound(sound_t *sound)</div><div class="ttdoc">fonction pour initialiser les sons</div><div class="ttdef"><b>Definition:</b> son.c:49</div></div>
+<div class="ttc" id="ason_8h_html_af6fc9d36d33fe574b0ddd3d9c185de60"><div class="ttname"><a href="son_8h.html#af6fc9d36d33fe574b0ddd3d9c185de60">InitAudioWithError</a></div><div class="ttdeci">void InitAudioWithError()</div><div class="ttdoc">fonction pour initialiser l'audio</div><div class="ttdef"><b>Definition:</b> son.c:9</div></div>
+<div class="ttc" id="ason_8h_html_afd33e0d508c50547bb72d18eb2e11dad"><div class="ttname"><a href="son_8h.html#afd33e0d508c50547bb72d18eb2e11dad">CreateSound</a></div><div class="ttdeci">Mix_Chunk * CreateSound(const char *path)</div><div class="ttdoc">fonction pour crée un son</div><div class="ttdef"><b>Definition:</b> son.c:15</div></div>
+<div class="ttc" id="astructmusic__s_html"><div class="ttname"><a href="structmusic__s.html">music_s</a></div><div class="ttdef"><b>Definition:</b> son.h:20</div></div>
+<div class="ttc" id="astructmusic__s_html_a179540b990cc82ebfa07c193f9e44e5b"><div class="ttname"><a href="structmusic__s.html#a179540b990cc82ebfa07c193f9e44e5b">music_s::game</a></div><div class="ttdeci">Mix_Music * game</div><div class="ttdef"><b>Definition:</b> son.h:22</div></div>
+<div class="ttc" id="astructmusic__s_html_afb7210ea5447cfa53b4baca1754f69e6"><div class="ttname"><a href="structmusic__s.html#afb7210ea5447cfa53b4baca1754f69e6">music_s::menu</a></div><div class="ttdeci">Mix_Music * menu</div><div class="ttdef"><b>Definition:</b> son.h:21</div></div>
+<div class="ttc" id="astructsound__s_html"><div class="ttname"><a href="structsound__s.html">sound_s</a></div><div class="ttdef"><b>Definition:</b> son.h:13</div></div>
+<div class="ttc" id="astructsound__s_html_a15b3213f20a453c753efb99f468778b7"><div class="ttname"><a href="structsound__s.html#a15b3213f20a453c753efb99f468778b7">sound_s::click</a></div><div class="ttdeci">Mix_Chunk * click</div><div class="ttdef"><b>Definition:</b> son.h:16</div></div>
+<div class="ttc" id="astructsound__s_html_a6120d7280808873295357b933a95e5cb"><div class="ttname"><a href="structsound__s.html#a6120d7280808873295357b933a95e5cb">sound_s::arc</a></div><div class="ttdeci">Mix_Chunk * arc</div><div class="ttdef"><b>Definition:</b> son.h:14</div></div>
+<div class="ttc" id="astructsound__s_html_a8049a036424bc8e2012de614ea368fdd"><div class="ttname"><a href="structsound__s.html#a8049a036424bc8e2012de614ea368fdd">sound_s::death</a></div><div class="ttdeci">Mix_Chunk * death</div><div class="ttdef"><b>Definition:</b> son.h:15</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
+</small></address>
+</body>
+</html>

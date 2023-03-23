@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DIABLO MMXXIII:  Fichier source de C:/Users/matlo/Documents/worflow/Jeu-TP3/include/main.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="joueur_s.bmp"/></td>
+  <td id="projectalign">
+   <div id="projectname">DIABLO MMXXIII
+   </div>
+   <div id="projectbrief">Ce projet a été réalisé dans le cadre du cours de méthodologie de la conception et de la programmation partie I pour les étudiants de la Licence 1 M-I-SPI de l&#39;Université de Lorraine. Il consiste à créer un jeu solo qui se joue sur un plateau carré.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">main.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="main_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef MAIN_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define MAIN_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../include/affichage.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../include/joueur.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;../include/monstre.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;../include/son.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;../include/inventaire.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;../include/son.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;../include/hud.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;SDL.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;SDL_mixer.h&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;SDL_ttf.h&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structworld__s.html">   23</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structworld__s.html">world_s</a>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structworld__s.html#af0984a74a2f51985cb9d3cc4d4ab9f1a">   24</a></span>    <a class="code hl_struct" href="structinv.html">inv</a> * <a class="code hl_variable" href="structworld__s.html#af0984a74a2f51985cb9d3cc4d4ab9f1a">inventaire</a>; </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structworld__s.html#a059b3b474170eedaabfe8b17901cfde1">   25</a></span>    <a class="code hl_struct" href="structjoueur.html">joueur_t</a> * <a class="code hl_variable" href="structworld__s.html#a059b3b474170eedaabfe8b17901cfde1">joueur</a>; </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structworld__s.html#a7d27a1be3c4749eb6918f07dc3ea40dc">   26</a></span>    <a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a> * <a class="code hl_variable" href="structworld__s.html#a7d27a1be3c4749eb6918f07dc3ea40dc">ListeM</a>; </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structworld__s.html">world_s</a> <a class="code hl_struct" href="structworld__s.html">world_t</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8h.html#acf1d3fbb72efbaa8d8e126a749d10d95">InitWorld</a>(<a class="code hl_struct" href="structworld__s.html">world_t</a> * world, SDL_Renderer *renderer);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8h.html#ad2e31ed8cd3170b0fb51481410c15dd9">attaque</a>(<a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a> *<a class="code hl_variable" href="structworld__s.html#a7d27a1be3c4749eb6918f07dc3ea40dc">ListeM</a>, <span class="keywordtype">int</span> degats, <span class="keywordtype">int</span> pos_m, <a class="code hl_struct" href="structsound__s.html">sound_t</a> * son);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8h.html#a45d422a71903b518337bd00fe4bd4f6c">attaque_contact</a>(<a class="code hl_struct" href="structjoueur.html">joueur_t</a>* j, <a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>* <a class="code hl_variable" href="structworld__s.html#a7d27a1be3c4749eb6918f07dc3ea40dc">ListeM</a>, <span class="keywordtype">int</span> pos_m, <span class="keywordtype">int</span> degats, <a class="code hl_struct" href="structsound__s.html">sound_t</a> * son);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8h.html#a86ca29ada3a0fc80d46d127b36274d0a">attaque_dist</a>(<a class="code hl_struct" href="structjoueur.html">joueur_t</a>* j, <a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>* <a class="code hl_variable" href="structworld__s.html#a7d27a1be3c4749eb6918f07dc3ea40dc">ListeM</a>, <a class="code hl_struct" href="structobj.html">obj</a> objet_equipe, <span class="keywordtype">char</span> dir, <a class="code hl_struct" href="structsound__s.html">sound_t</a> * son);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8h.html#a201cec68d6ef7d896a2b3f4aa45ec52c">attaque_dist_aux</a>(<a class="code hl_struct" href="structjoueur.html">joueur_t</a>* j, <a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>* <a class="code hl_variable" href="structworld__s.html#a7d27a1be3c4749eb6918f07dc3ea40dc">ListeM</a>, <span class="keywordtype">char</span> dir, <span class="keywordtype">int</span> degats, <a class="code hl_struct" href="structsound__s.html">sound_t</a> * son);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keywordtype">char</span> ** <a class="code hl_function" href="main_8h.html#af691612628e065c612c6c6d86ad8d172">generationListeAff</a>(<a class="code hl_struct" href="structjoueur.html">joueur_t</a>* j, <a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>* listeM);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8h.html#a2cf928c084225194f1fbdd8a44923f88">InitInventaire</a>(<a class="code hl_struct" href="structinv.html">inv</a> *<a class="code hl_variable" href="structworld__s.html#af0984a74a2f51985cb9d3cc4d4ab9f1a">inventaire</a>, SDL_Renderer *renderer);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8h.html#ad71fb0b6c7a9085a78a8e008c197a4d9">InitMonstres</a>(<a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a> *<a class="code hl_variable" href="structworld__s.html#a7d27a1be3c4749eb6918f07dc3ea40dc">ListeM</a>, <span class="keywordtype">int</span> manche);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8h.html#acf1d3fbb72efbaa8d8e126a749d10d95">InitWorld</a>(<a class="code hl_struct" href="structworld__s.html">world_t</a> * world, SDL_Renderer *renderer);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8h.html#a62f6c73d57c941242c93a5d44c54bb3a">CleanWorld</a>(<a class="code hl_struct" href="structworld__s.html">world_t</a> * world);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8h.html#a60501dad66a45bd65e411a9985de9ca9">jouer</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="amain_8h_html_a201cec68d6ef7d896a2b3f4aa45ec52c"><div class="ttname"><a href="main_8h.html#a201cec68d6ef7d896a2b3f4aa45ec52c">attaque_dist_aux</a></div><div class="ttdeci">int attaque_dist_aux(joueur_t *j, monstreListe_t *ListeM, char dir, int degats, sound_t *son)</div><div class="ttdoc">fonction pour lancer une attaque à distance (auxiliaire)</div><div class="ttdef"><b>Definition:</b> main.c:36</div></div>
+<div class="ttc" id="amain_8h_html_a2cf928c084225194f1fbdd8a44923f88"><div class="ttname"><a href="main_8h.html#a2cf928c084225194f1fbdd8a44923f88">InitInventaire</a></div><div class="ttdeci">void InitInventaire(inv *inventaire, SDL_Renderer *renderer)</div><div class="ttdoc">fonction pour initialiser l'inventaire</div><div class="ttdef"><b>Definition:</b> main.c:86</div></div>
+<div class="ttc" id="amain_8h_html_a45d422a71903b518337bd00fe4bd4f6c"><div class="ttname"><a href="main_8h.html#a45d422a71903b518337bd00fe4bd4f6c">attaque_contact</a></div><div class="ttdeci">int attaque_contact(joueur_t *j, monstreListe_t *ListeM, int pos_m, int degats, sound_t *son)</div><div class="ttdoc">fonction pour lancer une attaque au contact</div><div class="ttdef"><b>Definition:</b> main.c:21</div></div>
+<div class="ttc" id="amain_8h_html_a60501dad66a45bd65e411a9985de9ca9"><div class="ttname"><a href="main_8h.html#a60501dad66a45bd65e411a9985de9ca9">jouer</a></div><div class="ttdeci">void jouer(int argc, char *argv[])</div><div class="ttdoc">procédure pour lancer le jeu</div><div class="ttdef"><b>Definition:</b> main.c:111</div></div>
+<div class="ttc" id="amain_8h_html_a62f6c73d57c941242c93a5d44c54bb3a"><div class="ttname"><a href="main_8h.html#a62f6c73d57c941242c93a5d44c54bb3a">CleanWorld</a></div><div class="ttdeci">void CleanWorld(world_t *world)</div><div class="ttdoc">fonction pour nettoyer le monde (free les pointeurs)</div><div class="ttdef"><b>Definition:</b> main.c:104</div></div>
+<div class="ttc" id="amain_8h_html_a86ca29ada3a0fc80d46d127b36274d0a"><div class="ttname"><a href="main_8h.html#a86ca29ada3a0fc80d46d127b36274d0a">attaque_dist</a></div><div class="ttdeci">int attaque_dist(joueur_t *j, monstreListe_t *ListeM, obj objet_equipe, char dir, sound_t *son)</div><div class="ttdoc">fonction pour lancer une attaque à distance</div><div class="ttdef"><b>Definition:</b> main.c:29</div></div>
+<div class="ttc" id="amain_8h_html_acf1d3fbb72efbaa8d8e126a749d10d95"><div class="ttname"><a href="main_8h.html#acf1d3fbb72efbaa8d8e126a749d10d95">InitWorld</a></div><div class="ttdeci">void InitWorld(world_t *world, SDL_Renderer *renderer)</div><div class="ttdoc">fonction pour initialiser le monde</div><div class="ttdef"><b>Definition:</b> main.c:96</div></div>
+<div class="ttc" id="amain_8h_html_ad2e31ed8cd3170b0fb51481410c15dd9"><div class="ttname"><a href="main_8h.html#ad2e31ed8cd3170b0fb51481410c15dd9">attaque</a></div><div class="ttdeci">void attaque(monstreListe_t *ListeM, int degats, int pos_m, sound_t *son)</div><div class="ttdoc">fonction pour appliquer les dégats à un monstre et gerer sa mort</div><div class="ttdef"><b>Definition:</b> main.c:12</div></div>
+<div class="ttc" id="amain_8h_html_ad71fb0b6c7a9085a78a8e008c197a4d9"><div class="ttname"><a href="main_8h.html#ad71fb0b6c7a9085a78a8e008c197a4d9">InitMonstres</a></div><div class="ttdeci">void InitMonstres(monstreListe_t *ListeM, int manche)</div><div class="ttdoc">fonction pour initialiser la liste des monstres</div><div class="ttdef"><b>Definition:</b> main.c:91</div></div>
+<div class="ttc" id="amain_8h_html_af691612628e065c612c6c6d86ad8d172"><div class="ttname"><a href="main_8h.html#af691612628e065c612c6c6d86ad8d172">generationListeAff</a></div><div class="ttdeci">char ** generationListeAff(joueur_t *j, monstreListe_t *listeM)</div><div class="ttdoc">fonction pour recuper le jeu sous forme de tableau de char (pas utiliser depuis longtemps)</div><div class="ttdef"><b>Definition:</b> main.c:62</div></div>
+<div class="ttc" id="astructinv_html"><div class="ttname"><a href="structinv.html">inv</a></div><div class="ttdef"><b>Definition:</b> inventaire.h:32</div></div>
+<div class="ttc" id="astructjoueur_html"><div class="ttname"><a href="structjoueur.html">joueur</a></div><div class="ttdef"><b>Definition:</b> joueur.h:10</div></div>
+<div class="ttc" id="astructmonstre_liste_html"><div class="ttname"><a href="structmonstre_liste.html">monstreListe</a></div><div class="ttdef"><b>Definition:</b> monstre.h:24</div></div>
+<div class="ttc" id="astructobj_html"><div class="ttname"><a href="structobj.html">obj</a></div><div class="ttdef"><b>Definition:</b> inventaire.h:17</div></div>
+<div class="ttc" id="astructsound__s_html"><div class="ttname"><a href="structsound__s.html">sound_s</a></div><div class="ttdef"><b>Definition:</b> son.h:13</div></div>
+<div class="ttc" id="astructworld__s_html"><div class="ttname"><a href="structworld__s.html">world_s</a></div><div class="ttdef"><b>Definition:</b> main.h:23</div></div>
+<div class="ttc" id="astructworld__s_html_a059b3b474170eedaabfe8b17901cfde1"><div class="ttname"><a href="structworld__s.html#a059b3b474170eedaabfe8b17901cfde1">world_s::joueur</a></div><div class="ttdeci">joueur_t * joueur</div><div class="ttdef"><b>Definition:</b> main.h:25</div></div>
+<div class="ttc" id="astructworld__s_html_a7d27a1be3c4749eb6918f07dc3ea40dc"><div class="ttname"><a href="structworld__s.html#a7d27a1be3c4749eb6918f07dc3ea40dc">world_s::ListeM</a></div><div class="ttdeci">monstreListe_t * ListeM</div><div class="ttdef"><b>Definition:</b> main.h:26</div></div>
+<div class="ttc" id="astructworld__s_html_af0984a74a2f51985cb9d3cc4d4ab9f1a"><div class="ttname"><a href="structworld__s.html#af0984a74a2f51985cb9d3cc4d4ab9f1a">world_s::inventaire</a></div><div class="ttdeci">inv * inventaire</div><div class="ttdef"><b>Definition:</b> main.h:24</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
+</small></address>
+</body>
+</html>

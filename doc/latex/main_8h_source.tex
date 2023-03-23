@@ -1,0 +1,60 @@
+\hypertarget{main_8h_source}{}\doxysection{main.\+h}
+\label{main_8h_source}\index{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/main.h@{C:/Users/matlo/Documents/worflow/Jeu-\/TP3/include/main.h}}
+\mbox{\hyperlink{main_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ MAIN\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MAIN\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../include/affichage.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}../include/joueur.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../include/monstre.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../include/son.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../include/inventaire.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../include/son.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../include/hud.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <SDL.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <SDL\_mixer.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <SDL\_ttf.h>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structworld__s}{world\_s}}\{}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{structinv}{inv}}\ *\ \mbox{\hyperlink{structworld__s_af0984a74a2f51985cb9d3cc4d4ab9f1a}{inventaire}};\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{structjoueur}{joueur\_t}}\ *\ \mbox{\hyperlink{structworld__s_a059b3b474170eedaabfe8b17901cfde1}{joueur}};\ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}\ *\ \mbox{\hyperlink{structworld__s_a7d27a1be3c4749eb6918f07dc3ea40dc}{ListeM}};\ }
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structworld__s}{world\_s}}\ \mbox{\hyperlink{structworld__s}{world\_t}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8h_acf1d3fbb72efbaa8d8e126a749d10d95}{InitWorld}}(\mbox{\hyperlink{structworld__s}{world\_t}}\ *\ world,\ SDL\_Renderer\ *renderer);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8h_ad2e31ed8cd3170b0fb51481410c15dd9}{attaque}}(\mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}\ *\mbox{\hyperlink{structworld__s_a7d27a1be3c4749eb6918f07dc3ea40dc}{ListeM}},\ \textcolor{keywordtype}{int}\ degats,\ \textcolor{keywordtype}{int}\ pos\_m,\ \mbox{\hyperlink{structsound__s}{sound\_t}}\ *\ son);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8h_a45d422a71903b518337bd00fe4bd4f6c}{attaque\_contact}}(\mbox{\hyperlink{structjoueur}{joueur\_t}}*\ j,\ \mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}*\ \mbox{\hyperlink{structworld__s_a7d27a1be3c4749eb6918f07dc3ea40dc}{ListeM}},\ \textcolor{keywordtype}{int}\ pos\_m,\ \textcolor{keywordtype}{int}\ degats,\ \mbox{\hyperlink{structsound__s}{sound\_t}}\ *\ son);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8h_a86ca29ada3a0fc80d46d127b36274d0a}{attaque\_dist}}(\mbox{\hyperlink{structjoueur}{joueur\_t}}*\ j,\ \mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}*\ \mbox{\hyperlink{structworld__s_a7d27a1be3c4749eb6918f07dc3ea40dc}{ListeM}},\ \mbox{\hyperlink{structobj}{obj}}\ objet\_equipe,\ \textcolor{keywordtype}{char}\ dir,\ \mbox{\hyperlink{structsound__s}{sound\_t}}\ *\ son);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8h_a201cec68d6ef7d896a2b3f4aa45ec52c}{attaque\_dist\_aux}}(\mbox{\hyperlink{structjoueur}{joueur\_t}}*\ j,\ \mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}*\ \mbox{\hyperlink{structworld__s_a7d27a1be3c4749eb6918f07dc3ea40dc}{ListeM}},\ \textcolor{keywordtype}{char}\ dir,\ \textcolor{keywordtype}{int}\ degats,\ \mbox{\hyperlink{structsound__s}{sound\_t}}\ *\ son);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{char}\ **\ \mbox{\hyperlink{main_8h_af691612628e065c612c6c6d86ad8d172}{generationListeAff}}(\mbox{\hyperlink{structjoueur}{joueur\_t}}*\ j,\ \mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}*\ listeM);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8h_a2cf928c084225194f1fbdd8a44923f88}{InitInventaire}}(\mbox{\hyperlink{structinv}{inv}}\ *\mbox{\hyperlink{structworld__s_af0984a74a2f51985cb9d3cc4d4ab9f1a}{inventaire}},\ SDL\_Renderer\ *renderer);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00107\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8h_ad71fb0b6c7a9085a78a8e008c197a4d9}{InitMonstres}}(\mbox{\hyperlink{structmonstre_liste}{monstreListe\_t}}\ *\mbox{\hyperlink{structworld__s_a7d27a1be3c4749eb6918f07dc3ea40dc}{ListeM}},\ \textcolor{keywordtype}{int}\ manche);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00116\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8h_acf1d3fbb72efbaa8d8e126a749d10d95}{InitWorld}}(\mbox{\hyperlink{structworld__s}{world\_t}}\ *\ world,\ SDL\_Renderer\ *renderer);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00124\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8h_a62f6c73d57c941242c93a5d44c54bb3a}{CleanWorld}}(\mbox{\hyperlink{structworld__s}{world\_t}}\ *\ world);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00134\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8h_a60501dad66a45bd65e411a9985de9ca9}{jouer}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *argv[]);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DIABLO MMXXIII:  Fichier source de C:/Users/matlo/Documents/worflow/Jeu-TP3/include/monstre.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="joueur_s.bmp"/></td>
+  <td id="projectalign">
+   <div id="projectname">DIABLO MMXXIII
+   </div>
+   <div id="projectbrief">Ce projet a été réalisé dans le cadre du cours de méthodologie de la conception et de la programmation partie I pour les étudiants de la Licence 1 M-I-SPI de l&#39;Université de Lorraine. Il consiste à créer un jeu solo qui se joue sur un plateau carré.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">monstre.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="monstre_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef MONSTRE_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define MONSTRE_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../include/affichage.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../include/joueur.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;../include/inventaire.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structmonstre.html">   18</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structmonstre.html">monstre</a> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structmonstre.html#af1b58e608320ff939118a2a719ba3e6b">   19</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmonstre.html#af1b58e608320ff939118a2a719ba3e6b">pv</a>; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structmonstre.html#a48115af1066a06f5f7b9f9290682d30a">   20</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmonstre.html#a48115af1066a06f5f7b9f9290682d30a">pos</a>[2]; </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structmonstre.html">monstre</a> <a class="code hl_struct" href="structmonstre.html">monstre_t</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structmonstre_liste.html">   24</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structmonstre_liste.html">monstreListe</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structmonstre_liste.html#a69f97061ebdf6c481491d8ac5ded7e09">   25</a></span>    <a class="code hl_struct" href="structmonstre.html">monstre_t</a> ** <a class="code hl_variable" href="structmonstre_liste.html#a69f97061ebdf6c481491d8ac5ded7e09">tab</a>; </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structmonstre_liste.html#a42db834d279906a811f98980e45df8bf">   26</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmonstre_liste.html#a42db834d279906a811f98980e45df8bf">nbMst</a>; </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structmonstre_liste.html">monstreListe</a> <a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>; ;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>* <a class="code hl_function" href="monstre_8h.html#a8d278a6b462aba28ab9393a24831b237">creationListeM</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> <a class="code hl_function" href="monstre_8h.html#ac31b4c3c29f11b963c5c0e5f3849fcae">ajoutMst</a>(<a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>* listeM, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">void</span> <a class="code hl_function" href="monstre_8h.html#a99366350e763ba4ac7739dff40601c51">enleverMst</a>(<a class="code hl_struct" href="structmonstre.html">monstre_t</a>* m, <a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>* listeMst);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">int</span> <a class="code hl_function" href="monstre_8h.html#a385dcd544ee532752a873ab93fcd43ac">IndiceMst</a>(<a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>* listeM, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keywordtype">int</span> <a class="code hl_function" href="monstre_8h.html#a107f2b05ebaf413c70e1fe5372e14d85">RandomMoove</a>(<a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a> *m, <span class="keywordtype">int</span> taille, <span class="keywordtype">int</span> tick);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">char</span>* <a class="code hl_function" href="monstre_8h.html#ac983ed2a10d134fb8db90344e2d97112">toStringMst</a>(<a class="code hl_struct" href="structmonstre.html">monstre_t</a>* M);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keywordtype">char</span>* <a class="code hl_function" href="monstre_8h.html#a5046669a837b8b5f3374753932577cdf">toStringLstMst</a>(<a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a>* listeM);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keywordtype">void</span> <a class="code hl_function" href="monstre_8h.html#a5759a925119f50b62f9267f29d1c6de0">render_monstre</a>(SDL_Renderer *renderer, SDL_Texture *texture, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h, <a class="code hl_struct" href="structmonstre_liste.html">monstreListe_t</a> *listeM, <a class="code hl_struct" href="structjoueur.html">joueur_t</a> *<a class="code hl_struct" href="structjoueur.html">joueur</a>, <a class="code hl_struct" href="structinv.html">inv</a> *inventaire);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">#endif </span><span class="comment">/* MONSTRE_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="amonstre_8h_html_a107f2b05ebaf413c70e1fe5372e14d85"><div class="ttname"><a href="monstre_8h.html#a107f2b05ebaf413c70e1fe5372e14d85">RandomMoove</a></div><div class="ttdeci">int RandomMoove(monstreListe_t *m, int taille, int tick)</div><div class="ttdoc">fonction pour deplacer un monstre aleatoirement</div><div class="ttdef"><b>Definition:</b> monstre.c:42</div></div>
+<div class="ttc" id="amonstre_8h_html_a385dcd544ee532752a873ab93fcd43ac"><div class="ttname"><a href="monstre_8h.html#a385dcd544ee532752a873ab93fcd43ac">IndiceMst</a></div><div class="ttdeci">int IndiceMst(monstreListe_t *listeM, int x, int y)</div><div class="ttdoc">fonction pour recuperer l'indice d'un monstre dans la liste par rapport a sa position</div><div class="ttdef"><b>Definition:</b> monstre.c:34</div></div>
+<div class="ttc" id="amonstre_8h_html_a5046669a837b8b5f3374753932577cdf"><div class="ttname"><a href="monstre_8h.html#a5046669a837b8b5f3374753932577cdf">toStringLstMst</a></div><div class="ttdeci">char * toStringLstMst(monstreListe_t *listeM)</div><div class="ttdoc">fonction pour recuperer la liste de monstre sous forme de chaine de caractere</div><div class="ttdef"><b>Definition:</b> monstre.c:82</div></div>
+<div class="ttc" id="amonstre_8h_html_a5759a925119f50b62f9267f29d1c6de0"><div class="ttname"><a href="monstre_8h.html#a5759a925119f50b62f9267f29d1c6de0">render_monstre</a></div><div class="ttdeci">void render_monstre(SDL_Renderer *renderer, SDL_Texture *texture, int w, int h, monstreListe_t *listeM, joueur_t *joueur, inv *inventaire)</div><div class="ttdoc">procedure pour afficher les monstres</div><div class="ttdef"><b>Definition:</b> monstre.c:89</div></div>
+<div class="ttc" id="amonstre_8h_html_a8d278a6b462aba28ab9393a24831b237"><div class="ttname"><a href="monstre_8h.html#a8d278a6b462aba28ab9393a24831b237">creationListeM</a></div><div class="ttdeci">monstreListe_t * creationListeM()</div><div class="ttdoc">fonction pour initialiser la liste de monstre</div><div class="ttdef"><b>Definition:</b> monstre.c:8</div></div>
+<div class="ttc" id="amonstre_8h_html_a99366350e763ba4ac7739dff40601c51"><div class="ttname"><a href="monstre_8h.html#a99366350e763ba4ac7739dff40601c51">enleverMst</a></div><div class="ttdeci">void enleverMst(monstre_t *m, monstreListe_t *listeMst)</div><div class="ttdoc">fonction pour enlever un monstre de la liste</div><div class="ttdef"><b>Definition:</b> monstre.c:26</div></div>
+<div class="ttc" id="amonstre_8h_html_ac31b4c3c29f11b963c5c0e5f3849fcae"><div class="ttname"><a href="monstre_8h.html#ac31b4c3c29f11b963c5c0e5f3849fcae">ajoutMst</a></div><div class="ttdeci">void ajoutMst(monstreListe_t *listeM, int x, int y)</div><div class="ttdoc">fonction pour ajouter un monstre a la liste</div><div class="ttdef"><b>Definition:</b> monstre.c:15</div></div>
+<div class="ttc" id="amonstre_8h_html_ac983ed2a10d134fb8db90344e2d97112"><div class="ttname"><a href="monstre_8h.html#ac983ed2a10d134fb8db90344e2d97112">toStringMst</a></div><div class="ttdeci">char * toStringMst(monstre_t *M)</div><div class="ttdoc">fonction pour recuperer un monstre sous forme de chaine de caractere</div><div class="ttdef"><b>Definition:</b> monstre.c:76</div></div>
+<div class="ttc" id="astructinv_html"><div class="ttname"><a href="structinv.html">inv</a></div><div class="ttdef"><b>Definition:</b> inventaire.h:32</div></div>
+<div class="ttc" id="astructjoueur_html"><div class="ttname"><a href="structjoueur.html">joueur</a></div><div class="ttdef"><b>Definition:</b> joueur.h:10</div></div>
+<div class="ttc" id="astructmonstre_html"><div class="ttname"><a href="structmonstre.html">monstre</a></div><div class="ttdef"><b>Definition:</b> monstre.h:18</div></div>
+<div class="ttc" id="astructmonstre_html_a48115af1066a06f5f7b9f9290682d30a"><div class="ttname"><a href="structmonstre.html#a48115af1066a06f5f7b9f9290682d30a">monstre::pos</a></div><div class="ttdeci">int pos[2]</div><div class="ttdef"><b>Definition:</b> monstre.h:20</div></div>
+<div class="ttc" id="astructmonstre_html_af1b58e608320ff939118a2a719ba3e6b"><div class="ttname"><a href="structmonstre.html#af1b58e608320ff939118a2a719ba3e6b">monstre::pv</a></div><div class="ttdeci">int pv</div><div class="ttdef"><b>Definition:</b> monstre.h:19</div></div>
+<div class="ttc" id="astructmonstre_liste_html"><div class="ttname"><a href="structmonstre_liste.html">monstreListe</a></div><div class="ttdef"><b>Definition:</b> monstre.h:24</div></div>
+<div class="ttc" id="astructmonstre_liste_html_a42db834d279906a811f98980e45df8bf"><div class="ttname"><a href="structmonstre_liste.html#a42db834d279906a811f98980e45df8bf">monstreListe::nbMst</a></div><div class="ttdeci">int nbMst</div><div class="ttdef"><b>Definition:</b> monstre.h:26</div></div>
+<div class="ttc" id="astructmonstre_liste_html_a69f97061ebdf6c481491d8ac5ded7e09"><div class="ttname"><a href="structmonstre_liste.html#a69f97061ebdf6c481491d8ac5ded7e09">monstreListe::tab</a></div><div class="ttdeci">monstre_t ** tab</div><div class="ttdef"><b>Definition:</b> monstre.h:25</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
+</small></address>
+</body>
+</html>
