@@ -1,1 +1,6 @@
 scores.txt
+bin/inventaire_test.exe
+bin/joueur_test.exe
+bin/monstre_test.exe
+bin/start.exe
+lib/*.o
