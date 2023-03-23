@@ -1,6 +1,7 @@
 ## Jeu en C
 Ce projet a été réalisé dans le cadre du cours de méthodologie de la conception et de la programmation partie I pour les étudiants de la Licence 1 M-I-SPI de l'Université de Lorraine. Il consiste à créer un jeu solo qui se joue sur un plateau carré.
 
+
 ## Règles du jeu
 Le but du jeu est de finir le plus vite possible les 5 manches.
 Le joueur se déplace sur une carte carrée de taille 8x8 a l'aide des touches suivante :
@@ -54,6 +55,9 @@ Nous avons utilisé la librairie SDL_ttf pour afficher le texte.
 Nous avons implémentés une sauvegarde du temps du joueur. Le temps est sauvegardé dans un fichier texte. Le temps est affiché dans l'hud.
 
 ## Comment utiliser le jeu
+<strong> J'ai remarqué un probleme de compilation sur certaines machines si ca arrive démarrer le jeu avec la commande `./bin/start` directement </strong>
+
+
 Pour utiliser le jeu, il faut tout d'abord cloner <a href="https://github.com/MMMatth/Jeu-TP3">le répertoire GitHub</a> sur votre machine. Pour cela, il faut copier l'URL du répertoire depuis GitHub et lancer la commande git clone dans un terminal en utilisant l'URL copiée.
 
 Ensuite, pour lancer le jeu, il faut compiler le programme en utilisant la commande ./compil dans le terminal. Cette commande va compiler tous les fichiers sources nécessaires au fonctionnement du jeu et créer un exécutable nommé "start dans le dossier bin".
